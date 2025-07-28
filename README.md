@@ -1,8 +1,24 @@
 # general-machine-learning
-Notes on a general variety of machine learning concepts and algorithms
+
+- Notes and practice with a general variety of machine learning concepts and algorithms
+
+## Goal
+
+- become a jack-of-all trades, 
+- a generalist with a lot of AI/ML disciplines
+- not a laser-focused PINN specialist
+
+## Focuses
+
+- generative
+- classifiers
+
+## Concepts
+
+- tokenization
 
 ## Previous Repos
-- note that some other repos have some contents from these
+
 - I created this back when I was first taking DataCamp courses:
     - https://github.com/CombatWombatHub/Datacamp_AI_ML
 - I started taking some notes on GitLab from Machine Learning Mastery courses too. There wasn't much there, so I'll just replicate or copy it.

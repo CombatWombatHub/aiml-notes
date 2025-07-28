@@ -3,6 +3,9 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
+.. to build, run sphinx-build source build
+   requires standalone pandoc to be installed (not pip-installed)
+
 general-machine-learning documentation
 ======================================
 
@@ -15,3 +18,12 @@ documentation for details.
    :maxdepth: 2
    :caption: Contents:
 
+   placeholder/markdown.md
+   placeholder/notebook.ipynb
+   placeholder/restructuredtext.rst
+
+.. toctree::
+   :caption: DataCamp:
+   :glob:
+
+   datacamp/**
