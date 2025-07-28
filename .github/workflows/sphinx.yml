@@ -22,6 +22,11 @@ jobs:
       uses: actions/checkout@v4
       with:
         persist-credentials: false
+    # install Python version specified in the UV .python-version file
+    - name: "Set up Python"
+      uses: actions/setup-python@v5
+      with:
+        python-version-file: ".python-version"
     # install UV (best practice to specify a particular version)
     - name: Install uv
       uses: astral-sh/setup-uv@v6
@@ -29,7 +34,7 @@ jobs:
         version: "0.8.2"
     # use UV to install Python dependencies
     - name: Install the project
-      run: uv sync --locked --all-extras --dev
+      run: uv sync --locked --all-extras --dev --group docs
     # build the HTML documentation
     - name: Build HTML
       uses: ammaraskar/sphinx-action@master
