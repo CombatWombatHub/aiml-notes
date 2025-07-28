@@ -28,13 +28,16 @@ jobs:
       with:
         python-version-file: ".python-version"
     # install UV (best practice to specify a particular version)
-    - name: Install uv
+    - name: Install UV
       uses: astral-sh/setup-uv@v6
       with:
         version: "0.8.2"
     # use UV to install Python dependencies
-    - name: Install the project
+    - name: Install Python Dependencies with UV
       run: uv sync --locked --all-extras --dev --group docs
+    # activate the UV environment that has the dependencies installed
+    - name: Activate uv environment
+      run: source .venv/bin/activate
     # build the HTML documentation
     - name: Build HTML
       uses: ammaraskar/sphinx-action@master
