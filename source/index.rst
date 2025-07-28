@@ -19,6 +19,11 @@ Could just create a ``launch.json`` to do it
 
 Looks like Sphinx wrote up documentation on using `GitHub Pages <https://www.sphinx-doc.org/en/master/tutorial/deploying.html#id5>`
 
+well I told it to build from a branch and it did...kind of. 
+It didn't build Sphinx but it did build a barebones site from the README
+https://combatwombathub.github.io/general-machine-learning/
+Trying setting it to use GitHub Actions instead
+
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
