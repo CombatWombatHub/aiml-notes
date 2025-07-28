@@ -37,3 +37,9 @@ Trying setting it to use GitHub Actions instead
    :glob:
 
    datacamp/**
+
+.. toctree::
+   :caption: ML Mastery:
+   :glob:
+
+   machine_learning_mastery/**
