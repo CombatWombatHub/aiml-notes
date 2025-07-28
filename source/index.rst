@@ -17,6 +17,8 @@ it should have ``nmake`` available out of the box
 and I downloaded ``make`` from GNU
 Could just create a ``launch.json`` to do it
 
+Looks like Sphinx wrote up documentation on using `GitHub Pages <https://www.sphinx-doc.org/en/master/tutorial/deploying.html#id5>`
+
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
