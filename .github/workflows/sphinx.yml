@@ -34,13 +34,16 @@ jobs:
         version: "0.8.2"
     # use UV to install Python dependencies
     - name: Install Python Dependencies with UV
-      run: uv sync --locked --all-extras --dev --group docs
+      #run: uv sync --locked --all-groups
+      # try installing packages to the system environment so later commands will use them
+      run: uv pip install --system
     # add UV-installed dependencies to default PATH (each "run" occurs in its own shell), otherwise I'd just do 'source .venv/bin/activate'
-    - name: Activate UV virtual environment
+    #- name: Activate UV virtual environment
+      # tried the following to get the later commands to use the .venv, without success
       #run: echo PATH=${GITHUB_WORKSPACE}/.venv/bin:$PATH >> $GITHUB_ENV
-      run: |
-        source .venv/bin/activate
-        echo PATH=$PATH >> $GITHUB_ENV
+      #run: |
+      #  source .venv/bin/activate
+      #  echo PATH=$PATH >> $GITHUB_ENV
     # build the HTML documentation
     - name: Build HTML
       uses: ammaraskar/sphinx-action@master
