@@ -34,10 +34,10 @@ jobs:
         version: "0.8.2"
     # create requirements.txt from UV for pip to use
     - name: Create requirements.txt
-      run: uv export --group docs > requirements.txt
+      run: uv export --group docs > docs/requirements.txt
     # pip install the requirements.txt since each 'run' occurs in its own shell and they're not using the UV .venv
-    - name: Pip install Requirements
-      run: pip install -r requirements.txt
+    #- name: Pip install Requirements
+    #  run: pip install -r requirements.txt
     # use UV to install Python dependencies
     #- name: Install Python Dependencies with UV
       #run: uv sync --locked --all-groups
