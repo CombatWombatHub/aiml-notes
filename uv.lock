@@ -1,17 +1,17 @@
 version = 1
-revision = 2
+revision = 3
 requires-python = ">=3.13"
 
 [[package]]
 name = "accessible-pygments"
-version = "0.0.5"
+version = "0.0.4"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "pygments" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/bc/c1/bbac6a50d02774f91572938964c582fff4270eee73ab822a4aeea4d8b11b/accessible_pygments-0.0.5.tar.gz", hash = "sha256:40918d3e6a2b619ad424cb91e556bd3bd8865443d9f22f1dcdf79e33c8046872", size = 1377899, upload-time = "2024-05-10T11:23:10.216Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/b2/50/7055ebd9b7928eca202768bcf5f8f69d8d69dec1767c956c08f055c5b31e/accessible-pygments-0.0.4.tar.gz", hash = "sha256:e7b57a9b15958e9601c7e9eb07a440c813283545a20973f2574a5f453d0e953e", size = 11650, upload-time = "2023-03-22T22:47:55.32Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/8d/3f/95338030883d8c8b91223b4e21744b04d11b161a3ef117295d8241f50ab4/accessible_pygments-0.0.5-py3-none-any.whl", hash = "sha256:88ae3211e68a1d0b011504b2ffc1691feafce124b845bd072ab6f9f66f34d4b7", size = 1395903, upload-time = "2024-05-10T11:23:08.421Z" },
+    { url = "https://files.pythonhosted.org/packages/20/d7/45cfa326d945e411c7e02764206845b05f8f5766aa7ebc812ef3bc4138cd/accessible_pygments-0.0.4-py2.py3-none-any.whl", hash = "sha256:416c6d8c1ea1c5ad8701903a20fcedf953c6e720d64f33dc47bfb2d3f2fa4e8d", size = 29320, upload-time = "2023-03-22T22:47:53.264Z" },
 ]
 
 [[package]]
@@ -364,6 +364,7 @@ app = [
     { name = "streamlit" },
 ]
 docs = [
+    { name = "accessible-pygments" },
     { name = "myst-parser" },
     { name = "nbsphinx" },
     { name = "sphinx" },
@@ -384,6 +385,7 @@ requires-dist = [
 [package.metadata.requires-dev]
 app = [{ name = "streamlit", specifier = ">=1.47.1" }]
 docs = [
+    { name = "accessible-pygments", specifier = "==0.0.4" },
     { name = "myst-parser", specifier = ">=4.0.1" },
     { name = "nbsphinx", specifier = ">=0.9.6" },
     { name = "sphinx", specifier = ">=8.2.3" },

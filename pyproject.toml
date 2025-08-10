@@ -19,6 +19,7 @@ app = [
     "streamlit>=1.47.1",
 ]
 docs = [
+    "accessible-pygments==0.0.4", # GitHub Actions failed trying to install 0.0.5
     "myst-parser>=4.0.1",
     "nbsphinx>=0.9.6",
     "sphinx>=8.2.3",
