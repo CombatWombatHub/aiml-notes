@@ -92,6 +92,11 @@ jobs:
       #run: |
       #  source .venv/bin/activate
       #  echo PATH=$PATH >> $GITHUB_ENV
+    # try installing pandoc since it's needed for notebooks
+    - name: Install Pandoc
+      uses: pandoc/actions/setup@v1
+      with:
+        version: 2.19
     # build the HTML documentation
     # this is now saying that it can't find myst-parser
     # even though pip list includes it
