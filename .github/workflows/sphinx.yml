@@ -64,8 +64,12 @@ jobs:
     # this hasn't worked previously, possibly it wants "uv run" instead of "python"
     # the UV_PROJECT_ENVIRONMENT environment variable could help if i can set it right
     # it should make it install to the system Python environment
+    # unfortunatly, Sphinx is still saying could not import myst_parser, no module named myst_parser
     - name: Sync UV Python Packages
       run: uv sync --locked --all-groups
+    # try running pip list to check installed packages
+    - name: pip list
+      run: pip list
     # UV's GitHub Actions documentation gave the following example
     # so it looks like they want you to use "uv run" instead of python...
     # that won't help with Sphinx make running python
