@@ -10,7 +10,9 @@ on:
 
 # set up the jobs for this action. Each job here seems similar to one GitLab CI/CD job
 # each job runs in its own environment and file structure
-# i.e. each step is like one line of a bash script (or you can "uses:" to reuse an action of multiple steps)
+# i.e. each step is like one line of a bash script
+#   or you can "uses:" to reuse an action of multiple steps
+#   though sometimes those run in their own Docker containers so environment setup won't affect them
 jobs:
   # I'm using one job for all of the Sphinx stuff, so it all runs in the same environment
   build-sphinx-docs:

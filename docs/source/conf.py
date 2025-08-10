@@ -11,6 +11,7 @@ copyright = "2025, Matthew Thomas Gill"
 author = "Matthew Thomas Gill"
 release = "1.0"
 
+
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
@@ -20,7 +21,7 @@ extensions = [
 ]
 
 templates_path = ["_templates"]
-exclude_patterns = []
+# exclude_patterns = []
 
 
 # -- Options for HTML output -------------------------------------------------
@@ -28,3 +29,17 @@ exclude_patterns = []
 
 html_theme = "sphinx_book_theme"
 html_static_path = ["_static"]
+
+
+# -- Options for MyST-Parser -------------------------------------------------
+#https://myst-parser.readthedocs.io/en/latest/index.html
+
+# enable syntax extensions for MyST-Parser 
+# https://myst-parser.readthedocs.io/en/latest/syntax/optional.html#syntax-extensions
+myst_enable_extensions = [
+    "dollarmath",
+]
+
+# generate anchors so you can link to markdown headings
+# https://myst-parser.readthedocs.io/en/latest/syntax/optional.html#auto-generated-header-anchors
+myst_heading_anchors = 3
