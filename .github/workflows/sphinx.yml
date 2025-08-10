@@ -74,6 +74,8 @@ jobs:
     # it *does* list accessible-pygments 0.0.4, which I temporarily added to uv earlier and removed
     # that suggests that pip installed packages remain in the system environment across pushes
     # but also my uv packages aren't getting included in the system packages
+    # OK - with both UV_PROJECT_ENVIRONMENT and UV_SYSTEM_PYTHON set, 
+    # pip list is including all the packages INCLUDING myst-parser
     - name: pip list
       run: pip list
     # UV's GitHub Actions documentation gave the following example
@@ -91,8 +93,14 @@ jobs:
       #  source .venv/bin/activate
       #  echo PATH=$PATH >> $GITHUB_ENV
     # build the HTML documentation
+    # this is now saying that it can't find myst-parser
+    # even though pip list includes it
+    # someone mentioned it might be a PATH issue
+    #- name: Build HTML
+    #  uses: ammaraskar/sphinx-action@master
+    # try just building with command
     - name: Build HTML
-      uses: ammaraskar/sphinx-action@master
+      run: sphinx-build -b html docs/source docs/build/html
     # upload the HTML artifacts for the Deploy step to use
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
