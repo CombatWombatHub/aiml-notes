@@ -29,8 +29,8 @@ will be available to me as notes accessible from anywhere.
 
 .. toctree::
    :maxdepth: 2
-   :caption: Placeholders:
+   :caption: Sphinx:
 
-   placeholder/markdown.md
-   placeholder/notebook.ipynb
-   placeholder/restructuredtext.rst
+   sphinx_examples/markdown.md
+   sphinx_examples/notebook.ipynb
+   sphinx_examples/restructuredtext.rst

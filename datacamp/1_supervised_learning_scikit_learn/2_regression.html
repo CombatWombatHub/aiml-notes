@@ -2,13 +2,13 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Example reStructuredText File &#8212; general-machine-learning 1.0 documentation</title>
+    <title>Intro to Regression &#8212; general-machine-learning 1.0 documentation</title>
   
   
   
@@ -18,33 +18,34 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../_static/documentation_options.js?v=a681ed88"></script>
-    <script src="../_static/doctools.js?v=9bcbadda"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../../_static/documentation_options.js?v=a681ed88"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'placeholder/restructuredtext';</script>
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="Example Jupyter Notebook" href="notebook.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = 'datacamp/1_supervised_learning_scikit_learn/2_regression';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="DataCamp Notes" href="../datacamp_notes.html" />
+    <link rel="prev" title="Intro to Classification" href="1_classification.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -76,7 +77,7 @@
     <div class="search-button__overlay"></div>
     <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
-      action="../search.html"
+      action="../../search.html"
       method="get">
   <i class="fa-solid fa-magnifying-glass"></i>
   <input type="search"
@@ -125,7 +126,7 @@
     
   
 
-<a class="navbar-brand logo" href="../index.html">
+<a class="navbar-brand logo" href="../../index.html">
   
   
   
@@ -150,22 +151,24 @@
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">General:</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../general/classification.html">Classification Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/classification.html">Classification Methods</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">DataCamp:</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../datacamp/1_supervised_learning_scikit_learn/1_classification.html">Supervised Learning with scikit-learn</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../datacamp/datacamp_notes.html">DataCamp Notes</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="0_supervised_learning_scikit_learn.html">Supervised Learning with scikit-learn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1_classification.html">Intro to Classification</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Intro to Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datacamp_notes.html">DataCamp Notes</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">ML Mastery:</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../machine_learning_mastery/python_ml_mini_course/1_python_ml_mini_course.html">Machine Learning Mastery Python Mini Course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../machine_learning_mastery/python_ml_mini_course/1_python_ml_mini_course.html">Machine Learning Mastery Python Mini Course</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Placeholders:</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="markdown.html">Example Markdown File</a></li>
-<li class="toctree-l1"><a class="reference internal" href="notebook.html">Example Jupyter Notebook</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Example reStructuredText File</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Sphinx:</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx_examples/markdown.html">Example Markdown File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx_examples/notebook.html">Example Jupyter Notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx_examples/restructuredtext.html">Example reStructuredText File</a></li>
 </ul>
 
     </div>
@@ -220,7 +223,7 @@
       
       
       
-      <li><a href="../_sources/placeholder/restructuredtext.rst" target="_blank"
+      <li><a href="../../_sources/datacamp/1_supervised_learning_scikit_learn/2_regression.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -230,7 +233,7 @@
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.rst</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
 </li>
       
@@ -291,9 +294,7 @@ document.write(`
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</button>
+
 </div></div>
       
     </div>
@@ -304,28 +305,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Example reStructuredText File</h1>
+    <h1>Intro to Regression</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subtitle">Subtitle</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#section-title">Section Title</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#subsection-title">Subsection Title</a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sub-subsection-title">Sub-subsection Title</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -335,37 +319,11 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="example-restructuredtext-file">
-<h1>Example reStructuredText File<a class="headerlink" href="#example-restructuredtext-file" title="Link to this heading">#</a></h1>
-<section id="subtitle">
-<h2>Subtitle<a class="headerlink" href="#subtitle" title="Link to this heading">#</a></h2>
-<section id="section-title">
-<h3>Section Title<a class="headerlink" href="#section-title" title="Link to this heading">#</a></h3>
-<section id="subsection-title">
-<h4>Subsection Title<a class="headerlink" href="#subsection-title" title="Link to this heading">#</a></h4>
-<section id="sub-subsection-title">
-<h5>Sub-subsection Title<a class="headerlink" href="#sub-subsection-title" title="Link to this heading">#</a></h5>
-<p><em>Emphasis</em> (italics)
-<strong>Strong emphasis</strong> (bold)
-<code class="docutils literal notranslate"><span class="pre">Literal</span> <span class="pre">text</span></code> (monospace)</p>
+  <section id="Intro-to-Regression">
+<h1>Intro to Regression<a class="headerlink" href="#Intro-to-Regression" title="Link to this heading">#</a></h1>
 <ul class="simple">
-<li><p>Bulleted list item 1</p></li>
-<li><p>Bulleted list item 2
-- Nested bulleted item
-- Another nested item</p></li>
-<li><p>Bulleted list item 3</p></li>
+<li><p><a class="reference external" href="https://campus.datacamp.com/courses/supervised-learning-with-scikit-learn/regression-7f892f18-f9c3-4c6f-9570-f19ed117c967?ex=1">https://campus.datacamp.com/courses/supervised-learning-with-scikit-learn/regression-7f892f18-f9c3-4c6f-9570-f19ed117c967?ex=1</a></p></li>
 </ul>
-<ol class="arabic simple">
-<li><p>Numbered list item 1</p></li>
-<li><p>Numbered list item 2
-#. Nested numbered item
-#. Another nested item</p></li>
-<li><p>Numbered list item 3</p></li>
-</ol>
-</section>
-</section>
-</section>
-</section>
 </section>
 
 
@@ -380,13 +338,22 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="notebook.html"
+       href="1_classification.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Example Jupyter Notebook</p>
+        <p class="prev-next-title">Intro to Classification</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="../datacamp_notes.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">DataCamp Notes</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -394,30 +361,6 @@ document.write(`
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subtitle">Subtitle</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#section-title">Section Title</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#subsection-title">Subsection Title</a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sub-subsection-title">Sub-subsection Title</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-  </nav></div>
-
-</div></div>
               
             
           </div>
@@ -462,8 +405,8 @@ By Matthew Thomas Gill
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

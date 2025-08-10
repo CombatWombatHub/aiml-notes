@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Classification Methods &#8212; general-machine-learning 1.0 documentation</title>
+    <title>Example Markdown File &#8212; general-machine-learning 1.0 documentation</title>
   
   
   
@@ -41,11 +41,19 @@
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'general/classification';</script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs"></script>
+    <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs";import elkLayouts from "https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs";mermaid.registerLayoutLoaders(elkLayouts);mermaid.initialize({startOnLoad:false});</script>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+    <script type="module">
+import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs";
+window.addEventListener("load", () => mermaid.run());
+</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'sphinx_examples/markdown';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Supervised Learning with scikit-learn" href="../datacamp/1_supervised_learning_scikit_learn/0_supervised_learning_scikit_learn.html" />
-    <link rel="prev" title="general-machine-learning documentation" href="../index.html" />
+    <link rel="next" title="Example Jupyter Notebook" href="notebook.html" />
+    <link rel="prev" title="Machine Learning Mastery Python Mini Course" href="../machine_learning_mastery/python_ml_mini_course/1_python_ml_mini_course.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -150,8 +158,8 @@
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">General:</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Classification Methods</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../general/classification.html">Classification Methods</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">DataCamp:</span></p>
 <ul class="nav bd-sidenav">
@@ -165,10 +173,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../machine_learning_mastery/python_ml_mini_course/1_python_ml_mini_course.html">Machine Learning Mastery Python Mini Course</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Sphinx:</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../sphinx_examples/markdown.html">Example Markdown File</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../sphinx_examples/notebook.html">Example Jupyter Notebook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../sphinx_examples/restructuredtext.html">Example reStructuredText File</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Example Markdown File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebook.html">Example Jupyter Notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="restructuredtext.html">Example reStructuredText File</a></li>
 </ul>
 
     </div>
@@ -223,7 +231,7 @@
       
       
       
-      <li><a href="../_sources/general/classification.md" target="_blank"
+      <li><a href="../_sources/sphinx_examples/markdown.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -307,7 +315,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Classification Methods</h1>
+    <h1>Example Markdown File</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -317,7 +325,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-nearest-neighbors-knn">k-Nearest Neighbors (knn)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sphinx-placeholder">Sphinx Placeholder</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mermaid-example">Mermaid Example</a></li>
 </ul>
             </nav>
         </div>
@@ -329,32 +338,31 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="classification-methods">
-<h1>Classification Methods<a class="headerlink" href="#classification-methods" title="Link to this heading">#</a></h1>
-<p>List basic notes on various types of models that can be used for Classification tasks</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="example-markdown-file">
+<h1>Example Markdown File<a class="headerlink" href="#example-markdown-file" title="Link to this heading">#</a></h1>
+<section id="sphinx-placeholder">
+<h2>Sphinx Placeholder<a class="headerlink" href="#sphinx-placeholder" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p>most of these will assume you have already split data into</p>
+<li><p>just making this as a placeholder to test basic documentation building</p></li>
+</ul>
+</section>
+<section id="mermaid-example">
+<h2>Mermaid Example<a class="headerlink" href="#mermaid-example" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Sphinx can build Mermaid diagrams thanks to <code class="docutils literal notranslate"><span class="pre">sphinxcontrib.mermaid</span></code> and <code class="docutils literal notranslate"><span class="pre">myst-parser</span></code></p></li>
+<li><p>triple backtick</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">X</span></code>: features (inputs)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">y</span></code>: target (output)</p></li>
+<li><p>renders in VSCode preview</p></li>
+<li><p>renders in Sphinx if set <code class="docutils literal notranslate"><span class="pre">myst_fence_as_directive</span> <span class="pre">=</span> <span class="pre">[&quot;mermaid&quot;]</span></code> in <code class="docutils literal notranslate"><span class="pre">conf.py</span></code></p></li>
+<li><p>otherwise(<code class="docutils literal notranslate"><span class="pre">Pygments</span> <span class="pre">lexer</span> <span class="pre">name</span> <span class="pre">'mermaid</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">known</span></code>)</p></li>
 </ul>
 </li>
 </ul>
-<section id="k-nearest-neighbors-knn">
-<h2>k-Nearest Neighbors (knn)<a class="headerlink" href="#k-nearest-neighbors-knn" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>binary output like “will this customer leave (<code class="docutils literal notranslate"><span class="pre">1</span></code>) or stay (<code class="docutils literal notranslate"><span class="pre">0</span></code>) based on account <code class="docutils literal notranslate"><span class="pre">age</span></code> and <code class="docutils literal notranslate"><span class="pre">customer</span> <span class="pre">service</span> <span class="pre">call</span> <span class="pre">count</span></code>”</p></li>
-<li><p>sets the result for the target based on nearby points (must be an odd number of points to prevent a “tie”)</p></li>
-<li><p>it determines “nearness” by mapping the inputs in vector space and computing the length of the vector between each training data point and test data point</p></li>
-</ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.neighbors</span><span class="w"> </span><span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
-<span class="c1"># Create a KNN classifier with 6 neighbors</span>
-<span class="n">knn</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
-<span class="c1"># Fit the classifier to the data</span>
-<span class="n">knn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-</pre></div>
-</div>
-</section>
+<pre  class="mermaid">
+        graph LR
+    A--&gt;B
+    B--&gt;C
+    </pre></section>
 </section>
 
 
@@ -369,20 +377,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../index.html"
+       href="../machine_learning_mastery/python_ml_mini_course/1_python_ml_mini_course.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">general-machine-learning documentation</p>
+        <p class="prev-next-title">Machine Learning Mastery Python Mini Course</p>
       </div>
     </a>
     <a class="right-next"
-       href="../datacamp/1_supervised_learning_scikit_learn/0_supervised_learning_scikit_learn.html"
+       href="notebook.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Supervised Learning with scikit-learn</p>
+        <p class="prev-next-title">Example Jupyter Notebook</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -402,7 +410,8 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-nearest-neighbors-knn">k-Nearest Neighbors (knn)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sphinx-placeholder">Sphinx Placeholder</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mermaid-example">Mermaid Example</a></li>
 </ul>
   </nav></div>
 

@@ -39,6 +39,14 @@
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs"></script>
+    <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs";import elkLayouts from "https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs";mermaid.registerLayoutLoaders(elkLayouts);mermaid.initialize({startOnLoad:false});</script>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+    <script type="module">
+import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs";
+window.addEventListener("load", () => mermaid.run());
+</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'search';</script>
   <script src="_static/searchtools.js"></script>
   <script src="_static/language_data.js"></script>
@@ -156,18 +164,20 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">DataCamp:</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="datacamp/1_supervised_learning_scikit_learn/1_classification.html">Supervised Learning with scikit-learn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datacamp/1_supervised_learning_scikit_learn/0_supervised_learning_scikit_learn.html">Supervised Learning with scikit-learn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datacamp/1_supervised_learning_scikit_learn/1_classification.html">Intro to Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datacamp/1_supervised_learning_scikit_learn/2_regression.html">Intro to Regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="datacamp/datacamp_notes.html">DataCamp Notes</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">ML Mastery:</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="machine_learning_mastery/python_ml_mini_course/1_python_ml_mini_course.html">Machine Learning Mastery Python Mini Course</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Placeholders:</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Sphinx:</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="placeholder/markdown.html">Example Markdown File</a></li>
-<li class="toctree-l1"><a class="reference internal" href="placeholder/notebook.html">Example Jupyter Notebook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="placeholder/restructuredtext.html">Example reStructuredText File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sphinx_examples/markdown.html">Example Markdown File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sphinx_examples/notebook.html">Example Jupyter Notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sphinx_examples/restructuredtext.html">Example reStructuredText File</a></li>
 </ul>
 
     </div>
