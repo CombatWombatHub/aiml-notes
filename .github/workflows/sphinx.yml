@@ -1,130 +1,64 @@
+# GitHub Actions Sphinx Guide: https://www.sphinx-doc.org/en/master/tutorial/deploying.html#id5
+
 # this is the name of the workflow, which can hold multiple steps
-name: "Sphinx: Render docs"
-# run whenever I push to the repo from the main branch
+name: "Sphinx -> GitHub Pages"
+
+# run the actions in this yaml whenever I push to the repo from the main branch
 on: 
   push:
     branches: [main]
 
-# created from 
-# https://www.sphinx-doc.org/en/master/tutorial/deploying.html#id5
-# https://docs.astral.sh/uv/guides/integration/github/#using-uv-in-github-actions
-
+# set up the jobs for this action. Each job here seems similar to one GitLab CI/CD job
+# each job runs in its own environment and file structure
+# i.e. each step is like one line of a bash script (or you can "uses:" to reuse an action of multiple steps)
 jobs:
-  # huh, it's all happening under the "build" job?
-  # does the file structure persist for the duration of the job?
-  # like one of these is equivalent to one GitLabs Job
+  # I'm using one job for all of the Sphinx stuff, so it all runs in the same environment
   build-sphinx-docs:
-    #env:
-    #  # Configure a constant location for the uv cache
-    #  # this value was referred to in the ammaraskar/sphinx-action@master job
-    #  # if I set this and get uv to write there, will it work?
-    #  # it was set to "/home/runner/work/_temp/setup-uv-cache"
-    #  #UV_CACHE_DIR: /tmp/.uv-cache
-    #  # UV GitHub Actions guidance suggests this to make it target system env
-    #  # if I can set this to the system python env, will normal Python calls have UV packages?
-    #  # it's apparently the folder that contains Python
-    #  # apparently it's usually in /usr/local
-    #  # you can check it with python -c "import sysconfig; print(sysconfig.get_config_var('prefix'))"
-    #  # in this case it says it's /opt/hostedtoolcache/Python/3.13.5/x64
-    #  UV_PROJECT_ENVIRONMENT: /opt/hostedtoolcache/Python/3.13.5/x64
-    #  # apparently this allows installing packages into the system environment?
-    #  UV_SYSTEM_PYTHON: 1
-    # specify the Docker image to run on
+    #env: # can set environment variables for all steps of the job here (or can set them per step)
+    #  # use the following two variables to make uv install packages into system env instead of venv
+    #  UV_SYSTEM_PYTHON: 1 # determine correct UV_PROJECT_ENVIRONMENT value with: python -c "import sysconfig; print(sysconfig.get_config_var('prefix'))"
+    #  UV_PROJECT_ENVIRONMENT: /opt/hostedtoolcache/Python/3.13.5/x64 # defaults to "/usr/local"
+    # specify the image to run the job on
     runs-on: ubuntu-latest
-    # write to what?
+    # give the job permissions for what it can do with the repository (I need it to write contents to the gh-pages branch)
     permissions:
       contents: write
-    # specify the steps to use as a list
+    # specify the name and action for each step of the job
     steps:
     # check out my repo
     - name: Check Out Repo
       uses: actions/checkout@v4
       with:
         persist-credentials: false
-    # install Python version specified in the UV .python-version file
+    # install the Python version specified in the UV .python-version file
     - name: "Set up Python"
       uses: actions/setup-python@v5
       with:
         python-version-file: ".python-version" # could use pyproject.toml instead
-    # determine the Python installation prefix to apply to UV_PROJECT_ENVIRONMENT
-    #- name: Determine Python Prefix
-    #  run: python -c "import sysconfig; print(sysconfig.get_config_var('prefix'))"
-    # install UV (best practice to specify a particular version)
+    # install UV https://docs.astral.sh/uv/guides/integration/github/#using-uv-in-github-actions
     - name: Install UV
       uses: astral-sh/setup-uv@v6
       with:
-        version: "0.8.2" 
-      #  enable-cache: true # stores UV's cache across workflows  # untested
-      #  cache-dependency-path: "pyproject.toml" # untested
-      #  cache: "package" # Caches uv's package cache (in between what?) # untested
-    # create requirements.txt in docs dir for pip to use
-    #  Sphinx did seem to recognize this, but it couldn't get the versions requested
-    #- name: Create requirements.txt
-    #  run: uv export --group docs > docs/requirements.txt
-    # pip install the requirements.txt since each 'run' occurs in its own shell and they're not using the UV .venv
-    #- name: Pip install Requirements
-    #  run: pip install -r requirements.txt
-    # use UV to install Python dependencies
-    # this hasn't worked previously, possibly it wants "uv run" instead of "python"
-    # the UV_PROJECT_ENVIRONMENT environment variable could help if i can set it right
-    # it should make it install to the system Python environment
-    # unfortunatly, Sphinx is still saying could not import myst_parser, no module named myst_parser
+        version: "0.8.2" # it's best practice to specify a particular version
+    # have UV install the required Python packages (Writes to venv without UV_SYSTEM_PYTHON, UV_PROJECT_ENVIRONMENT)
     - name: Sync UV Python Packages
       run: uv sync --locked --group docs
-    # try running pip list to check installed packages
-    # ah ... yeah it still isn't listing most of the packages there.
-    # it *does* list accessible-pygments 0.0.4, which I temporarily added to uv earlier and removed
-    # that suggests that pip installed packages remain in the system environment across pushes
-    # but also my uv packages aren't getting included in the system packages
-    # OK - with both UV_PROJECT_ENVIRONMENT and UV_SYSTEM_PYTHON set, 
-    # pip list is including all the packages INCLUDING myst-parser
-    #- name: pip list
-    #  run: pip list
-    # UV's GitHub Actions documentation gave the following example
-    # so it looks like they want you to use "uv run" instead of python...
-    # that won't help with Sphinx make running python
-    #- name: Run tests
-    #  run: uv run pytest tests
-      # try installing packages to the system environment so later commands will use them
-    #  run: uv pip install --system
-    # add UV-installed dependencies to default PATH (each "run" occurs in its own shell), otherwise I'd just do 'source .venv/bin/activate'
-    #- name: Activate UV virtual environment
-      # tried the following to get the later commands to use the .venv, without success
-      #run: echo PATH=${GITHUB_WORKSPACE}/.venv/bin:$PATH >> $GITHUB_ENV
-      #run: |
-      #  source .venv/bin/activate
-      #  echo PATH=$PATH >> $GITHUB_ENV
-    # try installing pandoc since it's needed for notebooks
-    # according to examples from https://github.com/pandoc/pandoc-action-example
-    # hmmm that step takes much longer than the others... hopefully can cache it
+    # install pandoc to make docs from Jupyter notebooks https://github.com/pandoc/pandoc-action-example
     - name: Install Pandoc
       uses: pandoc/actions/setup@v1
       with:
         version: 2.19
-    # build the HTML documentation
-    # this is now saying that it can't find myst-parser
-    # even though pip list includes it
-    # someone mentioned it might be a PATH issue
-    #- name: Build HTML
-    #  uses: ammaraskar/sphinx-action@master
-    # try just building with command myself
-    # WOW that got much farther!
-    - name: Build HTML
+    # have UV build Sphinx HTML docs https://www.sphinx-doc.org/en/master/tutorial/deploying.html#id5
+    - name: Build HTML Docs
       run: uv run sphinx-build -b html docs/source docs/build/html
-      # this required the addition of UV_PROJECT_ENVIRONMENT and UV_SYSTEM_PYTHON
-      #run: sphinx-build -b html docs/source docs/build/html
-    # upload the HTML artifacts for the Deploy step to use
-    - name: Upload Artifacts
+    # upload the HTML artifacts for the deployment step to use
+    - name: Upload HTML Artifacts
       uses: actions/upload-artifact@v4
       with:
         name: html-docs
         path: docs/build/html/
-    # deploy HTML artifacts to GitHub Pages
-    # According to this: https://github.com/marketplace/actions/sphinx-to-github-pages
-    # you have to change the publishing sources to "Deploy from a branch"
-    # and set that branch to gh-pages (the default branch created by this step)
-    # do this on the pages site: https://github.com/CombatWombatHub/general-machine-learning/settings/pages
-    - name: Deploy to Pages
+    # deploy HTML artifacts to GitHub Pages from "gh-pages" branch https://github.com/marketplace/actions/sphinx-to-github-pages
+    - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       if: github.ref == 'refs/heads/main'
       with:
