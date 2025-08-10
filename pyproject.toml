@@ -23,4 +23,5 @@ docs = [
     "nbsphinx>=0.9.6",
     "sphinx>=8.2.3",
     "sphinx-book-theme>=1.1.4",
+    "sphinxcontrib-mermaid>=1.0.0",
 ]
