@@ -9,7 +9,19 @@ on: push
 
 jobs:
   # huh, it's all happening under the "build" job?
+  # does the file structure persist for the duration of the job?
+  # like one of these is equivalent to one GitLabs Job
   build:
+    env:
+      # Configure a constant location for the uv cache
+      # this value was referred to in the ammaraskar/sphinx-action@master job
+      # if I set this and get uv to write there, will it work?
+      # it was set to "/home/runner/work/_temp/setup-uv-cache"
+      #UV_CACHE_DIR: /tmp/.uv-cache
+      # UV GitHub Actions guidance suggests this to make it target system env
+      # if I can set this to the system python env, will normal Python calls have UV packages?
+      # it's apparently the folder that contains Python
+      UV_PROJECT_ENVIRONMENT: /usr/local 
     # specify the Docker image to run on
     runs-on: ubuntu-latest
     # write to what?
@@ -26,21 +38,36 @@ jobs:
     - name: "Set up Python"
       uses: actions/setup-python@v5
       with:
-        python-version-file: ".python-version"
+        python-version-file: ".python-version" # could use pyproject.toml instead
+    # determine the Python installation prefix to apply to UV_PROJECT_ENVIRONMENT
+    - name: Determine Python Prefix
+      run: python -c "import sysconfig; print(sysconfig.get_config_var('prefix'))"
     # install UV (best practice to specify a particular version)
     - name: Install UV
       uses: astral-sh/setup-uv@v6
       with:
-        version: "0.8.2"
-    # create requirements.txt from UV for pip to use
-    - name: Create requirements.txt
-      run: uv export --group docs > docs/requirements.txt
+        version: "0.8.2" 
+      #  enable-cache: true # stores UV's cache across workflows  # untested
+      #  cache-dependency-path: "pyproject.toml" # untested
+      #  cache: "package" # Caches uv's package cache (in between what?) # untested
+    # create requirements.txt in docs dir for pip to use
+    #  Sphinx did seem to recognize this, but it couldn't get the versions requested
+    #- name: Create requirements.txt
+    #  run: uv export --group docs > docs/requirements.txt
     # pip install the requirements.txt since each 'run' occurs in its own shell and they're not using the UV .venv
     #- name: Pip install Requirements
     #  run: pip install -r requirements.txt
     # use UV to install Python dependencies
-    #- name: Install Python Dependencies with UV
-      #run: uv sync --locked --all-groups
+    # this hasn't worked previously, possibly it wants "uv run" instead of "python"
+    # the UV_PROJECT_ENVIRONMENT environment variable could help if i can set it right
+    # it should make it install to the system Python environment
+    - name: Sync UV Python Packages
+      run: uv sync --locked --all-groups
+    # UV's GitHub Actions documentation gave the following example
+    # so it looks like they want you to use "uv run" instead of python...
+    # that won't help with Sphinx make running python
+    #- name: Run tests
+    #  run: uv run pytest tests
       # try installing packages to the system environment so later commands will use them
     #  run: uv pip install --system
     # add UV-installed dependencies to default PATH (each "run" occurs in its own shell), otherwise I'd just do 'source .venv/bin/activate'

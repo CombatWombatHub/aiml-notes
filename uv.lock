@@ -364,7 +364,6 @@ app = [
     { name = "streamlit" },
 ]
 docs = [
-    { name = "accessible-pygments" },
     { name = "myst-parser" },
     { name = "nbsphinx" },
     { name = "sphinx" },
@@ -385,7 +384,6 @@ requires-dist = [
 [package.metadata.requires-dev]
 app = [{ name = "streamlit", specifier = ">=1.47.1" }]
 docs = [
-    { name = "accessible-pygments", specifier = "==0.0.4" },
     { name = "myst-parser", specifier = ">=4.0.1" },
     { name = "nbsphinx", specifier = ">=0.9.6" },
     { name = "sphinx", specifier = ">=8.2.3" },
