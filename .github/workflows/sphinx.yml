@@ -12,21 +12,21 @@ jobs:
   # does the file structure persist for the duration of the job?
   # like one of these is equivalent to one GitLabs Job
   build-sphinx-docs:
-    env:
-      # Configure a constant location for the uv cache
-      # this value was referred to in the ammaraskar/sphinx-action@master job
-      # if I set this and get uv to write there, will it work?
-      # it was set to "/home/runner/work/_temp/setup-uv-cache"
-      #UV_CACHE_DIR: /tmp/.uv-cache
-      # UV GitHub Actions guidance suggests this to make it target system env
-      # if I can set this to the system python env, will normal Python calls have UV packages?
-      # it's apparently the folder that contains Python
-      # apparently it's usually in /usr/local
-      # you can check it with python -c "import sysconfig; print(sysconfig.get_config_var('prefix'))"
-      # in this case it says it's /opt/hostedtoolcache/Python/3.13.5/x64
-      UV_PROJECT_ENVIRONMENT: /opt/hostedtoolcache/Python/3.13.5/x64
-      # apparently this allows installing packages into the system environment?
-      UV_SYSTEM_PYTHON: 1
+    #env:
+    #  # Configure a constant location for the uv cache
+    #  # this value was referred to in the ammaraskar/sphinx-action@master job
+    #  # if I set this and get uv to write there, will it work?
+    #  # it was set to "/home/runner/work/_temp/setup-uv-cache"
+    #  #UV_CACHE_DIR: /tmp/.uv-cache
+    #  # UV GitHub Actions guidance suggests this to make it target system env
+    #  # if I can set this to the system python env, will normal Python calls have UV packages?
+    #  # it's apparently the folder that contains Python
+    #  # apparently it's usually in /usr/local
+    #  # you can check it with python -c "import sysconfig; print(sysconfig.get_config_var('prefix'))"
+    #  # in this case it says it's /opt/hostedtoolcache/Python/3.13.5/x64
+    #  UV_PROJECT_ENVIRONMENT: /opt/hostedtoolcache/Python/3.13.5/x64
+    #  # apparently this allows installing packages into the system environment?
+    #  UV_SYSTEM_PYTHON: 1
     # specify the Docker image to run on
     runs-on: ubuntu-latest
     # write to what?
@@ -68,7 +68,7 @@ jobs:
     # it should make it install to the system Python environment
     # unfortunatly, Sphinx is still saying could not import myst_parser, no module named myst_parser
     - name: Sync UV Python Packages
-      run: uv sync --locked --all-groups
+      run: uv sync --locked --group docs
     # try running pip list to check installed packages
     # ah ... yeah it still isn't listing most of the packages there.
     # it *does* list accessible-pygments 0.0.4, which I temporarily added to uv earlier and removed
@@ -76,8 +76,8 @@ jobs:
     # but also my uv packages aren't getting included in the system packages
     # OK - with both UV_PROJECT_ENVIRONMENT and UV_SYSTEM_PYTHON set, 
     # pip list is including all the packages INCLUDING myst-parser
-    - name: pip list
-      run: pip list
+    #- name: pip list
+    #  run: pip list
     # UV's GitHub Actions documentation gave the following example
     # so it looks like they want you to use "uv run" instead of python...
     # that won't help with Sphinx make running python
@@ -98,9 +98,12 @@ jobs:
     # someone mentioned it might be a PATH issue
     #- name: Build HTML
     #  uses: ammaraskar/sphinx-action@master
-    # try just building with command
+    # try just building with command myself
+    # WOW that got much farther!
     - name: Build HTML
-      run: sphinx-build -b html docs/source docs/build/html
+      run: uv run sphinx-build -b html docs/source docs/build/html
+      # this required the addition of UV_PROJECT_ENVIRONMENT and UV_SYSTEM_PYTHON
+      #run: sphinx-build -b html docs/source docs/build/html
     # upload the HTML artifacts for the Deploy step to use
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
