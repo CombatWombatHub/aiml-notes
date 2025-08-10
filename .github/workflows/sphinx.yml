@@ -11,7 +11,7 @@ jobs:
   # huh, it's all happening under the "build" job?
   # does the file structure persist for the duration of the job?
   # like one of these is equivalent to one GitLabs Job
-  build:
+  build-sphinx-docs:
     env:
       # Configure a constant location for the uv cache
       # this value was referred to in the ammaraskar/sphinx-action@master job
@@ -21,7 +21,10 @@ jobs:
       # UV GitHub Actions guidance suggests this to make it target system env
       # if I can set this to the system python env, will normal Python calls have UV packages?
       # it's apparently the folder that contains Python
-      UV_PROJECT_ENVIRONMENT: /usr/local 
+      # apparently it's usually in /usr/local
+      # you can check it with python -c "import sysconfig; print(sysconfig.get_config_var('prefix'))"
+      # in this case it says it's /opt/hostedtoolcache/Python/3.13.5/x64
+      UV_PROJECT_ENVIRONMENT: /opt/hostedtoolcache/Python/3.13.5/x64
     # specify the Docker image to run on
     runs-on: ubuntu-latest
     # write to what?
@@ -40,8 +43,8 @@ jobs:
       with:
         python-version-file: ".python-version" # could use pyproject.toml instead
     # determine the Python installation prefix to apply to UV_PROJECT_ENVIRONMENT
-    - name: Determine Python Prefix
-      run: python -c "import sysconfig; print(sysconfig.get_config_var('prefix'))"
+    #- name: Determine Python Prefix
+    #  run: python -c "import sysconfig; print(sysconfig.get_config_var('prefix'))"
     # install UV (best practice to specify a particular version)
     - name: Install UV
       uses: astral-sh/setup-uv@v6
