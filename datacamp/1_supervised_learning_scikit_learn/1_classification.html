@@ -45,8 +45,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'datacamp/1_supervised_learning_scikit_learn/1_classification';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Machine Learning Mastery Python Mini Course" href="../../machine_learning_mastery/python_ml_mini_course/numpy_pandas_check.html" />
-    <link rel="prev" title="Document Title" href="../../placeholder/restructuredtext.html" />
+    <link rel="next" title="DataCamp Notes" href="../README.html" />
+    <link rel="prev" title="Classification Methods" href="../../general/classification.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -150,19 +150,24 @@
  </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">General:</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../placeholder/markdown.html">Example Markdown File</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../placeholder/notebook.html">Jupyter Notebook Example</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../placeholder/restructuredtext.html">Document Title</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/classification.html">Classification Methods</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">DataCamp:</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Supervised Learning with scikit-learn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../README.html">DataCamp Notes</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">ML Mastery:</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../machine_learning_mastery/python_ml_mini_course/numpy_pandas_check.html">Machine Learning Mastery Python Mini Course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../machine_learning_mastery/python_ml_mini_course/1_python_ml_mini_course.html">Machine Learning Mastery Python Mini Course</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Placeholders:</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../placeholder/markdown.html">Example Markdown File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../placeholder/notebook.html">Example Jupyter Notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../placeholder/restructuredtext.html">Example reStructuredText File</a></li>
 </ul>
 
     </div>
@@ -373,7 +378,7 @@ document.write(`
 <li><p>so for <code class="docutils literal notranslate"><span class="pre">k=5</span></code>, you find the <code class="docutils literal notranslate"><span class="pre">5</span></code> closest points to your target point and give it the same label as the majority of those (so you need to pick an odd number)</p></li>
 </ul>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.neighbors</span><span class="w"> </span><span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
@@ -396,7 +401,7 @@ document.write(`
 <li><p>remove the extra <code class="docutils literal notranslate"><span class="pre">'</span></code> that was at the start and end of the text</p></li>
 </ul>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">churn_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
@@ -407,7 +412,8 @@ document.write(`
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
 <div>
@@ -554,7 +560,7 @@ document.write(`
 </div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">churn_df</span><span class="p">[[</span><span class="s2">&quot;total_day_charge&quot;</span><span class="p">,</span> <span class="s2">&quot;total_eve_charge&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span>
@@ -579,7 +585,7 @@ new shape: (3, 2)
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -602,20 +608,20 @@ array([1, 0, 0])
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../../placeholder/restructuredtext.html"
+       href="../../general/classification.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Document Title</p>
+        <p class="prev-next-title">Classification Methods</p>
       </div>
     </a>
     <a class="right-next"
-       href="../../machine_learning_mastery/python_ml_mini_course/numpy_pandas_check.html"
+       href="../README.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Machine Learning Mastery Python Mini Course</p>
+        <p class="prev-next-title">DataCamp Notes</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
