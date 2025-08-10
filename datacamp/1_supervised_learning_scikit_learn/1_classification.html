@@ -330,7 +330,9 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Choose-Data">Choose Data</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Fit">Fit</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Predict">Predict</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Measuring-Model-Performance">Measuring Model Performance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Measuring-Model-Performance-(train-test-split)">Measuring Model Performance (train-test-split)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Model-Complexity-(Overfitting/Underfitting)">Model Complexity (Overfitting/Underfitting)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Predicting-with-More-Features">Predicting with More Features</a></li>
 </ul>
 </li>
 </ul>
@@ -382,6 +384,22 @@ document.write(`
 <li><p><a class="reference external" href="https://scikit-learn.org/stable/">scikit-learn</a></p></li>
 <li><p>that page actually has good way to select categories like classification, regression, clustering, dimensionality reduction, model selection, preprocessing</p></li>
 </ul>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import everything</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.neighbors</span><span class="w"> </span><span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+</pre></div>
+</div>
+</div>
 </section>
 </section>
 <section id="Example-1:-k-Nearest-Neighbors">
@@ -389,29 +407,18 @@ document.write(`
 <ul class="simple">
 <li><p><strong>Binary Classification</strong> - classification where there are only two outcomes to choose between</p></li>
 <li><p><strong>k-Nearest Neighbors</strong> - predict the label of a data point by looking at the <code class="docutils literal notranslate"><span class="pre">k</span></code> closest labeled data points</p></li>
-<li><p>so for <code class="docutils literal notranslate"><span class="pre">k=5</span></code>, you find the <code class="docutils literal notranslate"><span class="pre">5</span></code> closest points to your target point and give it the same label as the majority of those (so you need to pick an odd number)</p></li>
+<li><p>so for <code class="docutils literal notranslate"><span class="pre">k=5</span></code>, you find the <code class="docutils literal notranslate"><span class="pre">5</span></code> closest points to your target point and give it the same label as the majority of those</p></li>
+<li><p>you’d think you’d need an odd number, but they use even numbers in examples too</p></li>
 </ul>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import everything</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.neighbors</span><span class="w"> </span><span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-</pre></div>
-</div>
-</div>
 <section id="The-Churn-Dataset">
 <h3>The Churn Dataset<a class="headerlink" href="#The-Churn-Dataset" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>contains data on customer accounts such as account age</p></li>
-<li><p>we will try to predict whehter a customer will leave (the “churn”) based on this data</p></li>
+<li><p>we will try to predict whether a customer will leave (the “churn”) based on this data</p></li>
 <li><p>note: see <a class="reference internal" href="../datacamp_notes.html"><span class="doc">Datacamp Notes</span></a> for instructions on getting DataFrames out of Datacamp</p></li>
 </ul>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read in the churn dataset</span>
@@ -421,7 +428,7 @@ document.write(`
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -585,17 +592,14 @@ document.write(`
 </li>
 </ul>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># pull the features and target out of the larger DataFrame</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">churn_df</span><span class="p">[</span><span class="s2">&quot;churn&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
 <span class="n">X</span> <span class="o">=</span> <span class="n">churn_df</span><span class="p">[[</span><span class="s2">&quot;account_length&quot;</span><span class="p">,</span> <span class="s2">&quot;customer_service_calls&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span>
 <span class="c1"># create the unseen data to predict on later (each point has contains an account length and customer service calls)</span>
-<span class="n">X_new</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
-    <span class="p">[</span><span class="mf">30.0</span><span class="p">,</span>  <span class="mf">17.5</span><span class="p">],</span>
-    <span class="p">[</span><span class="mf">107.0</span><span class="p">,</span> <span class="mf">24.1</span><span class="p">],</span>
-    <span class="p">[</span><span class="mf">213.0</span><span class="p">,</span> <span class="mf">10.9</span><span class="p">]])</span>
+<span class="n">X_new</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">30.0</span><span class="p">,</span> <span class="mf">17.5</span><span class="p">],</span> <span class="p">[</span><span class="mf">107.0</span><span class="p">,</span> <span class="mf">24.1</span><span class="p">],</span> <span class="p">[</span><span class="mf">213.0</span><span class="p">,</span> <span class="mf">10.9</span><span class="p">]])</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;feature shape: </span><span class="si">{</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">, target shape: </span><span class="si">{</span><span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -613,7 +617,7 @@ feature shape: (3333, 2), target shape: (3333,)
 <h3>Fit<a class="headerlink" href="#Fit" title="Link to this heading">#</a></h3>
 <p>fit the classifier to the data</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a KNN classifier with 6 neighbors</span>
@@ -624,7 +628,7 @@ feature shape: (3333, 2), target shape: (3333,)
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -1244,16 +1248,17 @@ document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
 <h3>Predict<a class="headerlink" href="#Predict" title="Link to this heading">#</a></h3>
 <p>use the classifier to predict the churn for unseen data</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">predictions</span> <span class="o">=</span> <span class="n">knn</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_new</span><span class="p">)</span>
-<span class="n">predictions</span> <span class="c1"># churn predictions for the 3 X_new data points: [0, 1, 0]</span>
+<span class="n">predictions</span>  <span class="c1"># churn predictions for the 3 X_new data points: [0, 1, 0]</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
@@ -1261,11 +1266,183 @@ array([0, 1, 0])
 </pre></div></div>
 </div>
 </section>
-<section id="Measuring-Model-Performance">
-<h3>Measuring Model Performance<a class="headerlink" href="#Measuring-Model-Performance" title="Link to this heading">#</a></h3>
+<section id="Measuring-Model-Performance-(train-test-split)">
+<h3>Measuring Model Performance (train-test-split)<a class="headerlink" href="#Measuring-Model-Performance-(train-test-split)" title="Link to this heading">#</a></h3>
 <ul class="simple">
+<li><p>accuracy is one performance metric</p></li>
 <li><p><span class="math notranslate nohighlight">\(\text{accuracy} = \frac{\text{correct predictions}}{\text{number of observations}}\)</span></p></li>
+<li><p>need to measure how well it predicts unseen data - split into <code class="docutils literal notranslate"><span class="pre">training</span></code> and <code class="docutils literal notranslate"><span class="pre">test</span></code> sets</p></li>
+<li><p>train it on the <code class="docutils literal notranslate"><span class="pre">training</span></code> set (typically use <code class="docutils literal notranslate"><span class="pre">70%</span></code> for <code class="docutils literal notranslate"><span class="pre">training</span></code>)</p></li>
+<li><p>test its accuracy on the (unseen) <code class="docutils literal notranslate"><span class="pre">test</span></code> set (typically reserve <code class="docutils literal notranslate"><span class="pre">30%</span></code> for <code class="docutils literal notranslate"><span class="pre">testing</span></code>)</p></li>
 </ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># split the data up into training and test sets, use 70% for training and 30% for testing</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+    <span class="n">X</span><span class="p">,</span>
+    <span class="n">y</span><span class="p">,</span>
+    <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span>  <span class="c1"># reserve 30% of the dataset for testing</span>
+    <span class="n">random_state</span><span class="o">=</span><span class="mi">21</span><span class="p">,</span>  <span class="c1"># set the random seed or it will reserve different data each time</span>
+    <span class="n">stratify</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="c1"># ensure that the test data has the same proportion of churn vs non-churn as the overall population</span>
+<span class="p">)</span>
+<span class="c1"># fit the classifier and score how well it predicts the test data</span>
+<span class="n">knn</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">knn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">knn</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span> <span class="c1"># 0.869 - not amazing</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0.858
+</pre></div></div>
+</div>
+</section>
+<section id="Model-Complexity-(Overfitting/Underfitting)">
+<h3>Model Complexity (Overfitting/Underfitting)<a class="headerlink" href="#Model-Complexity-(Overfitting/Underfitting)" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>as you increase the <code class="docutils literal notranslate"><span class="pre">k</span></code> (number of neighbors), the model gets <strong>less complex</strong> (that seems backwards)</p></li>
+<li><p><strong>less complex</strong> models can lead to <strong>underfitting</strong></p>
+<ul>
+<li><p>too simple to predict nuance in data</p></li>
+<li><p>as <code class="docutils literal notranslate"><span class="pre">k</span></code> increases, the decision boundary is <strong>less affected</strong> by individual observations</p></li>
+<li><p>this makes the model <strong>less complex</strong> and less capable of detecting relationships in the dataset</p></li>
+</ul>
+</li>
+<li><p><strong>more complex</strong> models can lead to <strong>overfitting</strong></p>
+<ul>
+<li><p>too well fit to the <strong>training data</strong> to generalize well to <strong>test data</strong></p></li>
+<li><p>vulnerable to fitting to <strong>noise</strong></p></li>
+</ul>
+</li>
+<li><p>here is the <strong>decision boundary</strong> for a variety of <code class="docutils literal notranslate"><span class="pre">k</span></code></p>
+<ul>
+<li><p>predict <strong>target</strong> <code class="docutils literal notranslate"><span class="pre">churn</span></code></p></li>
+<li><p>based on <strong>features</strong> <code class="docutils literal notranslate"><span class="pre">total_eve_charge</span></code> and <code class="docutils literal notranslate"><span class="pre">total_day_charge</span></code></p></li>
+<li><p>for a variety of <code class="docutils literal notranslate"><span class="pre">k</span></code> (<strong>number of neighbors</strong>)</p></li>
+<li><p>as <code class="docutils literal notranslate"><span class="pre">k</span></code> increases, the boundary is less affected by individual</p></li>
+<li><p><img alt="a0306ddfb9d94a949a77fa533899eb9e" class="no-scaled-link" src="../../_images/knn_churn.png" style="width: 650px;" /></p></li>
+</ul>
+</li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot the accuracy of the model for various numbers of neighbors</span>
+<span class="c1"># the DataCamp videos actually used a different set of Features in the videos than the exercises</span>
+<span class="c1">#X = churn_df[[&quot;account_length&quot;, &quot;customer_service_calls&quot;]].values</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">churn_df</span><span class="p">[[</span><span class="s2">&quot;total_eve_charge&quot;</span><span class="p">,</span> <span class="s2">&quot;total_day_charge&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">churn_df</span><span class="p">[</span><span class="s2">&quot;churn&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span><span class="n">random_state</span><span class="o">=</span><span class="mi">21</span><span class="p">,</span><span class="n">stratify</span><span class="o">=</span><span class="n">y</span><span class="p">)</span>
+<span class="c1"># calculate accuracy for various numbers of neighbors</span>
+<span class="n">train_accuracies</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">test_accuracies</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">neighbors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">26</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">neighbor</span> <span class="ow">in</span> <span class="n">neighbors</span><span class="p">:</span>
+    <span class="n">knn</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="n">neighbor</span><span class="p">)</span>
+    <span class="n">knn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+    <span class="n">train_accuracies</span><span class="p">[</span><span class="n">neighbor</span><span class="p">]</span> <span class="o">=</span> <span class="n">knn</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+    <span class="n">test_accuracies</span><span class="p">[</span><span class="n">neighbor</span><span class="p">]</span> <span class="o">=</span> <span class="n">knn</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+<span class="c1"># figure out the number of neighbors giving the highest test accuracy</span>
+<span class="n">best_neighbors</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">test_accuracies</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">test_accuracies</span><span class="o">.</span><span class="n">get</span><span class="p">)</span>
+<span class="n">max_test_accuracy</span> <span class="o">=</span> <span class="n">test_accuracies</span><span class="p">[</span><span class="n">best_neighbors</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;best accuracy &#39;</span><span class="si">{</span><span class="n">max_test_accuracy</span><span class="si">}</span><span class="s2">&#39; occurs at &#39;</span><span class="si">{</span><span class="n">best_neighbors</span><span class="si">}</span><span class="s2">&#39; neighbors&quot;</span><span class="p">)</span>
+<span class="c1"># create a plot with the accuracy for each number of neighbors</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">neighbors</span><span class="p">,</span> <span class="n">train_accuracies</span><span class="o">.</span><span class="n">values</span><span class="p">(),</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Train Accuracy&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">neighbors</span><span class="p">,</span> <span class="n">test_accuracies</span><span class="o">.</span><span class="n">values</span><span class="p">(),</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Test Accuracy&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;KNN Accuracy for Varying Number of Neighbors&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Number of Neighbors&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Accuracy&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+best accuracy &#39;0.877&#39; occurs at &#39;25&#39; neighbors
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/datacamp_1_supervised_learning_scikit_learn_1_classification_14_1.png" src="../../_images/datacamp_1_supervised_learning_scikit_learn_1_classification_14_1.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>as the model got more neighbors and less complex, it got better at predicting test data but worse at predicting its own training data</p></li>
+<li><p>it starts out overfitting, being too complex (too low k), overly good at predicting its own training data but bad at generalizing to unseen test data</p></li>
+<li><p>as k increased and the model got simpler, it got better at predicting unseen data before plateauing (underfitting)</p></li>
+</ul>
+</section>
+<section id="Predicting-with-More-Features">
+<h3>Predicting with More Features<a class="headerlink" href="#Predicting-with-More-Features" title="Link to this heading">#</a></h3>
+<p>all together now</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># this time use all of the features to predict the target</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">churn_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;churn&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">churn_df</span><span class="p">[</span><span class="s2">&quot;churn&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+
+<span class="c1"># Split into training and test sets</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span><span class="n">stratify</span><span class="o">=</span><span class="n">y</span><span class="p">)</span>
+
+<span class="c1"># fit and calculate and accuracy for various numbers of neighbors</span>
+<span class="n">train_accuracies</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">test_accuracies</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">neighbors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">neighbor</span> <span class="ow">in</span> <span class="n">neighbors</span><span class="p">:</span>
+    <span class="n">knn</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="n">neighbor</span><span class="p">)</span>
+    <span class="n">knn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+    <span class="n">train_accuracies</span><span class="p">[</span><span class="n">neighbor</span><span class="p">]</span> <span class="o">=</span> <span class="n">knn</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+    <span class="n">test_accuracies</span><span class="p">[</span><span class="n">neighbor</span><span class="p">]</span> <span class="o">=</span> <span class="n">knn</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+
+<span class="c1"># figure out the number of neighbors giving the highest test accuracy</span>
+<span class="n">best_neighbor</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">test_accuracies</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">test_accuracies</span><span class="o">.</span><span class="n">get</span><span class="p">)</span>
+<span class="n">max_test_accuracy</span> <span class="o">=</span> <span class="n">test_accuracies</span><span class="p">[</span><span class="n">best_neighbor</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;best accuracy &#39;</span><span class="si">{</span><span class="n">max_test_accuracy</span><span class="si">}</span><span class="s2">&#39; occurs at &#39;</span><span class="si">{</span><span class="n">best_neighbor</span><span class="si">}</span><span class="s2">&#39; neighbors&quot;</span><span class="p">)</span>
+
+<span class="c1"># create a plot with the accuracy for each number of neighbors</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">neighbors</span><span class="p">,</span> <span class="n">train_accuracies</span><span class="o">.</span><span class="n">values</span><span class="p">(),</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Train Accuracy&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">neighbors</span><span class="p">,</span> <span class="n">test_accuracies</span><span class="o">.</span><span class="n">values</span><span class="p">(),</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Test Accuracy&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">best_neighbor</span><span class="p">,</span> <span class="n">max_test_accuracy</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;purple&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Best Test Accuracy&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">best_neighbor</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;purple&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;KNN Accuracy for Varying Number of Neighbors&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Number of Neighbors&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Accuracy&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+best accuracy &#39;0.8770614692653673&#39; occurs at &#39;7&#39; neighbors
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/datacamp_1_supervised_learning_scikit_learn_1_classification_17_1.png" src="../../_images/datacamp_1_supervised_learning_scikit_learn_1_classification_17_1.png" />
+</div>
+</div>
 </section>
 </section>
 </section>
@@ -1327,7 +1504,9 @@ array([0, 1, 0])
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Choose-Data">Choose Data</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Fit">Fit</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Predict">Predict</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Measuring-Model-Performance">Measuring Model Performance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Measuring-Model-Performance-(train-test-split)">Measuring Model Performance (train-test-split)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Model-Complexity-(Overfitting/Underfitting)">Model Complexity (Overfitting/Underfitting)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Predicting-with-More-Features">Predicting with More Features</a></li>
 </ul>
 </li>
 </ul>
