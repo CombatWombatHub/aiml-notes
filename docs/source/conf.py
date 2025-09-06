@@ -7,8 +7,8 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = "general-machine-learning"
-copyright = "2025, Matthew Thomas Gill"
-author = "Matthew Thomas Gill"
+copyright = "%Y"
+author = "Matthew T Gill"
 release = "1.0"
 
 
@@ -27,11 +27,17 @@ templates_path = ["_templates"]
 
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
+# https://sphinx-book-theme.readthedocs.io/en/stable/tutorials/get-started.html#add-a-source-repository-button-to-your-theme
 
 html_theme = "sphinx_book_theme"
-html_static_path = ["_static"]
+html_static_path = ["_static"] # these files are copied after the builtin static files, so a file named "default.css" will overwrite the builtin "default.css"
+html_logo = "_static/images/logo.jpg"  # image to use as the logo above the left nav bar
+html_favicon = "_static/images/favicon.ico"  # image to use for the browser tab
+html_css_files = ['css/custom.css'] # custom CSS files (paths relative to html_static_path)
 html_theme_options = {
-    "show_toc_level": 4 # show up to heading level 5 in the right "Contents" sidebar
+    "show_toc_level": 4, # show up to heading level 5 in the right "Contents" sidebar
+    "repository_url": "https://github.com/CombatWombatHub/general-machine-learning", # replace with your repository URL
+    "use_repository_button": True, # create a link to the repository on the page
 }
 
 

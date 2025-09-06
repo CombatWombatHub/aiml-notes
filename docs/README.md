@@ -10,6 +10,10 @@
     - Open `Git Bash` terminal
     - `cd` to `docs` directory
     - run `./make.bat html`
+- note
+    - sometimes this doesn't update already-built pages
+    - in this case, run `./make.bat clean` first
+    - or run `./clean-make.bat` which runs both `.make.bat clean` and `.make.bat html`
 - opening
     - the previous steps will create the documentation in [docs/build/html](./build/html/index.html)
     - launch that
