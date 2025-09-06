@@ -31,7 +31,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=e59c3010" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=43d83c71" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -44,7 +44,9 @@
     <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script type="module" src="https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs"></script>
     <script type="module" src="https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs"></script>
-    <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs";import elkLayouts from "https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs";mermaid.registerLayoutLoaders(elkLayouts);mermaid.initialize({startOnLoad:false});</script>
+    <script type="module">
+mermaid.initialize({theme: "forest"});
+</script>
     <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
     <script type="module">
 import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs";
@@ -372,14 +374,9 @@ document.write(`
 <section id="mermaid-example">
 <h2>Mermaid Example<a class="headerlink" href="#mermaid-example" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p>Sphinx can build Mermaid diagrams thanks to <code class="docutils literal notranslate"><span class="pre">sphinxcontrib.mermaid</span></code> and <code class="docutils literal notranslate"><span class="pre">myst-parser</span></code></p></li>
-<li><p>triple backtick</p>
-<ul>
-<li><p>renders in VSCode preview</p></li>
-<li><p>renders in Sphinx if set <code class="docutils literal notranslate"><span class="pre">myst_fence_as_directive</span> <span class="pre">=</span> <span class="pre">[&quot;mermaid&quot;]</span></code> in <code class="docutils literal notranslate"><span class="pre">conf.py</span></code></p></li>
-<li><p>otherwise(<code class="docutils literal notranslate"><span class="pre">Pygments</span> <span class="pre">lexer</span> <span class="pre">name</span> <span class="pre">'mermaid</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">known</span></code>)</p></li>
-</ul>
-</li>
+<li><p>Sphinx can build Mermaid diagrams thanks to <code class="docutils literal notranslate"><span class="pre">sphinxcontrib.mermaid</span></code> and <code class="docutils literal notranslate"><span class="pre">myst-parser</span></code> (included with <code class="docutils literal notranslate"><span class="pre">myst-nb</span></code>)</p></li>
+<li><p>if <code class="docutils literal notranslate"><span class="pre">myst_fence_as_directive</span> <span class="pre">=</span> <span class="pre">[&quot;mermaid&quot;]</span></code> is set in <code class="docutils literal notranslate"><span class="pre">conf.py</span></code>, Sphinx will render diagrams created with triple backtick mermaid code blocks (otherwise you’ll get the error <code class="docutils literal notranslate"><span class="pre">Pygments</span> <span class="pre">lexer</span> <span class="pre">name</span> <span class="pre">'mermaid</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">known</span></code> while building docs)</p></li>
+<li><p>I had to add <a class="reference download internal" download="" href="../_downloads/6753074d1ac84df74a36867b9b2d54e8/custom.css"><span class="xref download myst">custom.css</span></a> with <code class="docutils literal notranslate"><span class="pre">!important</span></code> flags to get the arrows to show up against the background in Sphinx Book Theme’s Dark Mode, as mermaid themes and regular css styles were being overridden by really high-specificity css (something must be set really late in the process, maybe even live when pressing the Dark Mode button)</p></li>
 </ul>
 <pre  class="mermaid">
         graph LR

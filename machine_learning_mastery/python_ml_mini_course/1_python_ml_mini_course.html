@@ -31,7 +31,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=e59c3010" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=43d83c71" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -861,10 +861,10 @@ document.write(`
 </section>
 <section id="box-plot">
 <h3>Box Plot<a class="headerlink" href="#box-plot" title="Link to this heading">#</a></h3>
-<ul class="simple">
+<ul>
 <li><p>shows all of the distributions of the points on the same axes</p></li>
 <li><p>wonder why <code class="docutils literal notranslate"><span class="pre">test</span></code> has SO many outliers</p></li>
-<li><p><img alt="image-2.png" src="machine_learning_mastery/python_ml_mini_course/attachment:image-2.png" /></p></li>
+<li><img src="../../images/box_plot.png" alt="Box Plot" width="500" /></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -890,11 +890,11 @@ document.write(`
 </ul>
 <section id="standardize-scale-and-center">
 <h3>Standardize (Scale and Center)<a class="headerlink" href="#standardize-scale-and-center" title="Link to this heading">#</a></h3>
-<ul class="simple">
+<ul>
 <li><p>mean = 0 , standard deviation = 1</p></li>
 <li><p>so basically this?</p></li>
 <li><p>hmm. Looks like image attachments don’t play well with html image links, though Stack Overflow seems to think it should work?</p></li>
-<li><p><img alt="image.png" src="machine_learning_mastery/python_ml_mini_course/attachment:image.png" /></p></li>
+<li><img src="../../images/std_dev.png" alt="Standard Deviation" width="400" /></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1053,7 +1053,7 @@ Logloss Standard Deviation: 0.042
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2253/190392337.py:19: FutureWarning: The &#39;delim_whitespace&#39; keyword in pd.read_csv is deprecated and will be removed in a future version. Use ``sep=&#39;\s+&#39;`` instead
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2276/190392337.py:19: FutureWarning: The &#39;delim_whitespace&#39; keyword in pd.read_csv is deprecated and will be removed in a future version. Use ``sep=&#39;\s+&#39;`` instead
   dataframe = pd.read_csv(url, delim_whitespace=True, names=names)
 </pre></div>
 </div>
@@ -1138,10 +1138,10 @@ Std Dev: 14.661
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy and Standard Deviation for each model:
+Logistic Regression: 0.771 (0.051)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Logistic Regression: 0.771 (0.051)
-Linear Discriminant Analysis: 0.767 (0.048)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Linear Discriminant Analysis: 0.767 (0.048)
 </pre></div>
 </div>
 </div>
@@ -1236,7 +1236,7 @@ best alpha: 1.000
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Random Forest Accuracy: 0.779
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Random Forest Accuracy: 0.771
 </pre></div>
 </div>
 </div>
