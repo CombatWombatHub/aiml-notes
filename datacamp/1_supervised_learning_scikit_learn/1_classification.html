@@ -30,7 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../../_static/nbsphinx-code-cells.css?v=2aa19091" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=e59c3010" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -42,8 +42,7 @@
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
-    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'datacamp/1_supervised_learning_scikit_learn/1_classification';</script>
     <link rel="icon" href="../../_static/favicon.ico"/>
@@ -343,13 +342,13 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-Nearest-Neighbors">k-Nearest Neighbors</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#The-Churn-Dataset">The Churn Dataset</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Choose-Data">Choose Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Fit">Fit</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Predict">Predict</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Measuring-Model-Performance-(train-test-split)">Measuring Model Performance (train-test-split)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Model-Complexity-(Overfitting/Underfitting)">Model Complexity (Overfitting/Underfitting)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-nearest-neighbors">k-Nearest Neighbors</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-churn-dataset">The Churn Dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#choose-data">Choose Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fit">Fit</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#predict">Predict</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#measuring-model-performance-train-test-split">Measuring Model Performance (train-test-split)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-complexity-overfitting-underfitting">Model Complexity (Overfitting/Underfitting)</a></li>
 </ul>
 </li>
 </ul>
@@ -363,24 +362,22 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="Intro-to-Classification">
-<h1>Intro to Classification<a class="headerlink" href="#Intro-to-Classification" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="intro-to-classification">
+<h1>Intro to Classification<a class="headerlink" href="#intro-to-classification" title="Link to this heading">#</a></h1>
 <ul class="simple">
-<li><p><a class="reference external" href="https://campus.datacamp.com/courses/supervised-learning-with-scikit-learn/classification-1?ex=1">https://campus.datacamp.com/courses/supervised-learning-with-scikit-learn/classification-1?ex=1</a></p></li>
+<li><p>https://campus.datacamp.com/courses/supervised-learning-with-scikit-learn/classification-1?ex=1</p></li>
 </ul>
-<section id="k-Nearest-Neighbors">
-<h2>k-Nearest Neighbors<a class="headerlink" href="#k-Nearest-Neighbors" title="Link to this heading">#</a></h2>
+<section id="k-nearest-neighbors">
+<h2>k-Nearest Neighbors<a class="headerlink" href="#k-nearest-neighbors" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><strong>Binary Classification</strong> - classification where there are only two outcomes to choose between</p></li>
 <li><p><strong>k-Nearest Neighbors</strong> - predict the label of a data point by looking at the <code class="docutils literal notranslate"><span class="pre">k</span></code> closest labeled data points</p></li>
 <li><p>so for <code class="docutils literal notranslate"><span class="pre">k=5</span></code>, you find the <code class="docutils literal notranslate"><span class="pre">5</span></code> closest points to your target point and give it the same label as the majority of those</p></li>
 <li><p>you’d think you’d need an odd number, but they use even numbers in examples too</p></li>
 </ul>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import everything</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import everything</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
@@ -392,29 +389,24 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<section id="The-Churn-Dataset">
-<h3>The Churn Dataset<a class="headerlink" href="#The-Churn-Dataset" title="Link to this heading">#</a></h3>
+</div>
+<section id="the-churn-dataset">
+<h3>The Churn Dataset<a class="headerlink" href="#the-churn-dataset" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>contains data on customer accounts such as account age</p></li>
 <li><p>we will try to predict whether a customer will leave (the “churn”) based on this data</p></li>
-<li><p>note: see <a class="reference internal" href="../datacamp_notes.html"><span class="doc">Datacamp Notes</span></a> for instructions on getting DataFrames out of Datacamp</p></li>
+<li><p>note: see <a class="reference internal" href="../datacamp_notes.html"><span class="std std-doc">Datacamp Notes</span></a> for instructions on getting DataFrames out of Datacamp</p></li>
 </ul>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read in the churn dataset</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read in the churn dataset</span>
 <span class="n">churn_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">Path</span><span class="p">()</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="o">/</span> <span class="s2">&quot;datasets&quot;</span> <span class="o">/</span> <span class="s2">&quot;churn.csv&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">churn_df</span>
 </pre></div>
 </div>
 </div>
-<div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
-</pre></div>
-</div>
-<div class="output_area rendered_html docutils container">
-<div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -555,11 +547,11 @@ document.write(`
   </tbody>
 </table>
 <p>3333 rows × 7 columns</p>
-</div></div>
+</div></div></div>
 </div>
 </section>
-<section id="Choose-Data">
-<h3>Choose Data<a class="headerlink" href="#Choose-Data" title="Link to this heading">#</a></h3>
+<section id="choose-data">
+<h3>Choose Data<a class="headerlink" href="#choose-data" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>features</p>
 <ul>
@@ -573,11 +565,9 @@ document.write(`
 </ul>
 </li>
 </ul>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[44]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># pull the features and target out of the larger DataFrame</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># pull the features and target out of the larger DataFrame</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">churn_df</span><span class="p">[</span><span class="s2">&quot;churn&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
 <span class="n">X</span> <span class="o">=</span> <span class="n">churn_df</span><span class="p">[[</span><span class="s2">&quot;account_length&quot;</span><span class="p">,</span> <span class="s2">&quot;customer_service_calls&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span>
 <span class="c1"># create the unseen data to predict on later (each point has contains an account length and customer service calls)</span>
@@ -586,35 +576,27 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-feature shape: (3333, 2), target shape: (3333,)
-</pre></div></div>
-</div>
-</section>
-<section id="Fit">
-<h3>Fit<a class="headerlink" href="#Fit" title="Link to this heading">#</a></h3>
-<p>fit the classifier to the data</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[45]:
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>feature shape: (3333, 2), target shape: (3333,)
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a KNN classifier with 6 neighbors</span>
+</div>
+</div>
+</section>
+<section id="fit">
+<h3>Fit<a class="headerlink" href="#fit" title="Link to this heading">#</a></h3>
+<p>fit the classifier to the data</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a KNN classifier with 6 neighbors</span>
 <span class="n">knn</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
 <span class="c1"># Fit the classifier to the data</span>
 <span class="n">knn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[45]:
-</pre></div>
-</div>
-<div class="output_area rendered_html docutils container">
-<style>#sk-container-id-4 {
+<div class="cell_output docutils container">
+<div class="output text_html"><style>#sk-container-id-1 {
   /* Definition of color scheme common for light and dark mode */
   --sklearn-color-text: #000;
   --sklearn-color-text-muted: #666;
@@ -645,15 +627,15 @@ feature shape: (3333, 2), target shape: (3333,)
   }
 }
 
-#sk-container-id-4 {
+#sk-container-id-1 {
   color: var(--sklearn-color-text);
 }
 
-#sk-container-id-4 pre {
+#sk-container-id-1 pre {
   padding: 0;
 }
 
-#sk-container-id-4 input.sk-hidden--visually {
+#sk-container-id-1 input.sk-hidden--visually {
   border: 0;
   clip: rect(1px 1px 1px 1px);
   clip: rect(1px, 1px, 1px, 1px);
@@ -665,7 +647,7 @@ feature shape: (3333, 2), target shape: (3333,)
   width: 1px;
 }
 
-#sk-container-id-4 div.sk-dashed-wrapped {
+#sk-container-id-1 div.sk-dashed-wrapped {
   border: 1px dashed var(--sklearn-color-line);
   margin: 0 0.4em 0.5em 0.4em;
   box-sizing: border-box;
@@ -673,7 +655,7 @@ feature shape: (3333, 2), target shape: (3333,)
   background-color: var(--sklearn-color-background);
 }
 
-#sk-container-id-4 div.sk-container {
+#sk-container-id-1 div.sk-container {
   /* jupyter's `normalize.less` sets `[hidden] { display: none; }`
      but bootstrap.min.css set `[hidden] { display: none !important; }`
      so we also need the `!important` here to be able to override the
@@ -683,7 +665,7 @@ feature shape: (3333, 2), target shape: (3333,)
   position: relative;
 }
 
-#sk-container-id-4 div.sk-text-repr-fallback {
+#sk-container-id-1 div.sk-text-repr-fallback {
   display: none;
 }
 
@@ -699,14 +681,14 @@ div.sk-item {
 
 /* Parallel-specific style estimator block */
 
-#sk-container-id-4 div.sk-parallel-item::after {
+#sk-container-id-1 div.sk-parallel-item::after {
   content: "";
   width: 100%;
   border-bottom: 2px solid var(--sklearn-color-text-on-default-background);
   flex-grow: 1;
 }
 
-#sk-container-id-4 div.sk-parallel {
+#sk-container-id-1 div.sk-parallel {
   display: flex;
   align-items: stretch;
   justify-content: center;
@@ -714,28 +696,28 @@ div.sk-item {
   position: relative;
 }
 
-#sk-container-id-4 div.sk-parallel-item {
+#sk-container-id-1 div.sk-parallel-item {
   display: flex;
   flex-direction: column;
 }
 
-#sk-container-id-4 div.sk-parallel-item:first-child::after {
+#sk-container-id-1 div.sk-parallel-item:first-child::after {
   align-self: flex-end;
   width: 50%;
 }
 
-#sk-container-id-4 div.sk-parallel-item:last-child::after {
+#sk-container-id-1 div.sk-parallel-item:last-child::after {
   align-self: flex-start;
   width: 50%;
 }
 
-#sk-container-id-4 div.sk-parallel-item:only-child::after {
+#sk-container-id-1 div.sk-parallel-item:only-child::after {
   width: 0;
 }
 
 /* Serial-specific style estimator block */
 
-#sk-container-id-4 div.sk-serial {
+#sk-container-id-1 div.sk-serial {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -753,14 +735,14 @@ clickable and can be expanded/collapsed.
 
 /* Pipeline and ColumnTransformer style (default) */
 
-#sk-container-id-4 div.sk-toggleable {
+#sk-container-id-1 div.sk-toggleable {
   /* Default theme specific background. It is overwritten whether we have a
   specific estimator or a Pipeline/ColumnTransformer */
   background-color: var(--sklearn-color-background);
 }
 
 /* Toggleable label */
-#sk-container-id-4 label.sk-toggleable__label {
+#sk-container-id-1 label.sk-toggleable__label {
   cursor: pointer;
   display: flex;
   width: 100%;
@@ -773,13 +755,13 @@ clickable and can be expanded/collapsed.
   gap: 0.5em;
 }
 
-#sk-container-id-4 label.sk-toggleable__label .caption {
+#sk-container-id-1 label.sk-toggleable__label .caption {
   font-size: 0.6rem;
   font-weight: lighter;
   color: var(--sklearn-color-text-muted);
 }
 
-#sk-container-id-4 label.sk-toggleable__label-arrow:before {
+#sk-container-id-1 label.sk-toggleable__label-arrow:before {
   /* Arrow on the left of the label */
   content: "▸";
   float: left;
@@ -787,25 +769,25 @@ clickable and can be expanded/collapsed.
   color: var(--sklearn-color-icon);
 }
 
-#sk-container-id-4 label.sk-toggleable__label-arrow:hover:before {
+#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {
   color: var(--sklearn-color-text);
 }
 
 /* Toggleable content - dropdown */
 
-#sk-container-id-4 div.sk-toggleable__content {
+#sk-container-id-1 div.sk-toggleable__content {
   display: none;
   text-align: left;
   /* unfitted */
   background-color: var(--sklearn-color-unfitted-level-0);
 }
 
-#sk-container-id-4 div.sk-toggleable__content.fitted {
+#sk-container-id-1 div.sk-toggleable__content.fitted {
   /* fitted */
   background-color: var(--sklearn-color-fitted-level-0);
 }
 
-#sk-container-id-4 div.sk-toggleable__content pre {
+#sk-container-id-1 div.sk-toggleable__content pre {
   margin: 0.2em;
   border-radius: 0.25em;
   color: var(--sklearn-color-text);
@@ -813,79 +795,79 @@ clickable and can be expanded/collapsed.
   background-color: var(--sklearn-color-unfitted-level-0);
 }
 
-#sk-container-id-4 div.sk-toggleable__content.fitted pre {
+#sk-container-id-1 div.sk-toggleable__content.fitted pre {
   /* unfitted */
   background-color: var(--sklearn-color-fitted-level-0);
 }
 
-#sk-container-id-4 input.sk-toggleable__control:checked~div.sk-toggleable__content {
+#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {
   /* Expand drop-down */
   display: block;
   width: 100%;
   overflow: visible;
 }
 
-#sk-container-id-4 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
+#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
   content: "▾";
 }
 
 /* Pipeline/ColumnTransformer-specific style */
 
-#sk-container-id-4 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {
+#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {
   color: var(--sklearn-color-text);
   background-color: var(--sklearn-color-unfitted-level-2);
 }
 
-#sk-container-id-4 div.sk-label.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+#sk-container-id-1 div.sk-label.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
   background-color: var(--sklearn-color-fitted-level-2);
 }
 
 /* Estimator-specific style */
 
 /* Colorize estimator box */
-#sk-container-id-4 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {
+#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {
   /* unfitted */
   background-color: var(--sklearn-color-unfitted-level-2);
 }
 
-#sk-container-id-4 div.sk-estimator.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+#sk-container-id-1 div.sk-estimator.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
   /* fitted */
   background-color: var(--sklearn-color-fitted-level-2);
 }
 
-#sk-container-id-4 div.sk-label label.sk-toggleable__label,
-#sk-container-id-4 div.sk-label label {
+#sk-container-id-1 div.sk-label label.sk-toggleable__label,
+#sk-container-id-1 div.sk-label label {
   /* The background is the default theme color */
   color: var(--sklearn-color-text-on-default-background);
 }
 
 /* On hover, darken the color of the background */
-#sk-container-id-4 div.sk-label:hover label.sk-toggleable__label {
+#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {
   color: var(--sklearn-color-text);
   background-color: var(--sklearn-color-unfitted-level-2);
 }
 
 /* Label box, darken color on hover, fitted */
-#sk-container-id-4 div.sk-label.fitted:hover label.sk-toggleable__label.fitted {
+#sk-container-id-1 div.sk-label.fitted:hover label.sk-toggleable__label.fitted {
   color: var(--sklearn-color-text);
   background-color: var(--sklearn-color-fitted-level-2);
 }
 
 /* Estimator label */
 
-#sk-container-id-4 div.sk-label label {
+#sk-container-id-1 div.sk-label label {
   font-family: monospace;
   font-weight: bold;
   display: inline-block;
   line-height: 1.2em;
 }
 
-#sk-container-id-4 div.sk-label-container {
+#sk-container-id-1 div.sk-label-container {
   text-align: center;
 }
 
 /* Estimator-specific */
-#sk-container-id-4 div.sk-estimator {
+#sk-container-id-1 div.sk-estimator {
   font-family: monospace;
   border: 1px dotted var(--sklearn-color-border-box);
   border-radius: 0.25em;
@@ -895,18 +877,18 @@ clickable and can be expanded/collapsed.
   background-color: var(--sklearn-color-unfitted-level-0);
 }
 
-#sk-container-id-4 div.sk-estimator.fitted {
+#sk-container-id-1 div.sk-estimator.fitted {
   /* fitted */
   background-color: var(--sklearn-color-fitted-level-0);
 }
 
 /* on hover */
-#sk-container-id-4 div.sk-estimator:hover {
+#sk-container-id-1 div.sk-estimator:hover {
   /* unfitted */
   background-color: var(--sklearn-color-unfitted-level-2);
 }
 
-#sk-container-id-4 div.sk-estimator.fitted:hover {
+#sk-container-id-1 div.sk-estimator.fitted:hover {
   /* fitted */
   background-color: var(--sklearn-color-fitted-level-2);
 }
@@ -994,7 +976,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 
 /* "?"-specific style due to the `<a>` HTML tag */
 
-#sk-container-id-4 a.estimator_doc_link {
+#sk-container-id-1 a.estimator_doc_link {
   float: right;
   font-size: 1rem;
   line-height: 1em;
@@ -1009,21 +991,21 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
   border: var(--sklearn-color-unfitted-level-1) 1pt solid;
 }
 
-#sk-container-id-4 a.estimator_doc_link.fitted {
+#sk-container-id-1 a.estimator_doc_link.fitted {
   /* fitted */
   border: var(--sklearn-color-fitted-level-1) 1pt solid;
   color: var(--sklearn-color-fitted-level-1);
 }
 
 /* On hover */
-#sk-container-id-4 a.estimator_doc_link:hover {
+#sk-container-id-1 a.estimator_doc_link:hover {
   /* unfitted */
   background-color: var(--sklearn-color-unfitted-level-3);
   color: var(--sklearn-color-background);
   text-decoration: none;
 }
 
-#sk-container-id-4 a.estimator_doc_link.fitted:hover {
+#sk-container-id-1 a.estimator_doc_link.fitted:hover {
   /* fitted */
   background-color: var(--sklearn-color-fitted-level-3);
 }
@@ -1091,13 +1073,13 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
     height: 14px;
     cursor: pointer;
 }
-</style><body><div id="sk-container-id-4" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>KNeighborsClassifier(n_neighbors=6)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-4" type="checkbox" checked><label for="sk-estimator-id-4" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>KNeighborsClassifier</div></div><div><a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.7/modules/generated/sklearn.neighbors.KNeighborsClassifier.html">?<span>Documentation for KNeighborsClassifier</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></div></label><div class="sk-toggleable__content fitted" data-param-prefix="">
+</style><body><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>KNeighborsClassifier(n_neighbors=6)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" checked><label for="sk-estimator-id-1" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>KNeighborsClassifier</div></div><div><a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.7/modules/generated/sklearn.neighbors.KNeighborsClassifier.html">?<span>Documentation for KNeighborsClassifier</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></div></label><div class="sk-toggleable__content fitted" data-param-prefix="">
         <div class="estimator-table">
             <details>
                 <summary>Parameters</summary>
                 <table class="parameters-table">
                   <tbody>
-
+                    
         <tr class="user-set">
             <td><i class="copy-paste-icon"
                  onclick="copyToClipboard('n_neighbors',
@@ -1106,7 +1088,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
             <td class="param">n_neighbors&nbsp;</td>
             <td class="value">6</td>
         </tr>
-
+    
 
         <tr class="default">
             <td><i class="copy-paste-icon"
@@ -1116,7 +1098,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
             <td class="param">weights&nbsp;</td>
             <td class="value">&#x27;uniform&#x27;</td>
         </tr>
-
+    
 
         <tr class="default">
             <td><i class="copy-paste-icon"
@@ -1126,7 +1108,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
             <td class="param">algorithm&nbsp;</td>
             <td class="value">&#x27;auto&#x27;</td>
         </tr>
-
+    
 
         <tr class="default">
             <td><i class="copy-paste-icon"
@@ -1136,7 +1118,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
             <td class="param">leaf_size&nbsp;</td>
             <td class="value">30</td>
         </tr>
-
+    
 
         <tr class="default">
             <td><i class="copy-paste-icon"
@@ -1146,7 +1128,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
             <td class="param">p&nbsp;</td>
             <td class="value">2</td>
         </tr>
-
+    
 
         <tr class="default">
             <td><i class="copy-paste-icon"
@@ -1156,7 +1138,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
             <td class="param">metric&nbsp;</td>
             <td class="value">&#x27;minkowski&#x27;</td>
         </tr>
-
+    
 
         <tr class="default">
             <td><i class="copy-paste-icon"
@@ -1166,7 +1148,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
             <td class="param">metric_params&nbsp;</td>
             <td class="value">None</td>
         </tr>
-
+    
 
         <tr class="default">
             <td><i class="copy-paste-icon"
@@ -1176,7 +1158,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
             <td class="param">n_jobs&nbsp;</td>
             <td class="value">None</td>
         </tr>
-
+    
                   </tbody>
                 </table>
             </details>
@@ -1223,33 +1205,28 @@ document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
 
     element.setAttribute('title', fullParamName);
 });
-</script></body></div>
+</script></body></div></div>
 </div>
 </section>
-<section id="Predict">
-<h3>Predict<a class="headerlink" href="#Predict" title="Link to this heading">#</a></h3>
+<section id="predict">
+<h3>Predict<a class="headerlink" href="#predict" title="Link to this heading">#</a></h3>
 <p>use the classifier to predict the churn for unseen data</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[46]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">predictions</span> <span class="o">=</span> <span class="n">knn</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_new</span><span class="p">)</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">predictions</span> <span class="o">=</span> <span class="n">knn</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_new</span><span class="p">)</span>
 <span class="n">predictions</span>  <span class="c1"># churn predictions for the 3 X_new data points: [0, 1, 0]</span>
 </pre></div>
 </div>
 </div>
-<div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[46]:
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0, 1, 0])
 </pre></div>
 </div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-array([0, 1, 0])
-</pre></div></div>
+</div>
 </div>
 </section>
-<section id="Measuring-Model-Performance-(train-test-split)">
-<h3>Measuring Model Performance (train-test-split)<a class="headerlink" href="#Measuring-Model-Performance-(train-test-split)" title="Link to this heading">#</a></h3>
+<section id="measuring-model-performance-train-test-split">
+<h3>Measuring Model Performance (train-test-split)<a class="headerlink" href="#measuring-model-performance-train-test-split" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>accuracy is one performance metric</p></li>
 <li><p><span class="math notranslate nohighlight">\(\text{accuracy} = \frac{\text{correct predictions}}{\text{number of observations}}\)</span></p></li>
@@ -1257,11 +1234,9 @@ array([0, 1, 0])
 <li><p>train it on the <code class="docutils literal notranslate"><span class="pre">training</span></code> set (typically use <code class="docutils literal notranslate"><span class="pre">70%</span></code> for <code class="docutils literal notranslate"><span class="pre">training</span></code>)</p></li>
 <li><p>test its accuracy on the (unseen) <code class="docutils literal notranslate"><span class="pre">test</span></code> set (typically reserve <code class="docutils literal notranslate"><span class="pre">30%</span></code> for <code class="docutils literal notranslate"><span class="pre">testing</span></code>)</p></li>
 </ul>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[47]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># split the data up into training and test sets, use 70% for training and 30% for testing</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># split the data up into training and test sets, use 70% for training and 30% for testing</span>
 <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
     <span class="n">X</span><span class="p">,</span>
     <span class="n">y</span><span class="p">,</span>
@@ -1276,44 +1251,39 @@ array([0, 1, 0])
 </pre></div>
 </div>
 </div>
-<div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[47]:
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.857
 </pre></div>
 </div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-0.858
-</pre></div></div>
+</div>
 </div>
 </section>
-<section id="Model-Complexity-(Overfitting/Underfitting)">
-<h3>Model Complexity (Overfitting/Underfitting)<a class="headerlink" href="#Model-Complexity-(Overfitting/Underfitting)" title="Link to this heading">#</a></h3>
-<ul class="simple">
+<section id="model-complexity-overfitting-underfitting">
+<h3>Model Complexity (Overfitting/Underfitting)<a class="headerlink" href="#model-complexity-overfitting-underfitting" title="Link to this heading">#</a></h3>
+<ul>
 <li><p>as you increase the <code class="docutils literal notranslate"><span class="pre">k</span></code> (number of neighbors), the model gets <strong>less complex</strong> (that seems backwards)</p></li>
 <li><p><strong>more neighbors</strong> → <strong>less complex model</strong> → <strong>underfitting</strong></p>
-<ul>
+<ul class="simple">
 <li><p>less capable of detecting relationships in the dataset</p></li>
 </ul>
 </li>
 <li><p><strong>fewer neighbors</strong> → <strong>more complex model</strong> → <strong>overfitting</strong></p>
-<ul>
+<ul class="simple">
 <li><p>too well fit to the <strong>training data</strong> to generalize well to <strong>test data</strong></p></li>
 <li><p>vulnerable to fitting to <strong>noise</strong></p></li>
 </ul>
 </li>
-<li><p>here is the <strong>decision boundary</strong> predicting <strong>target</strong> <code class="docutils literal notranslate"><span class="pre">churn</span></code> based on <strong>features</strong> <code class="docutils literal notranslate"><span class="pre">total_eve_charge</span></code> and <code class="docutils literal notranslate"><span class="pre">total_day_charge</span></code> for a variety of <code class="docutils literal notranslate"><span class="pre">k</span></code> (<strong>number of neighbors</strong>)</p>
-<ul>
+<li><p>here is the <strong>decision boundary</strong> predicting <strong>target</strong> <code class="docutils literal notranslate"><span class="pre">churn</span></code> based on  <strong>features</strong> <code class="docutils literal notranslate"><span class="pre">total_eve_charge</span></code> and <code class="docutils literal notranslate"><span class="pre">total_day_charge</span></code> for a variety of <code class="docutils literal notranslate"><span class="pre">k</span></code> (<strong>number of neighbors</strong>)</p>
+<ul class="simple">
 <li><p>as <code class="docutils literal notranslate"><span class="pre">k</span></code> increases, the boundary is less affected by individual points (once <code class="docutils literal notranslate"><span class="pre">k</span> <span class="pre">=</span> <span class="pre">sample</span> <span class="pre">size</span></code>, every point is just the average of all the other points)</p></li>
 <li><p>starts out too <strong>complex/overfitting</strong>, eventually plateaus as it becomes too <strong>simple/underfitting</strong></p></li>
 </ul>
 </li>
-<li><p><img alt="5157c56e9da1409eb95d5b0ee8227d6b" class="no-scaled-link" src="../../_images/knn_churn.png" style="width: 650px;" /></p></li>
+<li><img src="../../images/knn_churn.png" width="650"></li>
 </ul>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[50]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># this time use all of the features to predict the target</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># this time use all of the features to predict the target</span>
 <span class="n">X</span> <span class="o">=</span> <span class="n">churn_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;churn&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">churn_df</span><span class="p">[</span><span class="s2">&quot;churn&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
 
@@ -1348,19 +1318,11 @@ array([0, 1, 0])
 </pre></div>
 </div>
 </div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>best accuracy &#39;0.8770614692653673&#39; occurs at &#39;7&#39; neighbors
+</pre></div>
 </div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-best accuracy &#39;0.8770614692653673&#39; occurs at &#39;7&#39; neighbors
-</pre></div></div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<img alt="../../_images/datacamp_1_supervised_learning_scikit_learn_1_classification_13_1.png" src="../../_images/datacamp_1_supervised_learning_scikit_learn_1_classification_13_1.png" />
+<img alt="../../_images/0658c41893941f3103f64808afe8eafb86727ae004bfe41ebb31e92f333fb712.png" src="../../_images/0658c41893941f3103f64808afe8eafb86727ae004bfe41ebb31e92f333fb712.png" />
 </div>
 </div>
 </section>
@@ -1412,13 +1374,13 @@ best accuracy &#39;0.8770614692653673&#39; occurs at &#39;7&#39; neighbors
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-Nearest-Neighbors">k-Nearest Neighbors</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#The-Churn-Dataset">The Churn Dataset</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Choose-Data">Choose Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Fit">Fit</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Predict">Predict</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Measuring-Model-Performance-(train-test-split)">Measuring Model Performance (train-test-split)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Model-Complexity-(Overfitting/Underfitting)">Model Complexity (Overfitting/Underfitting)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-nearest-neighbors">k-Nearest Neighbors</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-churn-dataset">The Churn Dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#choose-data">Choose Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fit">Fit</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#predict">Predict</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#measuring-model-performance-train-test-split">Measuring Model Performance (train-test-split)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-complexity-overfitting-underfitting">Model Complexity (Overfitting/Underfitting)</a></li>
 </ul>
 </li>
 </ul>

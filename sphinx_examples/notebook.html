@@ -30,7 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=e59c3010" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -42,7 +42,14 @@
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
-    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs"></script>
+    <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs";import elkLayouts from "https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs";mermaid.registerLayoutLoaders(elkLayouts);mermaid.initialize({startOnLoad:false});</script>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+    <script type="module">
+import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs";
+window.addEventListener("load", () => mermaid.run());
+</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'sphinx_examples/notebook';</script>
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -341,8 +348,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Python-Cell-Tests">Python Cell Tests</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Mermaid-Tests">Mermaid Tests</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-cell-tests">Python Cell Tests</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mermaid-diagrams">Mermaid Diagrams</a></li>
 </ul>
             </nav>
         </div>
@@ -354,38 +361,32 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="Example-Jupyter-Notebook">
-<h1>Example Jupyter Notebook<a class="headerlink" href="#Example-Jupyter-Notebook" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="example-jupyter-notebook">
+<h1>Example Jupyter Notebook<a class="headerlink" href="#example-jupyter-notebook" title="Link to this heading">#</a></h1>
 <ul class="simple">
 <li><p>example notebook</p></li>
 <li><p>adding to test nbsphinx</p></li>
 </ul>
-<section id="Python-Cell-Tests">
-<h2>Python Cell Tests<a class="headerlink" href="#Python-Cell-Tests" title="Link to this heading">#</a></h2>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<section id="python-cell-tests">
+<h2>Python Cell Tests<a class="headerlink" href="#python-cell-tests" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-</pre></div>
 </div>
 </div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/jbrownlee/Datasets/master/pima-indians-diabetes.data.csv&quot;</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/jbrownlee/Datasets/master/pima-indians-diabetes.data.csv&quot;</span>
 <span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;preg&#39;</span><span class="p">,</span> <span class="s1">&#39;plas&#39;</span><span class="p">,</span> <span class="s1">&#39;pres&#39;</span><span class="p">,</span> <span class="s1">&#39;skin&#39;</span><span class="p">,</span> <span class="s1">&#39;test&#39;</span><span class="p">,</span> <span class="s1">&#39;mass&#39;</span><span class="p">,</span> <span class="s1">&#39;pedi&#39;</span><span class="p">,</span> <span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="s1">&#39;class&#39;</span><span class="p">]</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="n">names</span><span class="p">)</span>
 <span class="n">data</span>
 </pre></div>
 </div>
 </div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area rendered_html docutils container">
-<div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -550,26 +551,21 @@ document.write(`
   </tbody>
 </table>
 <p>768 rows × 9 columns</p>
-</div></div>
+</div></div></div>
 </div>
 </section>
-<section id="Mermaid-Tests">
-<h2>Mermaid Tests<a class="headerlink" href="#Mermaid-Tests" title="Link to this heading">#</a></h2>
+<section id="mermaid-diagrams">
+<h2>Mermaid Diagrams<a class="headerlink" href="#mermaid-diagrams" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p>Sphinx can build Mermaid diagrams thanks to <code class="docutils literal notranslate"><span class="pre">sphinxcontrib.mermaid</span></code> and <code class="docutils literal notranslate"><span class="pre">myst-parser</span></code></p></li>
-<li><p>triple backtick</p>
-<ul>
-<li><p>renders in VSCode preview</p></li>
-<li><p>does not render in Sphinx</p></li>
+<li><p>Sphinx can build Mermaid diagrams from Markdown thanks to <code class="docutils literal notranslate"><span class="pre">sphinxcontrib.mermaid</span></code> and <code class="docutils literal notranslate"><span class="pre">myst-nb</span></code> (which includes <code class="docutils literal notranslate"><span class="pre">myst-parser</span></code> and replaced <code class="docutils literal notranslate"><span class="pre">nbsphinx</span></code>)</p></li>
+<li><p>but it appears to have trouble rendering Mermaid Diagrams in Jupyter notebooks.</p></li>
+<li><p>triple backtick Mermaid code fence renders in both VSCode Preview and Sphinx if you add <code class="docutils literal notranslate"><span class="pre">myst_fence_as_directive</span> <span class="pre">=</span> <span class="pre">[&quot;mermaid&quot;]</span></code> to <code class="docutils literal notranslate"><span class="pre">conf.py</span></code></p></li>
 </ul>
-</li>
-</ul>
-<div class="highlight-mermaid notranslate"><div class="highlight"><pre><span></span>graph LR
+<pre  class="mermaid">
+        graph LR
   A--&gt;B
   B--&gt;C
-</pre></div>
-</div>
-</section>
+    </pre></section>
 </section>
 
 
@@ -617,8 +613,8 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Python-Cell-Tests">Python Cell Tests</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Mermaid-Tests">Mermaid Tests</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-cell-tests">Python Cell Tests</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mermaid-diagrams">Mermaid Diagrams</a></li>
 </ul>
   </nav></div>
 
