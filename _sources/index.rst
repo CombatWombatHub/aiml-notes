@@ -1,13 +1,10 @@
 .. general-machine-learning documentation master file, created by
    sphinx-quickstart on Sun Jul 27 20:06:08 2025.
 
-general-machine-learning documentation
-======================================
+General Machine Learning Notes
+===============================
 
-Welcome to the general-machine-learning Sphinx documentation!
-
-This documentation exists so that all of my Machine Learning practice 
-will be available to me as notes accessible from anywhere.
+A Sphinx Book Theme site with so that all of my Machine learning practice notes are available from anywhere.
 
 .. toctree::
    :caption: General:
