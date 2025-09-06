@@ -15,7 +15,7 @@
     - launch that
 
 
-## GitHub Pages
+## Deploy to GitHub Pages via GitHub Actions Pipeline
 - pushing on `main` will build Sphinx documentation and push to GitHub Pages
 - this is due to the GitHub Actions from the job specified in [sphinx.yml](../.github/workflows/sphinx.yml)
 - if the pipeline is successful, it should build and deploy an [updated version of the documentation on GitHub Pages](https://combatwombathub.github.io/general-machine-learning/index.html)

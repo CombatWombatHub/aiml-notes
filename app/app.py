@@ -20,7 +20,7 @@ Tako's repo file that creates it:
 Tako says that he has a way to host it for free
 """
 
-import streamlit as st # type: ignore
+import streamlit as st
 import pandas as pd
 
 # st.write is the swiss army knife method for adding stuff to streamlit app
