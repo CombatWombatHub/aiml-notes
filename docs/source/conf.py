@@ -16,9 +16,10 @@ release = "1.0"
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
 extensions = [
-    "myst_parser",  # parse markdown documents
-    "nbsphinx",  # parse Jupyter Notebooks
+    "myst_nb",  # parse Jupyter Notebooks with MyST-Parser
     "sphinxcontrib.mermaid", # allow mermaid diagrams
+    #"nbsphinx",  # parse Jupyter Notebooks (Requires separate Pandoc installation) (replaced by myst_nb)
+    #"myst_parser",  # parse markdown documents (already installed and imported by myst_nb)
 ]
 
 templates_path = ["_templates"]
