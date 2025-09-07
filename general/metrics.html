@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Example Jupyter Notebook &#8212; general-machine-learning 1.0 documentation</title>
+    <title>Metrics &#8212; general-machine-learning 1.0 documentation</title>
   
   
   
@@ -42,20 +42,14 @@
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
-    <script type="module" src="https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs"></script>
-    <script type="module" src="https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs"></script>
-    <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs";import elkLayouts from "https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs";mermaid.registerLayoutLoaders(elkLayouts);mermaid.initialize({startOnLoad:false});</script>
-    <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
-    <script type="module">
-import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs";
-window.addEventListener("load", () => mermaid.run());
-</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'sphinx_examples/notebook';</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'general/metrics';</script>
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Example reStructuredText File" href="restructuredtext.html" />
-    <link rel="prev" title="Example Markdown File" href="markdown.html" />
+    <link rel="next" title="Supervised Learning with scikit-learn" href="../datacamp/1_supervised_learning_scikit_learn/0_supervised_learning_scikit_learn.html" />
+    <link rel="prev" title="Classification Methods" href="classification.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -166,9 +160,9 @@ window.addEventListener("load", () => mermaid.run());
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">General:</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../general/classification.html">Classification Methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../general/metrics.html">Metrics</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="classification.html">Classification Methods</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Metrics</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">DataCamp:</span></p>
 <ul class="nav bd-sidenav">
@@ -182,10 +176,10 @@ window.addEventListener("load", () => mermaid.run());
 <li class="toctree-l1"><a class="reference internal" href="../machine_learning_mastery/python_ml_mini_course/1_python_ml_mini_course.html">Machine Learning Mastery Python Mini Course</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Sphinx:</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="markdown.html">Example Markdown File</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Example Jupyter Notebook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="restructuredtext.html">Example reStructuredText File</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../sphinx_examples/markdown.html">Example Markdown File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sphinx_examples/notebook.html">Example Jupyter Notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sphinx_examples/restructuredtext.html">Example reStructuredText File</a></li>
 </ul>
 
     </div>
@@ -255,7 +249,7 @@ window.addEventListener("load", () => mermaid.run());
       
       
       
-      <li><a href="../_sources/sphinx_examples/notebook.ipynb" target="_blank"
+      <li><a href="../_sources/general/metrics.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -265,7 +259,7 @@ window.addEventListener("load", () => mermaid.run());
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.ipynb</span>
+<span class="btn__text-container">.md</span>
 </a>
 </li>
       
@@ -339,7 +333,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Example Jupyter Notebook</h1>
+    <h1>Metrics</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -349,8 +343,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-cell-tests">Python Cell Tests</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mermaid-diagrams">Mermaid Diagrams</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basics">Basics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goodness-of-fit-metrics">Goodness of Fit metrics</a></li>
 </ul>
             </nav>
         </div>
@@ -362,211 +356,78 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="example-jupyter-notebook">
-<h1>Example Jupyter Notebook<a class="headerlink" href="#example-jupyter-notebook" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="metrics">
+<h1>Metrics<a class="headerlink" href="#metrics" title="Link to this heading">#</a></h1>
+<p>There are a lot of goodness of fit metrics and ways to characterize loss.</p>
+<section id="basics">
+<h2>Basics<a class="headerlink" href="#basics" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p>example notebook</p></li>
-<li><p>adding to test nbsphinx</p></li>
+<li><p>A model fits the data well when the differences between the <strong>observed values</strong> and <strong>predicted values</strong> are <strong>small</strong> and <strong>unbiased</strong></p></li>
+<li><p>the differences between the <code class="docutils literal notranslate"><span class="pre">observed</span> <span class="pre">values</span></code> and <code class="docutils literal notranslate"><span class="pre">predicted</span> <span class="pre">values</span></code> are called <code class="docutils literal notranslate"><span class="pre">residuals</span></code></p></li>
+<li><p>as the <code class="docutils literal notranslate"><span class="pre">goodness</span> <span class="pre">of</span> <span class="pre">fit</span></code> increases, the model is better fitted to the data</p></li>
 </ul>
-<section id="python-cell-tests">
-<h2>Python Cell Tests<a class="headerlink" href="#python-cell-tests" title="Link to this heading">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/jbrownlee/Datasets/master/pima-indians-diabetes.data.csv&quot;</span>
-<span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;preg&#39;</span><span class="p">,</span> <span class="s1">&#39;plas&#39;</span><span class="p">,</span> <span class="s1">&#39;pres&#39;</span><span class="p">,</span> <span class="s1">&#39;skin&#39;</span><span class="p">,</span> <span class="s1">&#39;test&#39;</span><span class="p">,</span> <span class="s1">&#39;mass&#39;</span><span class="p">,</span> <span class="s1">&#39;pedi&#39;</span><span class="p">,</span> <span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="s1">&#39;class&#39;</span><span class="p">]</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="n">names</span><span class="p">)</span>
-<span class="n">data</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>preg</th>
-      <th>plas</th>
-      <th>pres</th>
-      <th>skin</th>
-      <th>test</th>
-      <th>mass</th>
-      <th>pedi</th>
-      <th>age</th>
-      <th>class</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>6</td>
-      <td>148</td>
-      <td>72</td>
-      <td>35</td>
-      <td>0</td>
-      <td>33.6</td>
-      <td>0.627</td>
-      <td>50</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>1</td>
-      <td>85</td>
-      <td>66</td>
-      <td>29</td>
-      <td>0</td>
-      <td>26.6</td>
-      <td>0.351</td>
-      <td>31</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>8</td>
-      <td>183</td>
-      <td>64</td>
-      <td>0</td>
-      <td>0</td>
-      <td>23.3</td>
-      <td>0.672</td>
-      <td>32</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>1</td>
-      <td>89</td>
-      <td>66</td>
-      <td>23</td>
-      <td>94</td>
-      <td>28.1</td>
-      <td>0.167</td>
-      <td>21</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>0</td>
-      <td>137</td>
-      <td>40</td>
-      <td>35</td>
-      <td>168</td>
-      <td>43.1</td>
-      <td>2.288</td>
-      <td>33</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>763</th>
-      <td>10</td>
-      <td>101</td>
-      <td>76</td>
-      <td>48</td>
-      <td>180</td>
-      <td>32.9</td>
-      <td>0.171</td>
-      <td>63</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>764</th>
-      <td>2</td>
-      <td>122</td>
-      <td>70</td>
-      <td>27</td>
-      <td>0</td>
-      <td>36.8</td>
-      <td>0.340</td>
-      <td>27</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>765</th>
-      <td>5</td>
-      <td>121</td>
-      <td>72</td>
-      <td>23</td>
-      <td>112</td>
-      <td>26.2</td>
-      <td>0.245</td>
-      <td>30</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>766</th>
-      <td>1</td>
-      <td>126</td>
-      <td>60</td>
-      <td>0</td>
-      <td>0</td>
-      <td>30.1</td>
-      <td>0.349</td>
-      <td>47</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>767</th>
-      <td>1</td>
-      <td>93</td>
-      <td>70</td>
-      <td>31</td>
-      <td>0</td>
-      <td>30.4</td>
-      <td>0.315</td>
-      <td>23</td>
-      <td>0</td>
-    </tr>
-  </tbody>
-</table>
-<p>768 rows × 9 columns</p>
-</div></div></div>
-</div>
 </section>
-<section id="mermaid-diagrams">
-<h2>Mermaid Diagrams<a class="headerlink" href="#mermaid-diagrams" title="Link to this heading">#</a></h2>
+<section id="goodness-of-fit-metrics">
+<h2>Goodness of Fit metrics<a class="headerlink" href="#goodness-of-fit-metrics" title="Link to this heading">#</a></h2>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">Residuals</span></code></p>
 <ul class="simple">
-<li><p>Sphinx can build Mermaid diagrams from Markdown thanks to <code class="docutils literal notranslate"><span class="pre">sphinxcontrib.mermaid</span></code> and <code class="docutils literal notranslate"><span class="pre">myst-nb</span></code> (which includes <code class="docutils literal notranslate"><span class="pre">myst-parser</span></code> and replaced <code class="docutils literal notranslate"><span class="pre">nbsphinx</span></code>)</p></li>
-<li><p>but it appears to have trouble rendering Mermaid Diagrams in Jupyter notebooks.</p></li>
-<li><p>triple backtick Mermaid code fence renders in both VSCode Preview and Sphinx if you add <code class="docutils literal notranslate"><span class="pre">myst_fence_as_directive</span> <span class="pre">=</span> <span class="pre">[&quot;mermaid&quot;]</span></code> to <code class="docutils literal notranslate"><span class="pre">conf.py</span></code></p></li>
+<li><p><span class="math notranslate nohighlight">\(RSS\)</span> = <strong>Residual Sum of Squares</strong> = <span class="math notranslate nohighlight">\(\sum_{i=1}^n(y_i-\hat y_i)^2\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(TSS\)</span> = <strong>Total Sum of Squares</strong> = <span class="math notranslate nohighlight">\(\sum_{i=1}^n(y_i-\bar y_i)^2\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(y_i\)</span> = observed value <span class="math notranslate nohighlight">\(i\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\hat y_i\)</span> = predicted value <span class="math notranslate nohighlight">\(i\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\bar y_i\)</span> = average of the observed values <span class="math notranslate nohighlight">\(i\)</span></p></li>
 </ul>
-<pre  class="mermaid">
-        graph LR
-  A--&gt;B
-  B--&gt;C
-    </pre></section>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">R-squared</span></code> (also known as <strong>Coefficient of Determination</strong>)</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\Large R^2=1-\frac{RSS}{TSS}=1-\frac{\sum_{i=1}^n(y_i-\hat y_i)^2}{\sum_{i=1}^n(y_i-\bar y_i)^2}\)</span></p>
+<ul>
+<li><p>usually <code class="docutils literal notranslate"><span class="pre">0-1</span></code> (<span class="math notranslate nohighlight">\(R^2\)</span> can be negative is model is worse than the mean)</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code> = the model isn’t any better at predicting than if you just used the mean</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">1</span></code> = the model</p></li>
+</ul>
+</li>
+<li><p>always increases as more independent variables are added</p></li>
+<li><img src="../images/r_squared_visualization.png" alt="Pic" width="500" />
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Adjusted</span> <span class="pre">R-squared</span></code></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\Large \bar R^2=1-\frac{RSS/DOF_{res}}{TSS/DOF_{tot}}=1-(1-R^2)\frac{n-1}{n-p-1}\)</span></p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(DOF_{res}\)</span> = Degrees of Freedom of population variance around mean</p></li>
+<li><p><span class="math notranslate nohighlight">\(DOF_{tot}\)</span> = Degrees of Freedom of population variance around model</p></li>
+</ul>
+</li>
+<li><p>modification of R-squared that accounts for the number of independent variables</p></li>
+<li><p>penalizes the inclusion of variables that don’t actually contribute to prediction</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MAE</span></code> = <strong>Mean Absolute Error</strong></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\Large MAE = \frac{\sum_{i=1}^n|\hat y_i-y_i|}{n}\)</span></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NMAE</span></code> = <strong>Normalized Mean Absolute Error</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RMSE</span></code> = <strong>Root Mean Squared Error</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RMSLE</span></code> = <strong>Root Mean Squared Logarithmic Error</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MAPE</span></code> = <strong>Mean Absolute Percentage Error</strong></p>
+<ul class="simple">
+<li><p>limitations: sensitive to values near 0, potential for asymmetric errors</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SMAPE</span></code> = <strong>Symmetric Mean Absolute Percentage Error</strong></p>
+<ul class="simple">
+<li><p>improvement on <code class="docutils literal notranslate"><span class="pre">MAPE</span></code>, avoids divide by 0 errors (still hesitant to use)</p></li>
+</ul>
+</li>
+</ul>
+</section>
 </section>
 
 
@@ -581,20 +442,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="markdown.html"
+       href="classification.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Example Markdown File</p>
+        <p class="prev-next-title">Classification Methods</p>
       </div>
     </a>
     <a class="right-next"
-       href="restructuredtext.html"
+       href="../datacamp/1_supervised_learning_scikit_learn/0_supervised_learning_scikit_learn.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Example reStructuredText File</p>
+        <p class="prev-next-title">Supervised Learning with scikit-learn</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -614,8 +475,8 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-cell-tests">Python Cell Tests</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mermaid-diagrams">Mermaid Diagrams</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basics">Basics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goodness-of-fit-metrics">Goodness of Fit metrics</a></li>
 </ul>
   </nav></div>
 
