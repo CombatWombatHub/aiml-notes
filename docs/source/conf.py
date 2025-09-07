@@ -58,7 +58,3 @@ myst_heading_anchors = 3
 
 # Configure myst-parser to treat mermaid fenced code blocks as directives
 myst_fence_as_directive = ["mermaid"]
-
-mermaid_init_js = """
-mermaid.initialize({theme: "forest"});
-"""
