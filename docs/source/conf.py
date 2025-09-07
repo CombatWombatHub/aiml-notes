@@ -48,8 +48,20 @@ html_theme_options = {
 # enable syntax extensions for MyST-Parser 
 # https://myst-parser.readthedocs.io/en/latest/syntax/optional.html#syntax-extensions
 myst_enable_extensions = [
-    "dollarmath", # render $dollar sign enclosed$ equations
+    #"amsmath",
+    #"attrs_inline",
     "colon_fence", # allow ::: triple colons as fenced code blocks
+    #"deflist",
+    "dollarmath", # render $dollar sign enclosed$ equations
+    #"fieldlist",
+    #"html_admonition",
+    "html_image", # allow HTML <img> tags
+    #"linkify",
+    #"replacements",
+    #"smartquotes",
+    #"strikethrough",
+    #"substitution",
+    #"tasklist",
 ]
 
 # generate anchors so you can link to markdown headings
