@@ -370,61 +370,85 @@ document.write(`
 <section id="goodness-of-fit-metrics">
 <h2>Goodness of Fit metrics<a class="headerlink" href="#goodness-of-fit-metrics" title="Link to this heading">#</a></h2>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">Residuals</span></code></p>
+<li><p><code class="docutils literal notranslate"><span class="pre">Nomenclature</span></code></p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(RSS\)</span> = <strong>Residual Sum of Squares</strong> = <span class="math notranslate nohighlight">\(\sum_{i=1}^n(y_i-\hat y_i)^2\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(TSS\)</span> = <strong>Total Sum of Squares</strong> = <span class="math notranslate nohighlight">\(\sum_{i=1}^n(y_i-\bar y_i)^2\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(y\)</span> = observed values</p></li>
 <li><p><span class="math notranslate nohighlight">\(y_i\)</span> = observed value <span class="math notranslate nohighlight">\(i\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(\hat y_i\)</span> = predicted value <span class="math notranslate nohighlight">\(i\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(\bar y_i\)</span> = average of the observed values <span class="math notranslate nohighlight">\(i\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(RSS\)</span> = <strong>Residual Sum of Squares</strong> = <span class="math notranslate nohighlight">\(\sum_{i=1}^n(y_i-\hat y_i)^2\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(TSS\)</span> = <strong>Total Sum of Squares</strong> = <span class="math notranslate nohighlight">\(\sum_{i=1}^n(y_i-\bar y_i)^2\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(DOF_{res}\)</span> = Degrees of Freedom of population variance around mean</p></li>
+<li><p><span class="math notranslate nohighlight">\(DOF_{tot}\)</span> = Degrees of Freedom of population variance around model</p></li>
+<li><p><span class="math notranslate nohighlight">\(n\)</span> = sample size</p></li>
+<li><p><span class="math notranslate nohighlight">\(p\)</span> = total number of explanatory variables (inputs)</p></li>
 </ul>
 </li>
-<li><p><code class="docutils literal notranslate"><span class="pre">R-squared</span></code> (also known as <strong>Coefficient of Determination</strong>)</p>
-<ul>
-<li><p><span class="math notranslate nohighlight">\(\Large R^2=1-\frac{RSS}{TSS}=1-\frac{\sum_{i=1}^n(y_i-\hat y_i)^2}{\sum_{i=1}^n(y_i-\bar y_i)^2}\)</span></p>
-<ul>
-<li><p>usually <code class="docutils literal notranslate"><span class="pre">0-1</span></code> (<span class="math notranslate nohighlight">\(R^2\)</span> can be negative is model is worse than the mean)</p>
+<li><p><code class="docutils literal notranslate"><span class="pre">R-squared</span></code> (also known as <strong>Coefficient of Determination</strong>) is the ratio of the variance that’s explained by the model to the variance that’s explained by a simple mean. It’s usually <span class="math notranslate nohighlight">\(0-1\)</span>, though it <em>can</em> be negative if the model is <em>worse</em> at explaining variance than just guessing the mean regardless of inputs. <span class="math notranslate nohighlight">\(R^2\)</span> always increases as more independent variables are added, whether or not those variables are useful predictors <a class="reference internal" href="../_images/r_squared_visualization.png"><img alt="Pic" src="../_images/r_squared_visualization.png" style="width: 400px;" /></a></p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code> = the model isn’t any better at predicting than if you just used the mean</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">1</span></code> = the model</p></li>
+<li><p><span class="math notranslate nohighlight">\(\Large R^2=1-\frac{RSS}{TSS}=1-\frac{\sum_{i=1}^n(y_i-\hat y_i)^2}{\sum_{i=1}^n(y_i-\bar y_i)^2}\)</span></p></li>
 </ul>
 </li>
-<li><p>always increases as more independent variables are added</p></li>
-<li><a class="reference internal image-reference" href="../_images/r_squared_visualization.png"><img alt="Pic" src="../_images/r_squared_visualization.png" style="width: 500px;" />
+<li><p><code class="docutils literal notranslate"><span class="pre">Adjusted</span> <span class="pre">R-squared</span></code> is a modification of R-squared that penalizes the inclusion of variables that don’t actually contribute to prediction</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\Large \bar R^2=1-\frac{RSS/DOF_{res}}{TSS/DOF_{tot}}=1-(1-R^2)\frac{n-1}{n-p-1}\)</span></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MAE</span></code> = <strong>Mean Absolute Error</strong> - same scale as target variable, robust to outliers, difficult to take derivatives of due to absolute value</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(MAE = \frac{1}{n} \sum_{i=1}^n|y_i-\hat{y}_i|\)</span></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NMAE</span></code> = <strong>Normalized Mean Absolute Error</strong> - normalizes the absolute error by the range of actual values, making it a relative relative metric</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\Large NMAE = \frac{\frac{1}{n}\sum_{i=1}^n{|\hat{y}_i-y_i|}}{\frac{1}{n}\sum_{i=1}^n{|y_i|}} = \frac{MAE(y,\hat{y})}{mean(|y|)}\)</span></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MSE</span></code> = <strong>Mean Squared Error</strong> - vulnerable to outliers because the error is squared</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(MSE =\frac{1}{n}\sum_{i=1}^n (\hat{y}_i - y_i)^2\)</span></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RMSE</span></code> = <strong>Root Mean Squared Error</strong> - same training results as using <span class="math notranslate nohighlight">\(MSE\)</span>, still vulnerable to outliers, compare with <span class="math notranslate nohighlight">\(MAE\)</span> to see prevalence of outliers</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(RMSE = \sqrt{\frac{1}{n}\sum_{i=1}^n (\hat{y}_i - y_i)^2}\)</span></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RMSLE</span></code> = <strong>Root Mean Squared Log Error</strong> - logs make it relative metric (ignore scale of data), less vulnerable to outliers than <span class="math notranslate nohighlight">\(RMSE\)</span>, asymmetric (larger penalty if <span class="math notranslate nohighlight">\(\hat{y}_i &lt; y_i\)</span> than if <span class="math notranslate nohighlight">\(\hat{y}_i &gt; y_i\)</span>)</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(RMSLE = \sqrt{\frac{1}{n}\sum_{i=1}^n (\ln{(\hat{y}_i+1)} - \ln{(y_i+1)})^2} =\sqrt{\frac{1}{n}\sum_{i=1}^n (\ln{\frac{\hat{y}_i+1}{y_i+1}})^2}\)</span></p></li>
+<li><a class="reference internal image-reference" href="../_images/rmse_vs_rmsle.png"><img alt="RMSE vs RMSLE" src="../_images/rmse_vs_rmsle.png" style="width: 350px;" />
 </a>
 </li>
 </ul>
 </li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MAPE</span></code> = <strong>Mean Absolute Percentage Error</strong> (AVOID LIKE THE PLAGUE) fails if any <span class="math notranslate nohighlight">\(y_i=0\)</span>, higher penalty for small <span class="math notranslate nohighlight">\(y_i\)</span>, higher penalty for <span class="math notranslate nohighlight">\(\hat{y}_i &gt; y_i\)</span> than <span class="math notranslate nohighlight">\(\hat{y}_i &lt; y_i\)</span></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(MAPE = \frac{1}{n}\sum_{i=1}^{n}{|\frac{y_i-\hat{y}_i}{y_i}|}*100\)</span></p></li>
 </ul>
 </li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Adjusted</span> <span class="pre">R-squared</span></code></p>
+<li><p><code class="docutils literal notranslate"><span class="pre">SMAPE</span></code> = <strong>Symmetric Mean Absolute Percentage Error</strong> (AVOID) improves <em>somewhat</em> on <code class="docutils literal notranslate"><span class="pre">MAPE</span></code> but still controversial, not symmetric, and the equation itself varies by source</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\Large \bar R^2=1-\frac{RSS/DOF_{res}}{TSS/DOF_{tot}}=1-(1-R^2)\frac{n-1}{n-p-1}\)</span></p>
+<li><p><span class="math notranslate nohighlight">\(SMAPE = \frac{1}{n}\sum_{i=1}^{n}{\frac{|y_i-\hat{y}_i|}{y_i+\hat{y}_i}}\)</span></p></li>
+</ul>
+</li>
+<li><p><span class="math notranslate nohighlight">\(BIC\)</span> = <a class="reference external" href="https://www.geeksforgeeks.org/machine-learning/bayesian-information-criterion-bic/">Bayesian Information Criterion</a> evaluates goodness of fit <span class="math notranslate nohighlight">\(-2\ln(L)\)</span> while penalizing complexity to avoid overfitting <span class="math notranslate nohighlight">\(k\ln(n)\)</span></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(BIC = -2\ln(L) + k\ln(n)\)</span></p>
 <ul>
-<li><p><span class="math notranslate nohighlight">\(DOF_{res}\)</span> = Degrees of Freedom of population variance around mean</p></li>
-<li><p><span class="math notranslate nohighlight">\(DOF_{tot}\)</span> = Degrees of Freedom of population variance around model</p></li>
+<li><p><span class="math notranslate nohighlight">\(L\)</span> = likelihood of the model given the data</p></li>
+<li><p><span class="math notranslate nohighlight">\(k\)</span> = number of parameters in the model</p></li>
 </ul>
 </li>
-<li><p>modification of R-squared that accounts for the number of independent variables</p></li>
-<li><p>penalizes the inclusion of variables that don’t actually contribute to prediction</p></li>
 </ul>
 </li>
-<li><p><code class="docutils literal notranslate"><span class="pre">MAE</span></code> = <strong>Mean Absolute Error</strong></p>
+<li><p><span class="math notranslate nohighlight">\(AIC\)</span> = <a class="reference external" href="https://en.wikipedia.org/wiki/Akaike_information_criterion">Akaike Information Criterion</a></p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\Large MAE = \frac{\sum_{i=1}^n|\hat y_i-y_i|}{n}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(AIC = 2k - 2 \ln(\hat L)\)</span></p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\hat L\)</span> = maximized value of the <a class="reference external" href="https://en.wikipedia.org/wiki/Likelihood_function">likelihood function</a> for the model</p></li>
 </ul>
 </li>
-<li><p><code class="docutils literal notranslate"><span class="pre">NMAE</span></code> = <strong>Normalized Mean Absolute Error</strong></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">RMSE</span></code> = <strong>Root Mean Squared Error</strong></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">RMSLE</span></code> = <strong>Root Mean Squared Logarithmic Error</strong></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">MAPE</span></code> = <strong>Mean Absolute Percentage Error</strong></p>
-<ul class="simple">
-<li><p>limitations: sensitive to values near 0, potential for asymmetric errors</p></li>
-</ul>
-</li>
-<li><p><code class="docutils literal notranslate"><span class="pre">SMAPE</span></code> = <strong>Symmetric Mean Absolute Percentage Error</strong></p>
-<ul class="simple">
-<li><p>improvement on <code class="docutils literal notranslate"><span class="pre">MAPE</span></code>, avoids divide by 0 errors (still hesitant to use)</p></li>
 </ul>
 </li>
 </ul>
