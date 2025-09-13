@@ -1,16 +1,16 @@
 .. general-machine-learning documentation master file, created by
    sphinx-quickstart on Sun Jul 27 20:06:08 2025.
 
-General Machine Learning Notes
-===============================
+AI/ML NOTES
+===========
 
-A Sphinx Book Theme site with so that all of my Machine learning practice notes are available from anywhere.
+All of my AI/ML Notes from https://github.com/CombatWombatHub/aiml-notes converted to a public GitHub Pages site with Sphinx Book Theme.
 
 .. toctree::
-   :caption: General:
+   :caption: AI/ML:
    :glob:
 
-   general/**
+   ai/**
 
 .. toctree::
    :caption: DataCamp:
