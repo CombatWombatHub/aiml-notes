@@ -1,6 +1,6 @@
-# Building Sphinx
+# Documentation
 
-## Locally On Windows
+## Building Documentation Locally On Windows
 - prerequisites
     - [install uv](https://docs.astral.sh/uv/getting-started/installation/#standalone-installer) (I did `curl -LsSf https://astral.sh/uv/install.sh | sh` in `git bash`)
     - [install python](https://docs.astral.sh/uv/guides/install-python/#getting-started) (I did `uv python install`)
@@ -18,7 +18,7 @@
     - launch that
 
 
-## Deploy to GitHub Pages via GitHub Actions Pipeline
+## Deploying Documentation to GitHub Pages via GitHub Actions Pipeline
 - pushing on `main` will build Sphinx documentation and push to GitHub Pages
 - this is due to the GitHub Actions from the job specified in [sphinx.yml](../.github/workflows/sphinx.yml)
-- if the pipeline is successful, it should build and deploy an [updated version of the documentation on GitHub Pages](https://combatwombathub.github.io/general-machine-learning/index.html)
+- if the pipeline is successful, it should build and deploy an updated version of the documentation on GitHub Pages at https://combatwombathub.github.io/aiml-notes/.

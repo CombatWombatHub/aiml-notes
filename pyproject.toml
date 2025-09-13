@@ -1,7 +1,7 @@
 [project]
-name = "general-machine-learning"
+name = "aiml-notes"
 version = "0.1.0"
-description = "Add your description here"
+description = "Compilation of notes and examples for general machine learning and AI concepts."
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
