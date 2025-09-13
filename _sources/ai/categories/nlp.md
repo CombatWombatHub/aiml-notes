@@ -1,2 +1,2 @@
 # Natural Language Processing
-[Natural Language Processing (NLP)](https://www.geeksforgeeks.org/nlp/natural-language-processing-nlp-tutorial/) understands and interacts with human languages in a way that feels natural. NLP isn't ML, though it does rely on ML. ML is the engine, NLP the application.
+[Natural Language Processing (NLP)](https://www.geeksforgeeks.org/nlp/natural-language-processing-nlp-tutorial/) understands and interacts with human languages in a way that feels natural. `NLP` uses [ML](./ml.md), but isn't [ML](./ml.md) itself. `NLP` is the application, [ML](./ml.md) is the engine.

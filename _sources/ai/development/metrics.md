@@ -8,6 +8,14 @@ There are a lot of goodness of fit metrics and ways to characterize loss.
 - the differences between the `observed values` and `predicted values` are called `residuals`
 - as the `goodness of fit` increases, the model is better fitted to the data
 
+## GeeksForGeeks Links
+Found these links, need to incorporate them better later
+[Mean Absolute Error (MAE)](https://www.geeksforgeeks.org/python/how-to-calculate-mean-absolute-error-in-python/): The average absolute difference between the predicted and actual values of the target variable.
+[Mean Squared Error (MSE)](https://www.geeksforgeeks.org/python/python-mean-squared-error/): The average squared difference between the predicted and actual values of the target variable.
+[Root Mean Squared Error (RMSE)](https://www.geeksforgeeks.org/software-engineering/rmse-root-mean-square-error-in-matlab/): Square root of the mean squared error.
+[Huber Loss](https://www.geeksforgeeks.org/machine-learning/sklearn-different-loss-functions-in-sgd/): A hybrid loss function that transitions from MAE to MSE for larger errors, providing balance between robustness and MSE’s sensitivity to outliers.
+[R2 – Score](https://www.geeksforgeeks.org/machine-learning/python-coefficient-of-determination-r2-score/): Higher values indicate better fit ranging from 0 to 1.
+
 ## Goodness of Fit metrics
 
 - `Nomenclature`
