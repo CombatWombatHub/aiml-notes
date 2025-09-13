@@ -1,9 +1,7 @@
 # Metrics
-
 There are a lot of goodness of fit metrics and ways to characterize loss.
 
 ## Basics
-
 - A model fits the data well when the differences between the **observed values** and **predicted values** are **small** and **unbiased**
 - the differences between the `observed values` and `predicted values` are called `residuals`
 - as the `goodness of fit` increases, the model is better fitted to the data
@@ -17,7 +15,6 @@ Found these links, need to incorporate them better later
 [R2 – Score](https://www.geeksforgeeks.org/machine-learning/python-coefficient-of-determination-r2-score/): Higher values indicate better fit ranging from 0 to 1.
 
 ## Goodness of Fit metrics
-
 - `Nomenclature`
   - $y$ = observed values
   - $y_i$ = observed value $i$
