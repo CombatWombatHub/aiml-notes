@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Classification Methods &#8212; general-machine-learning 1.0 documentation</title>
+    <title>Artificial Intelligence (AI) &#8212; general-machine-learning 1.0 documentation</title>
   
   
   
@@ -42,12 +42,10 @@
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'general/classification';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ai/ai';</script>
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Metrics" href="metrics.html" />
-    <link rel="prev" title="General Machine Learning Notes" href="../index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -110,6 +108,8 @@
       
       
       
+        
+      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -157,12 +157,7 @@
  </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">General:</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Classification Methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="metrics.html">Metrics</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">DataCamp:</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">DataCamp:</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../datacamp/1_supervised_learning_scikit_learn/0_supervised_learning_scikit_learn.html">Supervised Learning with scikit-learn</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../datacamp/1_supervised_learning_scikit_learn/1_classification.html">Intro to Classification</a></li>
@@ -247,7 +242,7 @@
       
       
       
-      <li><a href="../_sources/general/classification.md" target="_blank"
+      <li><a href="../_sources/ai/ai.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -318,9 +313,7 @@ document.write(`
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</button>
+
 </div></div>
       
     </div>
@@ -331,19 +324,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Classification Methods</h1>
+    <h1>Artificial Intelligence (AI)</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-nearest-neighbors-knn">k-Nearest Neighbors (knn)</a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -353,32 +338,15 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="classification-methods">
-<h1>Classification Methods<a class="headerlink" href="#classification-methods" title="Link to this heading">#</a></h1>
-<p>List basic notes on various types of models that can be used for Classification tasks</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="artificial-intelligence-ai">
+<h1>Artificial Intelligence (AI)<a class="headerlink" href="#artificial-intelligence-ai" title="Link to this heading">#</a></h1>
+<p><a class="reference external" href="https://www.geeksforgeeks.org/artificial-intelligence/what-is-artificial-intelligence-ai/">Artificial Intelligence (AI)</a> is a technology that enables machines and computers to perform tasks that typically require human intelligence. It contains multiple subdivisions.</p>
 <ul class="simple">
-<li><p>most of these will assume you have already split data into</p>
-<ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">X</span></code>: features (inputs)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">y</span></code>: target (output)</p></li>
+<li><p><a class="reference external" href="https://www.geeksforgeeks.org/machine-learning/machine-learning/">Machine Learning (LM)</a> learns from and makes decisions based on data, using algorithms to identify patterns.</p></li>
+<li><p><a class="reference external" href="https://www.geeksforgeeks.org/artificial-intelligence/what-is-generative-ai/">Generative AI</a> creates <em>new</em> content (text, images, etc) based on what it’s learned instead of just <em>recognizing</em> it.</p></li>
+<li><p><a class="reference external" href="https://www.geeksforgeeks.org/nlp/natural-language-processing-nlp-tutorial/">Natural Language Processing (NLP)</a> understands and interacts with human languages in a way that feels natural. NLP isn’t ML, though it does rely on ML. ML is the engine, NLP the application.</p></li>
+<li><p><a class="reference external" href="https://www.geeksforgeeks.org/artificial-intelligence/expert-systems/">Expert Systems</a> use predefined “if-then” rules programmed by human experts to make informed decisions.</p></li>
 </ul>
-</li>
-</ul>
-<section id="k-nearest-neighbors-knn">
-<h2>k-Nearest Neighbors (knn)<a class="headerlink" href="#k-nearest-neighbors-knn" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>binary output like “will this customer leave (<code class="docutils literal notranslate"><span class="pre">1</span></code>) or stay (<code class="docutils literal notranslate"><span class="pre">0</span></code>) based on account <code class="docutils literal notranslate"><span class="pre">age</span></code> and <code class="docutils literal notranslate"><span class="pre">customer</span> <span class="pre">service</span> <span class="pre">call</span> <span class="pre">count</span></code>”</p></li>
-<li><p>sets the result for the target based on nearby points (must be an odd number of points to prevent a “tie”)</p></li>
-<li><p>it determines “nearness” by mapping the inputs in vector space and computing the length of the vector between each training data point and test data point</p></li>
-</ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.neighbors</span><span class="w"> </span><span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
-<span class="c1"># Create a KNN classifier with 6 neighbors</span>
-<span class="n">knn</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
-<span class="c1"># Fit the classifier to the data</span>
-<span class="n">knn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-</pre></div>
-</div>
-</section>
 </section>
 
 
@@ -392,45 +360,12 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="../index.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">General Machine Learning Notes</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="metrics.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Metrics</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-nearest-neighbors-knn">k-Nearest Neighbors (knn)</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
               
             
           </div>
