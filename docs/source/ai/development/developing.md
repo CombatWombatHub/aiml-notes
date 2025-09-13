@@ -1,5 +1,5 @@
-## ML Development Pipeline
-In addition to training, the process of developing a new ML Model to solve a problem has a lot of steps if you want to do it right.
+## ML Development
+**ML Development Pipeline** In addition to training, the process of developing a new ML Model to solve a problem has a lot of steps if you want to do it right.
 See GeeksForGeeks [Machine Learning Tutorial](https://www.geeksforgeeks.org/machine-learning/machine-learning/) for links to how-tos on each step.
 
 ## Data Preprocessing
