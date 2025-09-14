@@ -1,24 +1,26 @@
 # Machine Learning (ML)
 [Machine Learning](https://www.geeksforgeeks.org/machine-learning/machine-learning/) is a branch of Artificial Intelligence that focuses on *models* and [algorithms](https://www.geeksforgeeks.org/machine-learning/machine-learning-algorithms/) that let computers learn from data and improve from previous experience without being explicitly programmed. There are many [types](https://www.geeksforgeeks.org/machine-learning/types-of-machine-learning/) of machine learning.
-- [Supervised Learning](https://www.geeksforgeeks.org/machine-learning/supervised-machine-learning/) - Use labeled data
-    - [Classification](https://www.geeksforgeeks.org/machine-learning/getting-started-with-classification/) - Predict *categorical* (discrete) values
-    - [Regression](https://www.geeksforgeeks.org/machine-learning/regression-in-machine-learning/) - Predict continuous numerical values
-    - Both - some models can be for both Classification and Regression
-        - [Ensemble Learning](https://www.geeksforgeeks.org/machine-learning/a-comprehensive-guide-to-ensemble-learning/) - Combine multiple simple models into one better model.
-- [Unsupervised Learning](https://www.geeksforgeeks.org/machine-learning/unsupervised-learning/) - Use unlabeled data
-    - [Clustering](https://www.geeksforgeeks.org/machine-learning/clustering-in-machine-learning/) - Group data into clusters based on similarity
-    - [Dimensionality Reduction](https://www.geeksforgeeks.org/machine-learning/dimensionality-reduction/) - Simplify datasets by reducing features while keeping important information (often used to select features for other models)
-    - [Association Rule Mining](https://www.geeksforgeeks.org/machine-learning/association-rule/) - Discover rules where the presence of one item in a dataset indicates the probability of the presence of another
-- [Reinforcement Learning](https://www.geeksforgeeks.org/machine-learning/what-is-reinforcement-learning/) - Learn from rewards by interacting with environment via trial and error
-- [Forecasting Models](https://www.kaggle.com/code/ryanholbrook/forecasting-with-machine-learning) - Use past data to predict future trends (often time series problems)
-- [Semi-Supervised Learning](https://www.geeksforgeeks.org/machine-learning/ml-semi-supervised-learning/) - Use some labeled data with more unlabeled data
-- [Self-Supervised Learning](https://www.geeksforgeeks.org/machine-learning/self-supervised-learning-ssl/) - Generates its own labels from unlabeled data
+
+## Categories
+- **Supervised Learning** - Use labeled data
+    - **Classification** - Predict *categorical* (discrete) values
+    - **Regression** - Predict continuous numerical values
+    - **Multipurpose** - Some models can perform *Classification* and *Regression*
+    - **Ensemble Learning** - Combine multiple *Classification*/*Regression* models into one better model
+- **Unsupervised Learning** - Use unlabeled data
+    - **Clustering** - Group data into clusters based on similarity
+    - **Dimensionality Reduction** - Simplify datasets by reducing features while keeping important information (often used to select features for other models)
+    - **Association Rule Mining** - Discover rules where the presence of one item in a dataset indicates the probability of the presence of another
+- **Reinforcement Learning** - Learn from rewards by interacting with environment via trial and error
+- **Forecasting Models** - Use past data to predict future trends (often time series problems)
+- **Semi-Supervised Learning** - Use some labeled data with more unlabeled data
+- **Self-Supervised Learning** - Generates its own labels from unlabeled data
 
 ## Supervised Learning
 [Supervised Learning](https://www.geeksforgeeks.org/machine-learning/supervised-machine-learning/) uses labeled data
 
 ### Classification
-[Classification](https://www.geeksforgeeks.org/machine-learning/getting-started-with-classification/) - Predict *categorical* (discrete) values
+[Classification](https://www.geeksforgeeks.org/machine-learning/getting-started-with-classification/) predict *categorical* (discrete) values
 - Linear Classifiers
     - [Logistic Regression](https://www.geeksforgeeks.org/machine-learning/understanding-logistic-regression/) - Draws a sigmoid curve, predicts 0 or 1 if above or below curve. Despite "Regression" being in the name, it's for Classification
     - [Single-Layer Perceptron](https://www.geeksforgeeks.org/python/single-layer-perceptron-in-tensorflow/) - a single layer with a single neuron? Why?
@@ -28,7 +30,7 @@
     - [Naive Bayes](https://www.geeksforgeeks.org/machine-learning/naive-bayes-classifiers/) ([Gaussian](https://www.geeksforgeeks.org/machine-learning/gaussian-naive-bayes/), [Multinomial](https://www.geeksforgeeks.org/machine-learning/multinomial-naive-bayes/), [Bernoulli](https://www.geeksforgeeks.org/machine-learning/bernoulli-naive-bayes/), [Complement](https://www.geeksforgeeks.org/machine-learning/complement-naive-bayes-cnb-algorithm/)) - predicts the category of a data point with probability
 
 ### Regression
-[Regression](https://www.geeksforgeeks.org/machine-learning/regression-in-machine-learning/) predict continuous numerical values
+[Regression](https://www.geeksforgeeks.org/machine-learning/regression-in-machine-learning/) predicts continuous numerical values
 - [Linear Regression](https://www.geeksforgeeks.org/machine-learning/ml-linear-regression/) - fit a straight line to the data with [Least Squares Method](https://www.geeksforgeeks.org/maths/least-square-method/)
 - [Multiple Linear Regression](https://www.geeksforgeeks.org/machine-learning/ml-multiple-linear-regression-using-python/) - Extends Linear Regression to use multiple input variables
 - [Polynomial Regression](https://www.geeksforgeeks.org/machine-learning/python-implementation-of-polynomial-regression/) - a polynomial curve fit
@@ -57,29 +59,32 @@ These models can be used for both Regression and Classification
 [Unsupervised Learning](https://www.geeksforgeeks.org/machine-learning/unsupervised-learning/) uses unlabeled data
 
 ### Clustering
-[Clustering](https://www.geeksforgeeks.org/machine-learning/clustering-in-machine-learning/) groups data into clusters based on similarity
+[Clustering](https://www.geeksforgeeks.org/machine-learning/clustering-in-machine-learning/) groups data into clusters based on similarity. In **Hard Clustering**, each data point can only belong to one cluster. In **Soft Clustering**, each data point gets a *probability* or *degree* of membership to multiple clusters, allowing them to partially belong to multiple groups.
 
-#### Centroid-Based Methods
-Centroid-Based (Partitioning) Methods organize data around central prototypes (centroids), each cluster represented by the mean or medoid of its members
-- [K-Means Clustering](https://www.geeksforgeeks.org/machine-learning/k-means-clustering-introduction/) ([Elbow Method to find optimal K](https://www.geeksforgeeks.org/machine-learning/elbow-method-for-optimal-value-of-k-in-kmeans/)) ([KMeans++ Clustering](https://www.geeksforgeeks.org/machine-learning/ml-k-means-algorithm/)) ([K-Mode Clustering](https://www.geeksforgeeks.org/machine-learning/k-mode-clustering-in-python/)) - groups data into K clusters based on how close the points are to each other. Iteratively assigns points to the nearest centroid, recalculating centroids after each addition.
+#### Centroid-Based Clustering
+**Centroid-Based (Partitioning) Clustering** organize data around central prototypes (centroids), each cluster represented by the mean or medoid of its members. These techniques require you to specify the number of clusters in advance.
+- [K-Means Clustering](https://www.geeksforgeeks.org/machine-learning/k-means-clustering-introduction/) - groups data into K clusters based on how close the points are to each other. Iteratively assigns points to the nearest centroid, recalculating centroids after each addition. Can use the [Elbow Method](https://www.geeksforgeeks.org/machine-learning/elbow-method-for-optimal-value-of-k-in-kmeans/) to choose a good value for K
+- [KMeans++ Clustering](https://www.geeksforgeeks.org/machine-learning/ml-k-means-algorithm/) - improves K-Means by choosing initial cluster centers intelligently instead of randomly 
 - [K-Medoids Clustering](https://www.geeksforgeeks.org/machine-learning/ml-k-medoids-clustering-with-example/) - similar to K-means, but uses actual data points (medoids) as the centers, making more robust to outliers
 - [FCM (Fuzzy C-Means Clustering)](https://www.geeksforgeeks.org/machine-learning/ml-fuzzy-clustering/) - similar to K-means but uses Fuzzy Clustering, allowing each data point to belong to multiple clusters with varying degrees of membership
+- [K-Mode Clustering](https://www.geeksforgeeks.org/machine-learning/k-mode-clustering-in-python/) - works on categorical data, unlike K-Means which is for numerical data
 
-#### Distribution-Based Methods
-- [GMM (Gaussian Mixture Model)](https://www.geeksforgeeks.org/machine-learning/gaussian-mixture-model/) - fits data as a weighted mixture of Gaussian distributions and assigns data points based on likelihood
-- [Expectation-Maximization Algorithm](https://www.geeksforgeeks.org/machine-learning/ml-expectation-maximization-algorithm/) - good at finding unknown parameters using Expectation Step (calculating expected values of missing/hidden variables) and Maximization Step (maximizing log-likelihood to see how well the model explains the data)
-- [DPMMs (Dirichlet Process Mixture Models)](https://www.geeksforgeeks.org/machine-learning/dirichlet-process-mixture-models-dpmms/) - flexible clustering method that can automatically decide the number of clusters based on the data (you don't have to specify beforehand like K-Means)
+#### Distribution-Based Clustering
+**Distribution-Based Clustering** assumes data belongs from a mixture of probability distributions (such as Gaussian Distributions) and assigns points to clusters based on statistical likelihood.
+- [GMM (Gaussian Mixture Models)](https://www.geeksforgeeks.org/machine-learning/gaussian-mixture-model/) - fits data as a weighted mixture of Gaussian distributions and assigns data points based on likelihood
+- [DPMMs (Dirichlet Process Mixture Models)](https://www.geeksforgeeks.org/machine-learning/dirichlet-process-mixture-models-dpmms/) - extension of **Gaussian Mixture Models** that can automatically decide the number of clusters based on the data
+- [EM (Expectation-Maximization) Algorithm](https://www.geeksforgeeks.org/machine-learning/ml-expectation-maximization-algorithm/) - Estimate unknown parameters using `E-Step` (`Expectation Step`) (calculating expected values of missing/hidden variables) and `M-Step` (`Maximization Step`) (maximizing log-likelihood to see how well the model explains the data)
 
-#### Connectivity-Based Methods
-Connectivity-Based Methods (Hierarchical Clustering) build nested groupings of data by evaluating connections between data points using tree-like structure
+#### Connectivity-Based Clustering
+**Connectivity-Based (Hierarchical) Clustering** build nested groupings of data by evaluating connections between data points using tree-like structure
 - [Hierarchical Clustering](https://www.geeksforgeeks.org/machine-learning/hierarchical-clustering/) - create clusters by building a tree step-by-step, merging or splitting groups 
 - [Agglomerative Clustering](https://www.geeksforgeeks.org/machine-learning/agglomerative-methods-in-machine-learning/) - (Bottom-up) start with each point as a cluster and iteratively merge the closest ones
 - [Divisive Clustering](https://www.geeksforgeeks.org/artificial-intelligence/divisive-clustering/) - (Top-down) starts with one cluster and splits iteratively into smaller clusters
 - [Spectral Clustering](https://www.geeksforgeeks.org/machine-learning/ml-spectral-clustering/) - groups data by analyzing connections between points using graphs
 - [AP (Affinity Propagation)](https://www.geeksforgeeks.org/machine-learning/affinity-propagation-in-ml-to-find-the-number-of-clusters/) - identify data clusters by sending messages between data points, calculates optimal number of clusters automatically
 
-#### Density-Based Methods
-Density-Based (Model-Based) Methods define clusters as contiguous regions of high data density separated by areas of lower density
+#### Density-Based Clustering
+**Density-Based Clustering** (**Model-Based Methods**) define clusters as contiguous regions of high data density separated by areas of lower density
 - [Mean-Shift Clustering](https://www.geeksforgeeks.org/machine-learning/ml-mean-shift-clustering/) - discovers clusters by moving points towards crowded areas
 - [DBSCAN (Density-Based Spatial Clustering of Applications with Noise)](https://www.geeksforgeeks.org/machine-learning/dbscan-clustering-in-ml-density-based-clustering/) - Groups points with sufficient neighbors, labels sparse points as noise
 - [OPTICS (Ordering Points To Identify the Clustering Structure)](https://www.geeksforgeeks.org/machine-learning/ml-optics-clustering-explanation/) - extends `DBSCAN` to handle varying densities
@@ -102,38 +107,35 @@ Density-Based (Model-Based) Methods define clusters as contiguous regions of hig
 - [Efficient Tree-based Algorithms](https://www.geeksforgeeks.org/dsa/introduction-to-tree-data-structure/) - Scales to handle large datasets by organizing data in tree structures.
 
 ## Reinforcement Learning
-[Reinforcement Learning](https://www.geeksforgeeks.org/machine-learning/what-is-reinforcement-learning/) learns from rewards by interacting with environment via trial and error
+[Reinforcement Learning](https://www.geeksforgeeks.org/machine-learning/what-is-reinforcement-learning/) learns from rewards by interacting with environment via trial and error. Can use [Bellman's Equation](https://www.geeksforgeeks.org/machine-learning/bellman-equation/) as the Reward Function to calculate the value of a state based on the immediate reward and the value of the following state. The [Value Iteration Algorithm](https://www.geeksforgeeks.org/python/implement-value-iteration-in-python/) uses Bellman Equation to iteratively update value functions until convergence. Policy Iteration alternates between Policy Evaluation (solving the Bellman Expectation Equation) and Policy Improvement (updating policy based on new value function)
 
 ### Model-Based Methods
-Model-Based Methods interact with a simulated environment
-- [MDPs (Markov Decision Processes)](https://www.geeksforgeeks.org/machine-learning/markov-decision-process/)
-- [Bellman Equation](https://www.geeksforgeeks.org/machine-learning/bellman-equation/)
-- [Value Iteration Algorithm](https://www.geeksforgeeks.org/python/implement-value-iteration-in-python/)
-- [Monte Carlo Tree Search](https://www.geeksforgeeks.org/machine-learning/ml-monte-carlo-tree-search-mcts/)
+**Model-Based Methods** interact with a simulated model of the environment, helping the agent plan actions by simulating potential results.
+- [MDPs (Markov Decision Processes)](https://www.geeksforgeeks.org/machine-learning/markov-decision-process/) - describe step-by-step decisions where the results of actions are uncertain.  Evaluates all possible moves?
+- [Monte Carlo Tree Search](https://www.geeksforgeeks.org/machine-learning/ml-monte-carlo-tree-search-mcts/) - designed to solve problems with huge decision spaces, like the board game Go with $10^{170}$ possible board states, by building a search tree iteratively/randomly instead of exploring all possible moves.
 
 ### Model-Free Methods
-Model-Free Methods interact with the real environment
-- [Q-Learning](https://www.geeksforgeeks.org/machine-learning/q-learning-in-python/)
-- Deep Q-Learning
-- [SARSA (State-Action-Reward-State-Action)](https://www.geeksforgeeks.org/machine-learning/sarsa-reinforcement-learning/)
-- [Monte Carlo Methods](https://www.geeksforgeeks.org/python/monte-carlo-integration-in-python/)
-- [Reinforce Algorithm](https://www.geeksforgeeks.org/machine-learning/reinforce-algorithm/)
-- [Actor-Critic Algorithm](https://www.geeksforgeeks.org/machine-learning/actor-critic-algorithm-in-reinforcement-learning/)
-- [A3C (Asynchronous Advantage Actor-Critic)](https://www.geeksforgeeks.org/machine-learning/asynchronous-advantage-actor-critic-a3c-algorithm/)
+**Model-Free Methods** interact with the actual environment, learning directly from experience. `off-policy` algorithms like **Q-Learning** learn from the best possible actions, while `on-policy` algorithms like **SARSA** learn from actual attempted actions.
+- [Q-Learning](https://www.geeksforgeeks.org/machine-learning/q-learning-in-python/) - makes trial-and-error guesses, building and updating a `Q-table` which stores `Q-values` which estimate how good it is to take a specific action in a given state.
+- [Deep Q-Learning](https://www.geeksforgeeks.org/deep-learning/deep-q-learning/) - Regular **Q-Learning** is good for small problems, but struggles on complex ones (like images) since the `Q-table` gets huge and computationally expensive. **Deep Q-Learning** fixes this by using a neural network to estimate the `Q-values` instead of a `Q-table`
+- [SARSA (State-Action-Reward-State-Action)](https://www.geeksforgeeks.org/machine-learning/sarsa-reinforcement-learning/) - helps an agent to learn an optimal policy by exploring the environment, taking actions, receiving feedback, and updating behavior for long-term rewards.
+- [REINFORCE Algorithm](https://www.geeksforgeeks.org/machine-learning/reinforce-algorithm/) - instead of estimating how good each action is, just *tries* actions and adjusts the chances of those actions based on the total reward afterwards
+- [Actor-Critic Algorithm](https://www.geeksforgeeks.org/machine-learning/actor-critic-algorithm-in-reinforcement-learning/) - combines an Actor (which selects actions via a Policy Gradient) and Critic (which evaluates the Actor via a Value Function), both of which learn (like your Loss function is getting smarter alongside your model)
+- [A3C (Asynchronous Advantage Actor-Critic)](https://www.geeksforgeeks.org/machine-learning/asynchronous-advantage-actor-critic-a3c-algorithm/) - uses multiple agents which learn in parallel, each interacting with their own private environments, then contribute their updates to a shared global model.
 
 ## Forecasting Models
-Forecasting Models use past data to predict future trends (often time series problems)
-- [ARIMA (Auto-Regressive Integrated Moving Average)](https://www.geeksforgeeks.org/r-language/model-selection-for-arima/)
-- [SARIMA (Seasonal ARIMA)](https://www.geeksforgeeks.org/machine-learning/sarima-seasonal-autoregressive-integrated-moving-average/)
-- [Exponential Smoothing (Holt-Winters)](https://www.geeksforgeeks.org/artificial-intelligence/exponential-smoothing-for-time-series-forecasting/)
+[Forecasting Models](https://www.geeksforgeeks.org/machine-learning/time-series-analysis-and-forecasting/) use past data to predict future trends, often for . In addition to these forecasting-specific models, many other models can be adapted for use in time series forecasting, such as [RNNs](https://www.geeksforgeeks.org/machine-learning/time-series-forecasting-using-recurrent-neural-networks-rnn-in-tensorflow/) ([Recurrent Neural Networks](https://www.geeksforgeeks.org/machine-learning/introduction-to-recurrent-neural-network/), including [LSTM (Long Short-Term Memory)](https://www.geeksforgeeks.org/deep-learning/multivariate-time-series-forecasting-with-lstms-in-keras/)) , [GRU (Gated Recurrent Unit)](https://www.geeksforgeeks.org/deep-learning/multivariate-time-series-forecasting-with-grus/), and [GPR (Gaussian Process Regression)](https://www.geeksforgeeks.org/machine-learning/gaussian-process-regression-gpr/).
+- [ARIMA (Auto-Regressive Integrated Moving Average)](https://www.geeksforgeeks.org/r-language/model-selection-for-arima/) - Combines `Autoregression` (`AR`), `Differencing` (`I`) and `Moving Averages` (`MA`) to capture patterns to predict future values based on historical data. Not great with seasonal data..
+- [SARIMA (Seasonal ARIMA)](https://www.geeksforgeeks.org/machine-learning/sarima-seasonal-autoregressive-integrated-moving-average/) - extension of **ARIMA** designed for time series data with seasonal patterns.
+- [Exponential Smoothing](https://www.geeksforgeeks.org/artificial-intelligence/exponential-smoothing-for-time-series-forecasting/) - assumes future patterns will be similar to more recent past data, focuses on learning average demand level over time. Simple and accurate for short-term forecasts, not great for long term forecasts. Uses `Simple`, `Double`, or `Holt-Winters` `Exponential Smoothing`.
 
 ## Semi-Supervised Learning
 [Semi-Supervised Learning](https://www.geeksforgeeks.org/machine-learning/ml-semi-supervised-learning/) uses some labeled data with more unlabeled data
-- [Self-Training](https://www.geeksforgeeks.org/machine-learning/self-training-in-semi-supervised-learning/) - The model is first trained on labeled data. It then predicts labels for unlabeled data, adding high-confidence predictions to the labeled set iteratively to refine the model.
-- Co-Training - Two models are trained on different feature subsets of the data. Each model labels unlabeled data for the other, enabling them to learn from complementary views.
-- Multi-View Training - A variation of co-training where models train on different data representations (e.g., images and text) to predict the same output.
-- Graph-Based Models (Label Propagation) - Data is represented as a graph with nodes (data points) and edges (similarities). Labels are propagated from labeled nodes to unlabeled ones based on graph connectivity.
-- GANs (Generative Adversarial Networks)
+- [Self-Training](https://www.geeksforgeeks.org/machine-learning/self-training-in-semi-supervised-learning/) - The model is first trained on labeled data. It then predicts labels for unlabeled data, adding high-confidence predictions to the labeled set iteratively to refine the model. Includes [Pseudo Labelling](https://www.geeksforgeeks.org/machine-learning/pseudo-labelling-semi-supervised-learning/)
+- [Co-Training](https://www.geeksforgeeks.org/machine-learning/what-is-co-training/) - Two or more models are trained on different feature subsets of the data (like one model looks at the body of an email, another looks at the subject and sender, etc). Each model labels unlabeled data for the other, enabling them to learn from complementary views.
+- [Multi-View Training](https://jmlr.org/papers/v21/18-794.html) - A variation of co-training where models train on different data representations (e.g., images and text) to predict the same output.
+- [Graph-Based Models (Label Propagation)](https://www.geeksforgeeks.org/machine-learning/ml-semi-supervised-learning/) - Data is represented as a graph with nodes (data points) and edges (similarities). Labels are propagated from labeled nodes to unlabeled ones based on graph connectivity.
+- [GAN (Generative Adversarial Network)](https://www.geeksforgeeks.org/deep-learning/generative-adversarial-network-gan/) ([PyTorch Example](https://www.geeksforgeeks.org/deep-learning/generative-adversarial-networks-gans-in-pytorch/)) - create new, realistic data by learning from existing examples (creates good synthetic data)
 - [Few-Shot Learning](https://www.geeksforgeeks.org/machine-learning/few-shot-learning-in-machine-learning/) - a [meta-learning](https://www.geeksforgeeks.org/machine-learning/meta-learning-in-machine-learning/) process where you train the model to learn quickly from new and unseen data, so you don't have to train it with a bunch of data initially. So I guess it does some quick additional learning when you "inference" it later?
 
 ## Self-Supervised Learning
