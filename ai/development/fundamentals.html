@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Metrics &#8212; aiml-notes 1.0 documentation</title>
+    <title>Fundamentals &#8212; aiml-notes 1.0 documentation</title>
   
   
   
@@ -42,14 +42,12 @@
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'ai/development/metrics';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ai/development/fundamentals';</script>
     <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Kaggle NLP Absolute Beginners" href="../kaggle/nlp_beginners_guide.html" />
-    <link rel="prev" title="Fundamentals" href="fundamentals.html" />
+    <link rel="next" title="Metrics" href="metrics.html" />
+    <link rel="prev" title="ML Development" href="developing.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -166,8 +164,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../categories/ml.html">Machine Learning (ML)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../categories/nlp.html">Natural Language Processing (NLP)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="developing.html">ML Development</a></li>
-<li class="toctree-l1"><a class="reference internal" href="fundamentals.html">Fundamentals</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Metrics</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Fundamentals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metrics.html">Metrics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../kaggle/nlp_beginners_guide.html">Kaggle NLP Absolute Beginners</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">DataCamp:</span></p>
@@ -255,7 +253,7 @@
       
       
       
-      <li><a href="../../_sources/ai/development/metrics.md" target="_blank"
+      <li><a href="../../_sources/ai/development/fundamentals.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -339,7 +337,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Metrics</h1>
+    <h1>Fundamentals</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -349,9 +347,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basics">Basics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geeksforgeeks-links">GeeksForGeeks Links</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goodness-of-fit-metrics">Goodness of Fit metrics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#error">Error</a></li>
 </ul>
             </nav>
         </div>
@@ -363,108 +359,24 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="metrics">
-<h1>Metrics<a class="headerlink" href="#metrics" title="Link to this heading">#</a></h1>
-<p>There are a lot of goodness of fit metrics and ways to characterize loss.</p>
-<section id="basics">
-<h2>Basics<a class="headerlink" href="#basics" title="Link to this heading">#</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="fundamentals">
+<h1>Fundamentals<a class="headerlink" href="#fundamentals" title="Link to this heading">#</a></h1>
+<p>Fundamental concepts important to Machine learning</p>
+<section id="error">
+<h2>Error<a class="headerlink" href="#error" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p>A model fits the data well when the differences between the <strong>observed values</strong> and <strong>predicted values</strong> are <strong>small</strong> and <strong>unbiased</strong></p></li>
-<li><p>the differences between the <code class="docutils literal notranslate"><span class="pre">observed</span> <span class="pre">values</span></code> and <code class="docutils literal notranslate"><span class="pre">predicted</span> <span class="pre">values</span></code> are called <code class="docutils literal notranslate"><span class="pre">residuals</span></code></p></li>
-<li><p>as the <code class="docutils literal notranslate"><span class="pre">goodness</span> <span class="pre">of</span> <span class="pre">fit</span></code> increases, the model is better fitted to the data</p></li>
-</ul>
-</section>
-<section id="geeksforgeeks-links">
-<h2>GeeksForGeeks Links<a class="headerlink" href="#geeksforgeeks-links" title="Link to this heading">#</a></h2>
-<p>Found these links, need to incorporate them better later
-<a class="reference external" href="https://www.geeksforgeeks.org/python/how-to-calculate-mean-absolute-error-in-python/">Mean Absolute Error (MAE)</a>: The average absolute difference between the predicted and actual values of the target variable.
-<a class="reference external" href="https://www.geeksforgeeks.org/python/python-mean-squared-error/">Mean Squared Error (MSE)</a>: The average squared difference between the predicted and actual values of the target variable.
-<a class="reference external" href="https://www.geeksforgeeks.org/software-engineering/rmse-root-mean-square-error-in-matlab/">Root Mean Squared Error (RMSE)</a>: Square root of the mean squared error.
-<a class="reference external" href="https://www.geeksforgeeks.org/machine-learning/sklearn-different-loss-functions-in-sgd/">Huber Loss</a>: A hybrid loss function that transitions from MAE to MSE for larger errors, providing balance between robustness and MSE’s sensitivity to outliers.
-<a class="reference external" href="https://www.geeksforgeeks.org/machine-learning/python-coefficient-of-determination-r2-score/">R2 – Score</a>: Higher values indicate better fit ranging from 0 to 1.</p>
-</section>
-<section id="goodness-of-fit-metrics">
-<h2>Goodness of Fit metrics<a class="headerlink" href="#goodness-of-fit-metrics" title="Link to this heading">#</a></h2>
+<li><p><strong>Total Prediction Error</strong>/<strong>Expected Generalization Error</strong> - error when applying a trained model to predict on unseen data. Can be broken down into 3 main components.</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">Nomenclature</span></code></p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(y\)</span> = observed values</p></li>
-<li><p><span class="math notranslate nohighlight">\(y_i\)</span> = observed value <span class="math notranslate nohighlight">\(i\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\hat y_i\)</span> = predicted value <span class="math notranslate nohighlight">\(i\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\bar y_i\)</span> = average of the observed values <span class="math notranslate nohighlight">\(i\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(RSS\)</span> = <strong>Residual Sum of Squares</strong> = <span class="math notranslate nohighlight">\(\sum_{i=1}^n(y_i-\hat y_i)^2\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(TSS\)</span> = <strong>Total Sum of Squares</strong> = <span class="math notranslate nohighlight">\(\sum_{i=1}^n(y_i-\bar y_i)^2\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(DOF_{res}\)</span> = Degrees of Freedom of population variance around mean</p></li>
-<li><p><span class="math notranslate nohighlight">\(DOF_{tot}\)</span> = Degrees of Freedom of population variance around model</p></li>
-<li><p><span class="math notranslate nohighlight">\(n\)</span> = sample size</p></li>
-<li><p><span class="math notranslate nohighlight">\(p\)</span> = total number of explanatory variables (inputs)</p></li>
+<li><p><strong>Bias Error</strong> - error from erroneous assumptions in the algorithm (leads to <a class="reference external" href="https://en.wikipedia.org/wiki/Overfitting#Underfitting">underfitting</a>).</p></li>
+<li><p><strong>Variance Error</strong> - error from sensitivity to small fluctuations in training set (leads to <a class="reference external" href="https://en.wikipedia.org/wiki/Overfitting">overfitting</a>). Fit the model too much and you’ll end up fitting to the noise too.</p></li>
+<li><p><strong>Irreducible Error</strong> - error inherent in any dataset or process that cannot be reduced regardless of model complexity or amount of data. This is the lower bound on total prediction error.</p></li>
 </ul>
 </li>
-<li><p><code class="docutils literal notranslate"><span class="pre">R-squared</span></code> (also known as <strong>Coefficient of Determination</strong>) is the ratio of the variance that’s explained by the model to the variance that’s explained by a simple mean. It’s usually <span class="math notranslate nohighlight">\(0-1\)</span>, though it <em>can</em> be negative if the model is <em>worse</em> at explaining variance than just guessing the mean regardless of inputs. <span class="math notranslate nohighlight">\(R^2\)</span> always increases as more independent variables are added, whether or not those variables are useful predictors <a class="reference internal" href="../../_images/r_squared_visualization.png"><img alt="Pic" src="../../_images/r_squared_visualization.png" style="width: 400px;" /></a></p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\Large R^2=1-\frac{RSS}{TSS}=1-\frac{\sum_{i=1}^n(y_i-\hat y_i)^2}{\sum_{i=1}^n(y_i-\bar y_i)^2}\)</span></p></li>
-</ul>
-</li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Adjusted</span> <span class="pre">R-squared</span></code> is a modification of R-squared that penalizes the inclusion of variables that don’t actually contribute to prediction</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\Large \bar R^2=1-\frac{RSS/DOF_{res}}{TSS/DOF_{tot}}=1-(1-R^2)\frac{n-1}{n-p-1}\)</span></p></li>
-</ul>
-</li>
-<li><p><code class="docutils literal notranslate"><span class="pre">MAE</span></code> = <strong>Mean Absolute Error</strong> - same scale as target variable, robust to outliers, difficult to take derivatives of due to absolute value</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(MAE = \frac{1}{n} \sum_{i=1}^n|y_i-\hat{y}_i|\)</span></p></li>
-</ul>
-</li>
-<li><p><code class="docutils literal notranslate"><span class="pre">NMAE</span></code> = <strong>Normalized Mean Absolute Error</strong> - normalizes the absolute error by the range of actual values, making it a relative relative metric</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\Large NMAE = \frac{\frac{1}{n}\sum_{i=1}^n{|\hat{y}_i-y_i|}}{\frac{1}{n}\sum_{i=1}^n{|y_i|}} = \frac{MAE(y,\hat{y})}{mean(|y|)}\)</span></p></li>
-</ul>
-</li>
-<li><p><code class="docutils literal notranslate"><span class="pre">MSE</span></code> = <strong>Mean Squared Error</strong> - vulnerable to outliers because the error is squared</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(MSE =\frac{1}{n}\sum_{i=1}^n (\hat{y}_i - y_i)^2\)</span></p></li>
-</ul>
-</li>
-<li><p><code class="docutils literal notranslate"><span class="pre">RMSE</span></code> = <strong>Root Mean Squared Error</strong> - same training results as using <span class="math notranslate nohighlight">\(MSE\)</span>, still vulnerable to outliers, compare with <span class="math notranslate nohighlight">\(MAE\)</span> to see prevalence of outliers</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(RMSE = \sqrt{\frac{1}{n}\sum_{i=1}^n (\hat{y}_i - y_i)^2}\)</span></p></li>
-</ul>
-</li>
-<li><p><code class="docutils literal notranslate"><span class="pre">RMSLE</span></code> = <strong>Root Mean Squared Log Error</strong> - logs make it relative metric (ignore scale of data), less vulnerable to outliers than <span class="math notranslate nohighlight">\(RMSE\)</span>, asymmetric (larger penalty if <span class="math notranslate nohighlight">\(\hat{y}_i &lt; y_i\)</span> than if <span class="math notranslate nohighlight">\(\hat{y}_i &gt; y_i\)</span>)</p>
+<li><p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Bias%E2%80%93variance_tradeoff">Bias-Variance Tradeoff</a> is an inescapable tradeoff for supervised learning.</p>
 <ul>
-<li><p><span class="math notranslate nohighlight">\(RMSLE = \sqrt{\frac{1}{n}\sum_{i=1}^n (\ln{(\hat{y}_i+1)} - \ln{(y_i+1)})^2} =\sqrt{\frac{1}{n}\sum_{i=1}^n (\ln{\frac{\hat{y}_i+1}{y_i+1}})^2}\)</span></p></li>
-<li><a class="reference internal image-reference" href="../../_images/rmse_vs_rmsle.png"><img alt="RMSE vs RMSLE" src="../../_images/rmse_vs_rmsle.png" style="width: 350px;" />
-</a>
-</li>
-</ul>
-</li>
-<li><p><code class="docutils literal notranslate"><span class="pre">MAPE</span></code> = <strong>Mean Absolute Percentage Error</strong> (AVOID LIKE THE PLAGUE) fails if any <span class="math notranslate nohighlight">\(y_i=0\)</span>, higher penalty for small <span class="math notranslate nohighlight">\(y_i\)</span>, higher penalty for <span class="math notranslate nohighlight">\(\hat{y}_i &gt; y_i\)</span> than <span class="math notranslate nohighlight">\(\hat{y}_i &lt; y_i\)</span></p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(MAPE = \frac{1}{n}\sum_{i=1}^{n}{|\frac{y_i-\hat{y}_i}{y_i}|}*100\)</span></p></li>
-</ul>
-</li>
-<li><p><code class="docutils literal notranslate"><span class="pre">SMAPE</span></code> = <strong>Symmetric Mean Absolute Percentage Error</strong> (AVOID) improves <em>somewhat</em> on <code class="docutils literal notranslate"><span class="pre">MAPE</span></code> but still controversial, not symmetric, and the equation itself varies by source</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(SMAPE = \frac{1}{n}\sum_{i=1}^{n}{\frac{|y_i-\hat{y}_i|}{y_i+\hat{y}_i}}\)</span></p></li>
-</ul>
-</li>
-<li><p><span class="math notranslate nohighlight">\(BIC\)</span> = <a class="reference external" href="https://www.geeksforgeeks.org/machine-learning/bayesian-information-criterion-bic/">Bayesian Information Criterion</a> evaluates goodness of fit <span class="math notranslate nohighlight">\(-2\ln(L)\)</span> while penalizing complexity to avoid overfitting <span class="math notranslate nohighlight">\(k\ln(n)\)</span></p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(BIC = -2\ln(L) + k\ln(n)\)</span></p>
-<ul>
-<li><p><span class="math notranslate nohighlight">\(L\)</span> = likelihood of the model given the data</p></li>
-<li><p><span class="math notranslate nohighlight">\(k\)</span> = number of parameters in the model</p></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><span class="math notranslate nohighlight">\(AIC\)</span> = <a class="reference external" href="https://en.wikipedia.org/wiki/Akaike_information_criterion">Akaike Information Criterion</a></p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(AIC = 2k - 2 \ln(\hat L)\)</span></p>
-<ul>
-<li><p><span class="math notranslate nohighlight">\(\hat L\)</span> = maximized value of the <a class="reference external" href="https://en.wikipedia.org/wiki/Likelihood_function">likelihood function</a> for the model</p></li>
-</ul>
-</li>
+<li><p>you want your model to capture regularities in the training data and also generalize well to unseen data.</p></li>
+<li><p><strong>High-Bias</strong> Models are simpler, can’t capture as much detail, so they won’t fit to noise, but they may miss patterns in the training data, resulting in underfitting.</p></li>
+<li><p><strong>High-Variance</strong> Models can represent the training data set well but risk overfitting to noise or training data that isn’t representative of the larger population.</p></li>
 </ul>
 </li>
 </ul>
@@ -483,20 +395,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="fundamentals.html"
+       href="developing.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Fundamentals</p>
+        <p class="prev-next-title">ML Development</p>
       </div>
     </a>
     <a class="right-next"
-       href="../kaggle/nlp_beginners_guide.html"
+       href="metrics.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Kaggle NLP Absolute Beginners</p>
+        <p class="prev-next-title">Metrics</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -516,9 +428,7 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basics">Basics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geeksforgeeks-links">GeeksForGeeks Links</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goodness-of-fit-metrics">Goodness of Fit metrics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#error">Error</a></li>
 </ul>
   </nav></div>
 

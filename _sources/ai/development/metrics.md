@@ -26,7 +26,7 @@ Found these links, need to incorporate them better later
   - $DOF_{tot}$ = Degrees of Freedom of population variance around model
   - $n$ = sample size
   - $p$ = total number of explanatory variables (inputs)
-- `R-squared` (also known as **Coefficient of Determination**) is the ratio of the variance that's explained by the model to the variance that's explained by a simple mean. It's usually $0-1$, though it *can* be negative if the model is *worse* at explaining variance than just guessing the mean regardless of inputs. $R^2$ always increases as more independent variables are added, whether or not those variables are useful predictors <img src="../images/r_squared_visualization.png" alt="Pic" width="400" />
+- `R-squared` (also known as **Coefficient of Determination**) is the ratio of the variance that's explained by the model to the variance that's explained by a simple mean. It's usually $0-1$, though it *can* be negative if the model is *worse* at explaining variance than just guessing the mean regardless of inputs. $R^2$ always increases as more independent variables are added, whether or not those variables are useful predictors <img src="../../images/r_squared_visualization.png" alt="Pic" width="400" />
   - $\Large R^2=1-\frac{RSS}{TSS}=1-\frac{\sum_{i=1}^n(y_i-\hat y_i)^2}{\sum_{i=1}^n(y_i-\bar y_i)^2}$
 - `Adjusted R-squared` is a modification of R-squared that penalizes the inclusion of variables that don't actually contribute to prediction
   - $\Large \bar R^2=1-\frac{RSS/DOF_{res}}{TSS/DOF_{tot}}=1-(1-R^2)\frac{n-1}{n-p-1}$
@@ -40,7 +40,7 @@ Found these links, need to incorporate them better later
   - $RMSE = \sqrt{\frac{1}{n}\sum_{i=1}^n (\hat{y}_i - y_i)^2}$
 - `RMSLE` = **Root Mean Squared Log Error** - logs make it relative metric (ignore scale of data), less vulnerable to outliers than $RMSE$, asymmetric (larger penalty if $\hat{y}_i < y_i$ than if $\hat{y}_i > y_i$)
   - $RMSLE = \sqrt{\frac{1}{n}\sum_{i=1}^n (\ln{(\hat{y}_i+1)} - \ln{(y_i+1)})^2} =\sqrt{\frac{1}{n}\sum_{i=1}^n (\ln{\frac{\hat{y}_i+1}{y_i+1}})^2}$
-  - <img src="../images/rmse_vs_rmsle.png" alt="RMSE vs RMSLE" width="350" />
+  - <img src="../../images/rmse_vs_rmsle.png" alt="RMSE vs RMSLE" width="350" />
 - `MAPE` = **Mean Absolute Percentage Error** (AVOID LIKE THE PLAGUE) fails if any $y_i=0$, higher penalty for small $y_i$, higher penalty for $\hat{y}_i > y_i$ than $\hat{y}_i < y_i$
   - $MAPE = \frac{1}{n}\sum_{i=1}^{n}{|\frac{y_i-\hat{y}_i}{y_i}|}*100$
 - `SMAPE` = **Symmetric Mean Absolute Percentage Error** (AVOID) improves *somewhat* on `MAPE` but still controversial, not symmetric, and the equation itself varies by source

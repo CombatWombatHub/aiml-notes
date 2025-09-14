@@ -46,7 +46,7 @@
     <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Metrics" href="metrics.html" />
+    <link rel="next" title="Fundamentals" href="fundamentals.html" />
     <link rel="prev" title="Natural Language Processing (NLP)" href="../categories/nlp.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -164,11 +164,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../categories/ml.html">Machine Learning (ML)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../categories/nlp.html">Natural Language Processing (NLP)</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">ML Development</a></li>
-
-
-
-
+<li class="toctree-l1"><a class="reference internal" href="fundamentals.html">Fundamentals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="metrics.html">Metrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../kaggle/nlp_beginners_guide.html">Kaggle NLP Absolute Beginners</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">DataCamp:</span></p>
 <ul class="nav bd-sidenav">
@@ -349,13 +347,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">ML Development</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-preprocessing">Data Preprocessing</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exploratory-data-analysis">Exploratory Data Analysis</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#model-evaluation-and-tuning">Model Evaluation and Tuning</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#deploying">Deploying</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-preprocessing">Data Preprocessing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploratory-data-analysis">Exploratory Data Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-evaluation-and-tuning">Model Evaluation and Tuning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deploying">Deploying</a></li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -366,27 +362,27 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="ml-development">
+  <section class="tex2jax_ignore mathjax_ignore" id="ml-development">
 <h1>ML Development<a class="headerlink" href="#ml-development" title="Link to this heading">#</a></h1>
 <p><strong>ML Development Pipeline</strong> In addition to training, the process of developing a new ML Model to solve a problem has a lot of steps if you want to do it right.
 See GeeksForGeeks <a class="reference external" href="https://www.geeksforgeeks.org/machine-learning/machine-learning/">Machine Learning Tutorial</a> for links to how-tos on each step.</p>
-</section>
 <section id="data-preprocessing">
-<h1>Data Preprocessing<a class="headerlink" href="#data-preprocessing" title="Link to this heading">#</a></h1>
+<h2>Data Preprocessing<a class="headerlink" href="#data-preprocessing" title="Link to this heading">#</a></h2>
 <p>Getting and cleaning the data, figuring out which features to use, potentially combine them to reduce the number of features while retaining the important information.
 Includes scaling and transforming.</p>
 </section>
 <section id="exploratory-data-analysis">
-<h1>Exploratory Data Analysis<a class="headerlink" href="#exploratory-data-analysis" title="Link to this heading">#</a></h1>
+<h2>Exploratory Data Analysis<a class="headerlink" href="#exploratory-data-analysis" title="Link to this heading">#</a></h2>
 <p>This seems like it should have a lot of overlap with the preprocessing step since it’s about looking at features individually or looking at relationships between multiple features. Seems related to feature engineering and feature extraction, but</p>
 </section>
 <section id="model-evaluation-and-tuning">
-<h1>Model Evaluation and Tuning<a class="headerlink" href="#model-evaluation-and-tuning" title="Link to this heading">#</a></h1>
+<h2>Model Evaluation and Tuning<a class="headerlink" href="#model-evaluation-and-tuning" title="Link to this heading">#</a></h2>
 <p>Look at how well the model performed, tune its parameters improve its performance.</p>
 </section>
 <section id="deploying">
-<h1>Deploying<a class="headerlink" href="#deploying" title="Link to this heading">#</a></h1>
+<h2>Deploying<a class="headerlink" href="#deploying" title="Link to this heading">#</a></h2>
 <p>Once a <a class="reference external" href="https://www.geeksforgeeks.org/machine-learning/machine-learning/">Machine Learning</a> model is trained with satisfactory performance, it needs to be <a class="reference external" href="https://www.geeksforgeeks.org/machine-learning/machine-learning-deployment/">deployed</a> somewhere to be useful. You might <a class="reference external" href="https://www.geeksforgeeks.org/machine-learning/deploy-a-machine-learning-model-using-streamlit-library/">deploy it with a Streamlit App</a> or set up an API with <a class="reference external" href="https://www.geeksforgeeks.org/machine-learning/deploy-machine-learning-model-using-flask/">Flask</a> or <a class="reference external" href="https://www.geeksforgeeks.org/machine-learning/deploying-ml-models-as-api-using-fastapi/">FastAPI</a> so other applications can access it.</p>
+</section>
 </section>
 
 
@@ -410,11 +406,11 @@ Includes scaling and transforming.</p>
       </div>
     </a>
     <a class="right-next"
-       href="metrics.html"
+       href="fundamentals.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Metrics</p>
+        <p class="prev-next-title">Fundamentals</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -434,13 +430,11 @@ Includes scaling and transforming.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">ML Development</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-preprocessing">Data Preprocessing</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exploratory-data-analysis">Exploratory Data Analysis</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#model-evaluation-and-tuning">Model Evaluation and Tuning</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#deploying">Deploying</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-preprocessing">Data Preprocessing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploratory-data-analysis">Exploratory Data Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-evaluation-and-tuning">Model Evaluation and Tuning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deploying">Deploying</a></li>
 </ul>
-
   </nav></div>
 
 </div></div>

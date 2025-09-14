@@ -165,11 +165,9 @@
 <li class="toctree-l1"><a class="reference internal" href="ai/categories/ml.html">Machine Learning (ML)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ai/categories/nlp.html">Natural Language Processing (NLP)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ai/development/developing.html">ML Development</a></li>
-
-
-
-
+<li class="toctree-l1"><a class="reference internal" href="ai/development/fundamentals.html">Fundamentals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ai/development/metrics.html">Metrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ai/kaggle/nlp_beginners_guide.html">Kaggle NLP Absolute Beginners</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">DataCamp:</span></p>
 <ul class="nav bd-sidenav">
@@ -371,16 +369,21 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="ai/categories/ml.html#supervised-learning">Supervised Learning</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="ai/categories/ml.html#classification">Classification</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ai/categories/ml.html#regression">Regression</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ai/categories/ml.html#multipurpose">Multipurpose</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ai/categories/ml.html#ensemble-learning">Ensemble Learning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ai/categories/ml.html#classification-regression">Classification|Regression</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ai/categories/ml.html#ensemble-learning">Ensemble Learning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ai/categories/ml.html#bagging">Bagging</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ai/categories/ml.html#boosting">Boosting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ai/categories/ml.html#stacking">Stacking</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="ai/categories/ml.html#unsupervised-learning">Unsupervised Learning</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="ai/categories/ml.html#clustering">Clustering</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="ai/categories/ml.html#centroid-based-clustering">Centroid-Based Clustering</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ai/categories/ml.html#distribution-based-clustering">Distribution-Based Clustering</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ai/categories/ml.html#connectivity-based-clustering">Connectivity-Based Clustering</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ai/categories/ml.html#density-based-clustering">Density-Based Clustering</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ai/categories/ml.html#centroid-based">Centroid-Based</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ai/categories/ml.html#distribution-based">Distribution-Based</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ai/categories/ml.html#connectivity-based">Connectivity-Based</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ai/categories/ml.html#density-based">Density-Based</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="ai/categories/ml.html#dimensionality-reduction">Dimensionality Reduction</a></li>
@@ -388,8 +391,8 @@ document.write(`
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="ai/categories/ml.html#reinforcement-learning">Reinforcement Learning</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="ai/categories/ml.html#model-based-methods">Model-Based Methods</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ai/categories/ml.html#model-free-methods">Model-Free Methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ai/categories/ml.html#model-based">Model-Based</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ai/categories/ml.html#model-free">Model-Free</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="ai/categories/ml.html#forecasting-models">Forecasting Models</a></li>
@@ -397,18 +400,28 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="ai/categories/ml.html#self-supervised-learning">Self-Supervised Learning</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="ai/categories/nlp.html">Natural Language Processing (NLP)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ai/development/developing.html">ML Development</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ai/development/developing.html#data-preprocessing">Data Preprocessing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ai/development/developing.html#exploratory-data-analysis">Exploratory Data Analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ai/development/developing.html#model-evaluation-and-tuning">Model Evaluation and Tuning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ai/development/developing.html#deploying">Deploying</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ai/categories/nlp.html">Natural Language Processing (NLP)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ai/categories/nlp.html#maintenance-records-classification-task">Maintenance Records Classification Task</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ai/development/developing.html">ML Development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ai/development/developing.html#data-preprocessing">Data Preprocessing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ai/development/developing.html#exploratory-data-analysis">Exploratory Data Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ai/development/developing.html#model-evaluation-and-tuning">Model Evaluation and Tuning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ai/development/developing.html#deploying">Deploying</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ai/development/fundamentals.html">Fundamentals</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ai/development/fundamentals.html#error">Error</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="ai/development/metrics.html">Metrics</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="ai/development/metrics.html#basics">Basics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ai/development/metrics.html#geeksforgeeks-links">GeeksForGeeks Links</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ai/development/metrics.html#goodness-of-fit-metrics">Goodness of Fit metrics</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="ai/kaggle/nlp_beginners_guide.html">Kaggle NLP Absolute Beginners</a></li>
 </ul>
 </div>
 <div class="toctree-wrapper compound">
