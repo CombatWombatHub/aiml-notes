@@ -1,5 +1,5 @@
 def main():
-    print("Hello from general-machine-learning!")
+    print("Hello from aiml-notes!")
 
 
 if __name__ == "__main__":

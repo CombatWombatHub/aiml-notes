@@ -6,7 +6,7 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = "general-machine-learning"
+project = "aiml-notes"
 copyright = "%Y"
 author = "Matthew T Gill"
 release = "1.0"
@@ -37,7 +37,7 @@ html_favicon = "_static/favicon.ico"  # image to use for the browser tab
 html_css_files = ['custom.css'] # custom CSS files (paths relative to html_static_path)
 html_theme_options = {
     "show_toc_level": 4, # show up to heading level 5 in the right "Contents" sidebar
-    "repository_url": "https://github.com/CombatWombatHub/general-machine-learning", # replace with your repository URL
+    "repository_url": "https://github.com/CombatWombatHub/aiml-notes", # replace with your repository URL
     "use_repository_button": True, # create a link to the repository on the page
 }
 

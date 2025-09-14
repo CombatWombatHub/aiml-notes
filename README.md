@@ -1,4 +1,4 @@
-# general-machine-learning
+# aiml-notes
 
 Notes and practice with a general variety of machine learning concepts and algorithms. For easy access from any location, they are converted to a GitHub Pages site with Sphinx at https://combatwombathub.github.io/aiml-notes/.
 

@@ -1,4 +1,4 @@
-.. general-machine-learning documentation master file, created by
+.. aiml-notes documentation master file, created by
    sphinx-quickstart on Sun Jul 27 20:06:08 2025.
 
 AI/ML NOTES
