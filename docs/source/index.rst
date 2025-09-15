@@ -13,16 +13,10 @@ All of my AI/ML Notes from https://github.com/CombatWombatHub/aiml-notes convert
    ai/**
 
 .. toctree::
-   :caption: DataCamp:
+   :caption: Portfolio:
    :glob:
 
-   datacamp/**
-
-.. toctree::
-   :caption: ML Mastery:
-   :glob:
-
-   machine_learning_mastery/**
+   portfolio/**
 
 .. toctree::
    :maxdepth: 2
