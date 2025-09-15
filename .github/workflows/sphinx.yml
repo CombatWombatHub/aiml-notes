@@ -45,14 +45,12 @@ jobs:
     # have UV install the required Python packages (Writes to venv without UV_SYSTEM_PYTHON, UV_PROJECT_ENVIRONMENT)
     - name: Sync UV Python Packages
       run: uv sync --locked --group docs
-    # (Deprecated by the switch to myst_nb, which does not require pandoc) install pandoc to make docs from Jupyter notebooks https://github.com/pandoc/pandoc-action-example
-    #- name: Install Pandoc
-    #  uses: pandoc/actions/setup@v1
-    #  with:
-    #    version: 2.19
     # have UV build Sphinx HTML docs https://www.sphinx-doc.org/en/master/tutorial/deploying.html#id5
     - name: Build HTML Docs
       run: uv run sphinx-build -b html docs/source docs/build/html
+      env: # can set environment variables for just this step here
+        KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }} # get the GitHub Secret to use in environment variable
+        KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }} # pass the Kaggle API username and key so notebooks can download datasets
     # upload the HTML artifacts for the deployment step to use
     - name: Upload HTML Artifacts
       uses: actions/upload-artifact@v4
