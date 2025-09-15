@@ -1,0 +1,78 @@
+Traceback (most recent call last):
+  File "/home/runner/work/aiml-notes/aiml-notes/.venv/lib/python3.13/site-packages/jupyter_core/utils/__init__.py", line 154, in wrapped
+    asyncio.get_running_loop()
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^
+RuntimeError: no running event loop
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/runner/work/aiml-notes/aiml-notes/.venv/lib/python3.13/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+    ~~~~~~~~~^
+        nb,
+        ^^^
+    ...<4 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "/home/runner/work/aiml-notes/aiml-notes/.venv/lib/python3.13/site-packages/nbclient/client.py", line 1319, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/runner/work/aiml-notes/aiml-notes/.venv/lib/python3.13/site-packages/jupyter_core/utils/__init__.py", line 158, in wrapped
+    return loop.run_until_complete(inner)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.13.7/x64/lib/python3.13/asyncio/base_events.py", line 725, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "/home/runner/work/aiml-notes/aiml-notes/.venv/lib/python3.13/site-packages/nbclient/client.py", line 709, in async_execute
+    await self.async_execute_cell(
+        cell, index, execution_count=self.code_cells_executed + 1
+    )
+  File "/home/runner/work/aiml-notes/aiml-notes/.venv/lib/python3.13/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/runner/work/aiml-notes/aiml-notes/.venv/lib/python3.13/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# download and unzip the dataset to this folder if not already downloaded
+data_dir = Path("us-patent-phrase-to-phrase-matching")
+if not data_dir.exists():
+    import kaggle
+    import zipfile
+    kaggle.api.competition_download_cli(str(data_dir))  # download the dataset from Kaggle as zip file
+    zip_path = data_dir.with_suffix(".zip")  # path to the downloaded zip file
+    zipfile.ZipFile(zip_path).extractall(data_dir)  # unzip the file
+    zip_path.unlink()  # delete the zip file after unzipping
+
+------------------
+
+
+[31m---------------------------------------------------------------------------[39m
+[31mOSError[39m                                   Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[2][39m[32m, line 4[39m
+[32m      2[39m data_dir = Path([33m"[39m[33mus-patent-phrase-to-phrase-matching[39m[33m"[39m)
+[32m      3[39m [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m data_dir.exists():
+[32m----> [39m[32m4[39m     [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mkaggle[39;00m
+[32m      5[39m     [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mzipfile[39;00m
+[32m      6[39m     kaggle.api.competition_download_cli([38;5;28mstr[39m(data_dir))  [38;5;66;03m# download the dataset from Kaggle as zip file[39;00m
+
+[36mFile [39m[32m~/work/aiml-notes/aiml-notes/.venv/lib/python3.13/site-packages/kaggle/__init__.py:6[39m
+[32m      3[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01mkaggle[39;00m[34;01m.[39;00m[34;01mapi[39;00m[34;01m.[39;00m[34;01mkaggle_api_extended[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m KaggleApi
+[32m      5[39m api = KaggleApi()
+[32m----> [39m[32m6[39m [43mapi[49m[43m.[49m[43mauthenticate[49m[43m([49m[43m)[49m
+
+[36mFile [39m[32m~/work/aiml-notes/aiml-notes/.venv/lib/python3.13/site-packages/kaggle/api/kaggle_api_extended.py:434[39m, in [36mKaggleApi.authenticate[39m[34m(self)[39m
+[32m    432[39m     [38;5;28;01mreturn[39;00m
+[32m    433[39m   [38;5;28;01melse[39;00m:
+[32m--> [39m[32m434[39m     [38;5;28;01mraise[39;00m [38;5;167;01mIOError[39;00m([33m'[39m[33mCould not find [39m[38;5;132;01m{}[39;00m[33m. Make sure it[39m[38;5;130;01m\'[39;00m[33ms located in[39m[33m'[39m
+[32m    435[39m                   [33m'[39m[33m [39m[38;5;132;01m{}[39;00m[33m. Or use the environment method. See setup[39m[33m'[39m
+[32m    436[39m                   [33m'[39m[33m instructions at[39m[33m'[39m
+[32m    437[39m                   [33m'[39m[33m https://github.com/Kaggle/kaggle-api/[39m[33m'[39m.format(
+[32m    438[39m                       [38;5;28mself[39m.config_file, [38;5;28mself[39m.config_dir))
+[32m    440[39m [38;5;66;03m# Step 3: load into configuration![39;00m
+[32m    441[39m [38;5;28mself[39m._load_config(config_data)
+
+[31mOSError[39m: Could not find kaggle.json. Make sure it's located in /home/runner/.config/kaggle. Or use the environment method. See setup instructions at https://github.com/Kaggle/kaggle-api/
+

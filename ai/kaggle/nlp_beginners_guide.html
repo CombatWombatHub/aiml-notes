@@ -324,7 +324,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -340,6 +342,19 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nlp-for-classification">NLP For Classification</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#u-s-patent-phrase-to-phrase-matching-competition">U.S. Patent Phrase to Phrase Matching Competition</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-dataset">Get the Dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examine-the-dataset">Examine the DataSet</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -353,7 +368,306 @@ document.write(`
 <h1>Kaggle NLP Absolute Beginners<a class="headerlink" href="#kaggle-nlp-absolute-beginners" title="Link to this heading">#</a></h1>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.kaggle.com/code/jhoward/getting-started-with-nlp-for-absolute-beginners">Getting Started with NLP for Absolute Beginners</a></p></li>
+<li><p>first tutorial in the Kaggle <a class="reference external" href="https://www.kaggle.com/learn-guide/natural-language-processing">Natural Language Processing Guide</a></p></li>
 </ul>
+<section id="nlp-for-classification">
+<h2>NLP For Classification<a class="headerlink" href="#nlp-for-classification" title="Link to this heading">#</a></h2>
+<p>One of the more useful applications of NLP. Can be used for a bunch of stuff like organizing documents by topic or Sentiment Analysis (finding out if people are saying <em>positive</em> or <em>negative</em> stuff about your product)</p>
+</section>
+<section id="u-s-patent-phrase-to-phrase-matching-competition">
+<h2><a class="reference external" href="https://www.kaggle.com/c/us-patent-phrase-to-phrase-matching">U.S. Patent Phrase to Phrase Matching Competition</a><a class="headerlink" href="#u-s-patent-phrase-to-phrase-matching-competition" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>compare two words or short phrases</p>
+<ul>
+<li><p>original competition:</p>
+<ul>
+<li><p>score them <code class="docutils literal notranslate"><span class="pre">0</span></code>-<code class="docutils literal notranslate"><span class="pre">1</span></code> based on whether they’re similar or not</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code> = totally different meaning, <code class="docutils literal notranslate"><span class="pre">1</span></code> = identical meaning, <code class="docutils literal notranslate"><span class="pre">0.5</span></code> = somewhat similar meaning</p></li>
+</ul>
+</li>
+<li><p>classification version (what we’ll do here)</p>
+<ul>
+<li><p>classify the pairs of words or phrases into <code class="docutils literal notranslate"><span class="pre">Different</span></code>, <code class="docutils literal notranslate"><span class="pre">Similar</span></code>, or <code class="docutils literal notranslate"><span class="pre">Identical</span></code> categories</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="get-the-dataset">
+<h3>Get the Dataset<a class="headerlink" href="#get-the-dataset" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>we’ll be getting the dataset from Kaggle.</p>
+<ul>
+<li><p>One problem - when you go to download a data set from a Kaggle competition, you need to agree to the competition rules, including a rule to <em>not</em> make the data available to people who haven’t agreed to the competition rules. So I can’t just add it to my <em>publicly-available</em> repo.</p></li>
+<li><p>I could just download it from the webpage manually and put it in the right place, but since I can’t add it to tracked files, I’d need to re-do that manually for any notebooks that I’d done that for previously anytime I cloned the repo down.</p></li>
+</ul>
+</li>
+<li><p>Instead, <a class="reference external" href="https://github.com/Kaggle/kaggle-api/blob/main/docs/README.md">install the Kaggle API</a> to download the dataset here so I can import it into this notebook, but don’t track it in Git.</p>
+<ul>
+<li><p>If you haven’t already, go to the <a class="reference external" href="https://www.kaggle.com/c/us-patent-phrase-to-phrase-matching">Competition page</a>, go to the <code class="docutils literal notranslate"><span class="pre">Data</span></code> tab, and <code class="docutils literal notranslate"><span class="pre">Accept</span></code> the rules of the competition to be allowed to download the dataset.</p></li>
+<li><p>If not already installed, install the API (usually with <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">kaggle</span></code>, but since I’m using <code class="docutils literal notranslate"><span class="pre">UV</span></code> as a dependency manager, I used <code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">add</span> <span class="pre">kaggle</span></code>. Running <code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">sync</span></code> in this repo should install with all the other dependencies)</p></li>
+<li><p>On the <a class="reference external" href="https://www.kaggle.com/">Kaggle website</a>, make or login to your account, Click the Profile picture -&gt; <code class="docutils literal notranslate"><span class="pre">Settings</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">API</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Create</span> <span class="pre">new</span> <span class="pre">Token</span></code> to download <code class="docutils literal notranslate"><span class="pre">kaggle.json</span></code> to computer.</p>
+<ul>
+<li><p>Move that file to <code class="docutils literal notranslate"><span class="pre">~/.kaggle/kaggle.json</span></code> (<code class="docutils literal notranslate"><span class="pre">~</span></code> is the home directory)</p></li>
+<li><p>note: I use Sphinx with <code class="docutils literal notranslate"><span class="pre">myst_nb</span></code> to turn these notebooks into documentation, and <code class="docutils literal notranslate"><span class="pre">myst_nb</span></code> runs the notebooks to check if they still work. Since I can’t commit the <code class="docutils literal notranslate"><span class="pre">kaggle.json</span></code> file to the repo without making my private <code class="docutils literal notranslate"><span class="pre">kaggle</span> <span class="pre">api</span> <span class="pre">key</span></code> publicly available, specify the API key with environment variables instead: <code class="docutils literal notranslate"><span class="pre">KAGGLE_USERNAME</span></code> and <code class="docutils literal notranslate"><span class="pre">KAGGLE_KEY</span></code>. Get those values out of the <code class="docutils literal notranslate"><span class="pre">kaggle.json</span></code> and add them to <a class="reference external" href="https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/use-secrets">GitHub Secrets for the Github Actions Pipeline to use</a></p></li>
+</ul>
+</li>
+<li><p>run the cell below to download and unzip the dataset if it doesn’t already exist.</p></li>
+<li><p>initially this gave me a <code class="docutils literal notranslate"><span class="pre">&quot;Forbidden</span> <span class="pre">URL&quot;</span> <span class="pre">error</span></code> but later it worked. Possibly I hadn’t accepted the rules for the competition yet.</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># download and unzip the dataset to this folder if not already downloaded</span>
+<span class="n">data_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;us-patent-phrase-to-phrase-matching&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">data_dir</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">kaggle</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">zipfile</span>
+    <span class="n">kaggle</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">competition_download_cli</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">data_dir</span><span class="p">))</span>  <span class="c1"># download the dataset from Kaggle as zip file</span>
+    <span class="n">zip_path</span> <span class="o">=</span> <span class="n">data_dir</span><span class="o">.</span><span class="n">with_suffix</span><span class="p">(</span><span class="s2">&quot;.zip&quot;</span><span class="p">)</span>  <span class="c1"># path to the downloaded zip file</span>
+    <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="n">zip_path</span><span class="p">)</span><span class="o">.</span><span class="n">extractall</span><span class="p">(</span><span class="n">data_dir</span><span class="p">)</span>  <span class="c1"># unzip the file</span>
+    <span class="n">zip_path</span><span class="o">.</span><span class="n">unlink</span><span class="p">()</span>  <span class="c1"># delete the zip file after unzipping</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">OSError</span><span class="g g-Whitespace">                                   </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">data_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;us-patent-phrase-to-phrase-matching&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">data_dir</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+<span class="ne">----&gt; </span><span class="mi">4</span>     <span class="kn">import</span><span class="w"> </span><span class="nn">kaggle</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="kn">import</span><span class="w"> </span><span class="nn">zipfile</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span>     <span class="n">kaggle</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">competition_download_cli</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">data_dir</span><span class="p">))</span>  <span class="c1"># download the dataset from Kaggle as zip file</span>
+
+<span class="n">File</span> <span class="o">~/</span><span class="n">work</span><span class="o">/</span><span class="n">aiml</span><span class="o">-</span><span class="n">notes</span><span class="o">/</span><span class="n">aiml</span><span class="o">-</span><span class="n">notes</span><span class="o">/.</span><span class="n">venv</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.13</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">kaggle</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">6</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">from</span><span class="w"> </span><span class="nn">kaggle.api.kaggle_api_extended</span><span class="w"> </span><span class="kn">import</span> <span class="n">KaggleApi</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">api</span> <span class="o">=</span> <span class="n">KaggleApi</span><span class="p">()</span>
+<span class="ne">----&gt; </span><span class="mi">6</span> <span class="n">api</span><span class="o">.</span><span class="n">authenticate</span><span class="p">()</span>
+
+<span class="nn">File ~/work/aiml-notes/aiml-notes/.venv/lib/python3.13/site-packages/kaggle/api/kaggle_api_extended.py:434,</span> in <span class="ni">KaggleApi.authenticate</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">432</span>     <span class="k">return</span>
+<span class="g g-Whitespace">    </span><span class="mi">433</span>   <span class="k">else</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">434</span>     <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="s1">&#39;Could not find </span><span class="si">{}</span><span class="s1">. Make sure it</span><span class="se">\&#39;</span><span class="s1">s located in&#39;</span>
+<span class="g g-Whitespace">    </span><span class="mi">435</span>                   <span class="s1">&#39; </span><span class="si">{}</span><span class="s1">. Or use the environment method. See setup&#39;</span>
+<span class="g g-Whitespace">    </span><span class="mi">436</span>                   <span class="s1">&#39; instructions at&#39;</span>
+<span class="g g-Whitespace">    </span><span class="mi">437</span>                   <span class="s1">&#39; https://github.com/Kaggle/kaggle-api/&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">438</span>                       <span class="bp">self</span><span class="o">.</span><span class="n">config_file</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">config_dir</span><span class="p">))</span>
+<span class="g g-Whitespace">    </span><span class="mi">440</span> <span class="c1"># Step 3: load into configuration!</span>
+<span class="g g-Whitespace">    </span><span class="mi">441</span> <span class="bp">self</span><span class="o">.</span><span class="n">_load_config</span><span class="p">(</span><span class="n">config_data</span><span class="p">)</span>
+
+<span class="ne">OSError</span>: Could not find kaggle.json. Make sure it&#39;s located in /home/runner/.config/kaggle. Or use the environment method. See setup instructions at https://github.com/Kaggle/kaggle-api/
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="examine-the-dataset">
+<h3>Examine the DataSet<a class="headerlink" href="#examine-the-dataset" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import and check the dataset. Looks like it&#39;s already scoring similarity of word/phrase pairs.</span>
+<span class="n">train_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">data_dir</span> <span class="o">/</span> <span class="s2">&quot;train.csv&quot;</span><span class="p">)</span>
+<span class="n">train_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>anchor</th>
+      <th>target</th>
+      <th>context</th>
+      <th>score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>37d61fd2272659b1</td>
+      <td>abatement</td>
+      <td>abatement of pollution</td>
+      <td>A47</td>
+      <td>0.50</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>7b9652b17b68b7a4</td>
+      <td>abatement</td>
+      <td>act of abating</td>
+      <td>A47</td>
+      <td>0.75</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>36d72442aefd8232</td>
+      <td>abatement</td>
+      <td>active catalyst</td>
+      <td>A47</td>
+      <td>0.25</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>5296b0c19e1ce60e</td>
+      <td>abatement</td>
+      <td>eliminating process</td>
+      <td>A47</td>
+      <td>0.50</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>54c1e3b9184cb5b6</td>
+      <td>abatement</td>
+      <td>forest region</td>
+      <td>A47</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>36468</th>
+      <td>8e1386cbefd7f245</td>
+      <td>wood article</td>
+      <td>wooden article</td>
+      <td>B44</td>
+      <td>1.00</td>
+    </tr>
+    <tr>
+      <th>36469</th>
+      <td>42d9e032d1cd3242</td>
+      <td>wood article</td>
+      <td>wooden box</td>
+      <td>B44</td>
+      <td>0.50</td>
+    </tr>
+    <tr>
+      <th>36470</th>
+      <td>208654ccb9e14fa3</td>
+      <td>wood article</td>
+      <td>wooden handle</td>
+      <td>B44</td>
+      <td>0.50</td>
+    </tr>
+    <tr>
+      <th>36471</th>
+      <td>756ec035e694722b</td>
+      <td>wood article</td>
+      <td>wooden material</td>
+      <td>B44</td>
+      <td>0.75</td>
+    </tr>
+    <tr>
+      <th>36472</th>
+      <td>8d135da0b55b8c88</td>
+      <td>wood article</td>
+      <td>wooden substrate</td>
+      <td>B44</td>
+      <td>0.50</td>
+    </tr>
+  </tbody>
+</table>
+<p>36473 rows × 5 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get descriptive statistics on the object (string) columns</span>
+<span class="n">train_df</span><span class="o">.</span><span class="n">describe</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="s2">&quot;object&quot;</span><span class="p">)</span>  
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>anchor</th>
+      <th>target</th>
+      <th>context</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>36473</td>
+      <td>36473</td>
+      <td>36473</td>
+      <td>36473</td>
+    </tr>
+    <tr>
+      <th>unique</th>
+      <td>36473</td>
+      <td>733</td>
+      <td>29340</td>
+      <td>106</td>
+    </tr>
+    <tr>
+      <th>top</th>
+      <td>37d61fd2272659b1</td>
+      <td>component composite coating</td>
+      <td>composition</td>
+      <td>H01</td>
+    </tr>
+    <tr>
+      <th>freq</th>
+      <td>1</td>
+      <td>152</td>
+      <td>24</td>
+      <td>2186</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+</section>
 </section>
 
 
@@ -391,6 +705,26 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nlp-for-classification">NLP For Classification</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#u-s-patent-phrase-to-phrase-matching-competition">U.S. Patent Phrase to Phrase Matching Competition</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-dataset">Get the Dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examine-the-dataset">Examine the DataSet</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
