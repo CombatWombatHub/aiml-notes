@@ -42,12 +42,10 @@
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'ai/kaggle/nlp_beginners_guide';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'portfolio/kaggle/nlp_beginners_guide';</script>
     <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Supervised Learning with scikit-learn" href="../../datacamp/1_supervised_learning_scikit_learn/0_supervised_learning_scikit_learn.html" />
-    <link rel="prev" title="Metrics" href="../development/metrics.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -110,6 +108,8 @@
       
       
       
+        
+      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -158,26 +158,14 @@
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">AI/ML:</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../ai.html">Artificial Intelligence (AI)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../categories/generative.html">Generative AI</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../categories/ml.html">Machine Learning (ML)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../categories/nlp.html">Natural Language Processing (NLP)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../development/developing.html">ML Development</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../development/fundamentals.html">Fundamentals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../development/metrics.html">Metrics</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Kaggle NLP Absolute Beginners</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">DataCamp:</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../datacamp/1_supervised_learning_scikit_learn/0_supervised_learning_scikit_learn.html">Supervised Learning with scikit-learn</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../datacamp/1_supervised_learning_scikit_learn/1_classification.html">Intro to Classification</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../datacamp/1_supervised_learning_scikit_learn/2_regression.html">Intro to Regression</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../datacamp/datacamp_notes.html">DataCamp Notes</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">ML Mastery:</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../machine_learning_mastery/python_ml_mini_course/1_python_ml_mini_course.html">Machine Learning Mastery Python Mini Course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ai/ai.html">Artificial Intelligence (AI)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ai/categories/generative.html">Generative AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ai/categories/ml.html">Machine Learning (ML)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ai/categories/nlp.html">Natural Language Processing (NLP)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ai/development/developing.html">ML Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ai/development/fundamentals.html">Fundamentals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ai/development/metrics.html">Metrics</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Sphinx:</span></p>
 <ul class="nav bd-sidenav">
@@ -253,7 +241,7 @@
       
       
       
-      <li><a href="../../_sources/ai/kaggle/nlp_beginners_guide.ipynb" target="_blank"
+      <li><a href="../../_sources/portfolio/kaggle/nlp_beginners_guide.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -440,32 +428,19 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">OSError</span><span class="g g-Whitespace">                                   </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">data_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;us-patent-phrase-to-phrase-matching&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">data_dir</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
-<span class="ne">----&gt; </span><span class="mi">4</span>     <span class="kn">import</span><span class="w"> </span><span class="nn">kaggle</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="kn">import</span><span class="w"> </span><span class="nn">zipfile</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span>     <span class="n">kaggle</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">competition_download_cli</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">data_dir</span><span class="p">))</span>  <span class="c1"># download the dataset from Kaggle as zip file</span>
-
-<span class="n">File</span> <span class="o">~/</span><span class="n">work</span><span class="o">/</span><span class="n">aiml</span><span class="o">-</span><span class="n">notes</span><span class="o">/</span><span class="n">aiml</span><span class="o">-</span><span class="n">notes</span><span class="o">/.</span><span class="n">venv</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.13</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">kaggle</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">6</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">from</span><span class="w"> </span><span class="nn">kaggle.api.kaggle_api_extended</span><span class="w"> </span><span class="kn">import</span> <span class="n">KaggleApi</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">api</span> <span class="o">=</span> <span class="n">KaggleApi</span><span class="p">()</span>
-<span class="ne">----&gt; </span><span class="mi">6</span> <span class="n">api</span><span class="o">.</span><span class="n">authenticate</span><span class="p">()</span>
-
-<span class="nn">File ~/work/aiml-notes/aiml-notes/.venv/lib/python3.13/site-packages/kaggle/api/kaggle_api_extended.py:434,</span> in <span class="ni">KaggleApi.authenticate</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">432</span>     <span class="k">return</span>
-<span class="g g-Whitespace">    </span><span class="mi">433</span>   <span class="k">else</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">434</span>     <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="s1">&#39;Could not find </span><span class="si">{}</span><span class="s1">. Make sure it</span><span class="se">\&#39;</span><span class="s1">s located in&#39;</span>
-<span class="g g-Whitespace">    </span><span class="mi">435</span>                   <span class="s1">&#39; </span><span class="si">{}</span><span class="s1">. Or use the environment method. See setup&#39;</span>
-<span class="g g-Whitespace">    </span><span class="mi">436</span>                   <span class="s1">&#39; instructions at&#39;</span>
-<span class="g g-Whitespace">    </span><span class="mi">437</span>                   <span class="s1">&#39; https://github.com/Kaggle/kaggle-api/&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">438</span>                       <span class="bp">self</span><span class="o">.</span><span class="n">config_file</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">config_dir</span><span class="p">))</span>
-<span class="g g-Whitespace">    </span><span class="mi">440</span> <span class="c1"># Step 3: load into configuration!</span>
-<span class="g g-Whitespace">    </span><span class="mi">441</span> <span class="bp">self</span><span class="o">.</span><span class="n">_load_config</span><span class="p">(</span><span class="n">config_data</span><span class="p">)</span>
-
-<span class="ne">OSError</span>: Could not find kaggle.json. Make sure it&#39;s located in /home/runner/.config/kaggle. Or use the environment method. See setup instructions at https://github.com/Kaggle/kaggle-api/
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading us-patent-phrase-to-phrase-matching.zip to /home/runner/work/aiml-notes/aiml-notes/docs/source/portfolio/kaggle
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|          | 0.00/682k [00:00&lt;?, ?B/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 682k/682k [00:00&lt;00:00, 902MB/s]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
@@ -681,24 +656,6 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="../development/metrics.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Metrics</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="../../datacamp/1_supervised_learning_scikit_learn/0_supervised_learning_scikit_learn.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Supervised Learning with scikit-learn</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
