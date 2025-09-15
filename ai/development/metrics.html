@@ -350,8 +350,8 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basics">Basics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geeksforgeeks-links">GeeksForGeeks Links</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goodness-of-fit-metrics">Goodness of Fit metrics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regression-metrics">Regression Metrics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classification-metrics">Classification Metrics</a></li>
 </ul>
             </nav>
         </div>
@@ -374,40 +374,38 @@ document.write(`
 <li><p>as the <code class="docutils literal notranslate"><span class="pre">goodness</span> <span class="pre">of</span> <span class="pre">fit</span></code> increases, the model is better fitted to the data</p></li>
 </ul>
 </section>
-<section id="geeksforgeeks-links">
-<h2>GeeksForGeeks Links<a class="headerlink" href="#geeksforgeeks-links" title="Link to this heading">#</a></h2>
-<p>Found these links, need to incorporate them better later
-<a class="reference external" href="https://www.geeksforgeeks.org/python/how-to-calculate-mean-absolute-error-in-python/">Mean Absolute Error (MAE)</a>: The average absolute difference between the predicted and actual values of the target variable.
-<a class="reference external" href="https://www.geeksforgeeks.org/python/python-mean-squared-error/">Mean Squared Error (MSE)</a>: The average squared difference between the predicted and actual values of the target variable.
-<a class="reference external" href="https://www.geeksforgeeks.org/software-engineering/rmse-root-mean-square-error-in-matlab/">Root Mean Squared Error (RMSE)</a>: Square root of the mean squared error.
-<a class="reference external" href="https://www.geeksforgeeks.org/machine-learning/sklearn-different-loss-functions-in-sgd/">Huber Loss</a>: A hybrid loss function that transitions from MAE to MSE for larger errors, providing balance between robustness and MSE’s sensitivity to outliers.
-<a class="reference external" href="https://www.geeksforgeeks.org/machine-learning/python-coefficient-of-determination-r2-score/">R2 – Score</a>: Higher values indicate better fit ranging from 0 to 1.</p>
-</section>
-<section id="goodness-of-fit-metrics">
-<h2>Goodness of Fit metrics<a class="headerlink" href="#goodness-of-fit-metrics" title="Link to this heading">#</a></h2>
+<section id="regression-metrics">
+<h2>Regression Metrics<a class="headerlink" href="#regression-metrics" title="Link to this heading">#</a></h2>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">Nomenclature</span></code></p>
+<li><p><code class="docutils literal notranslate"><span class="pre">Common</span> <span class="pre">Terms</span></code></p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(y\)</span> = observed values</p></li>
 <li><p><span class="math notranslate nohighlight">\(y_i\)</span> = observed value <span class="math notranslate nohighlight">\(i\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(\hat y_i\)</span> = predicted value <span class="math notranslate nohighlight">\(i\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(\bar y_i\)</span> = average of the observed values <span class="math notranslate nohighlight">\(i\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(RSS\)</span> = <strong>Residual Sum of Squares</strong> = <span class="math notranslate nohighlight">\(\sum_{i=1}^n(y_i-\hat y_i)^2\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(TSS\)</span> = <strong>Total Sum of Squares</strong> = <span class="math notranslate nohighlight">\(\sum_{i=1}^n(y_i-\bar y_i)^2\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(DOF_{res}\)</span> = Degrees of Freedom of population variance around mean</p></li>
-<li><p><span class="math notranslate nohighlight">\(DOF_{tot}\)</span> = Degrees of Freedom of population variance around model</p></li>
 <li><p><span class="math notranslate nohighlight">\(n\)</span> = sample size</p></li>
-<li><p><span class="math notranslate nohighlight">\(p\)</span> = total number of explanatory variables (inputs)</p></li>
 </ul>
 </li>
-<li><p><code class="docutils literal notranslate"><span class="pre">R-squared</span></code> (also known as <strong>Coefficient of Determination</strong>) is the ratio of the variance that’s explained by the model to the variance that’s explained by a simple mean. It’s usually <span class="math notranslate nohighlight">\(0-1\)</span>, though it <em>can</em> be negative if the model is <em>worse</em> at explaining variance than just guessing the mean regardless of inputs. <span class="math notranslate nohighlight">\(R^2\)</span> always increases as more independent variables are added, whether or not those variables are useful predictors <a class="reference internal" href="../../_images/r_squared_visualization.png"><img alt="Pic" src="../../_images/r_squared_visualization.png" style="width: 400px;" /></a></p>
+<li><p><code class="docutils literal notranslate"><span class="pre">R-squared</span></code> (also known as <strong>Coefficient of Determination</strong>) is the ratio of the variance that’s explained by the model to the variance that’s explained by a simple mean. It’s usually <span class="math notranslate nohighlight">\(0-1\)</span>, though it <em>can</em> be negative if the model is <em>worse</em> at explaining variance than just guessing the mean regardless of inputs. <span class="math notranslate nohighlight">\(R^2\)</span> always increases as more independent variables are added, whether or not those variables are useful predictors <a class="reference internal" href="../../_images/r_squared_visualization.png"><img alt="Pic" src="../../_images/r_squared_visualization.png" style="width: 400px;" /></a>
+<a class="reference external" href="https://www.geeksforgeeks.org/machine-learning/python-coefficient-of-determination-r2-score/">R2 – Score</a>: Higher values indicate better fit ranging from 0 to 1.</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\Large R^2=1-\frac{RSS}{TSS}=1-\frac{\sum_{i=1}^n(y_i-\hat y_i)^2}{\sum_{i=1}^n(y_i-\bar y_i)^2}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(R^2=1-\Large\frac{RSS}{TSS}=1-\Large\frac{\sum_{i=1}^n(y_i-\hat y_i)^2}{\sum_{i=1}^n(y_i-\bar y_i)^2}\)</span></p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(RSS\)</span> = <strong>Residual Sum of Squares</strong> = <span class="math notranslate nohighlight">\(\sum_{i=1}^n(y_i-\hat y_i)^2\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(TSS\)</span> = <strong>Total Sum of Squares</strong> = <span class="math notranslate nohighlight">\(\sum_{i=1}^n(y_i-\bar y_i)^2\)</span></p></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Adjusted</span> <span class="pre">R-squared</span></code> is a modification of R-squared that penalizes the inclusion of variables that don’t actually contribute to prediction</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\Large \bar R^2=1-\frac{RSS/DOF_{res}}{TSS/DOF_{tot}}=1-(1-R^2)\frac{n-1}{n-p-1}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\bar R^2=1-\Large\frac{RSS/DOF_{res}}{TSS/DOF_{tot}}\)</span> <span class="math notranslate nohighlight">\(= 1-(1-R^2)\Large\frac{n-1}{n-p-1}\)</span></p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(DOF_{res}\)</span> = Degrees of Freedom of population variance around mean</p></li>
+<li><p><span class="math notranslate nohighlight">\(DOF_{tot}\)</span> = Degrees of Freedom of population variance around model</p></li>
+<li><p><span class="math notranslate nohighlight">\(p\)</span> = total number of explanatory variables (inputs)</p></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">MAE</span></code> = <strong>Mean Absolute Error</strong> - same scale as target variable, robust to outliers, difficult to take derivatives of due to absolute value</p>
@@ -417,7 +415,7 @@ document.write(`
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">NMAE</span></code> = <strong>Normalized Mean Absolute Error</strong> - normalizes the absolute error by the range of actual values, making it a relative relative metric</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\Large NMAE = \frac{\frac{1}{n}\sum_{i=1}^n{|\hat{y}_i-y_i|}}{\frac{1}{n}\sum_{i=1}^n{|y_i|}} = \frac{MAE(y,\hat{y})}{mean(|y|)}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(NMAE = \Large\frac{\frac{1}{n}\sum_{i=1}^n{|\hat{y}_i-y_i|}}{\frac{1}{n}\sum_{i=1}^n{|y_i|}} = \frac{MAE(y,\hat{y})}{mean(|y|)}\)</span></p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">MSE</span></code> = <strong>Mean Squared Error</strong> - vulnerable to outliers because the error is squared</p>
@@ -425,14 +423,19 @@ document.write(`
 <li><p><span class="math notranslate nohighlight">\(MSE =\frac{1}{n}\sum_{i=1}^n (\hat{y}_i - y_i)^2\)</span></p></li>
 </ul>
 </li>
-<li><p><code class="docutils literal notranslate"><span class="pre">RMSE</span></code> = <strong>Root Mean Squared Error</strong> - same training results as using <span class="math notranslate nohighlight">\(MSE\)</span>, still vulnerable to outliers, compare with <span class="math notranslate nohighlight">\(MAE\)</span> to see prevalence of outliers</p>
+<li><p><a class="reference external" href="https://www.geeksforgeeks.org/machine-learning/sklearn-different-loss-functions-in-sgd/">Huber Loss</a>: A hybrid loss function that transitions from <code class="docutils literal notranslate"><span class="pre">MAE</span></code> to <code class="docutils literal notranslate"><span class="pre">MSE</span></code> for larger errors, providing balance between <code class="docutils literal notranslate"><span class="pre">MAE</span></code>’s robustness and <code class="docutils literal notranslate"><span class="pre">MSE</span></code>’s sensitivity to outliers.</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(L_\delta = \begin{cases}\frac{1}{2}(y-\hat{y})^2 &amp;|y-\hat{y}|&lt;\delta \\ \delta((y-\hat{y})-\frac{1}{2}\delta) &amp; |y-\hat{y}|\ge\delta\end{cases}\)</span></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RMSE</span></code> = <strong>Root Mean Squared Error</strong> - same training results as using <code class="docutils literal notranslate"><span class="pre">MSE</span></code>, still vulnerable to outliers, compare with <code class="docutils literal notranslate"><span class="pre">MAE</span></code> to see prevalence of outliers</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(RMSE = \sqrt{\frac{1}{n}\sum_{i=1}^n (\hat{y}_i - y_i)^2}\)</span></p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">RMSLE</span></code> = <strong>Root Mean Squared Log Error</strong> - logs make it relative metric (ignore scale of data), less vulnerable to outliers than <span class="math notranslate nohighlight">\(RMSE\)</span>, asymmetric (larger penalty if <span class="math notranslate nohighlight">\(\hat{y}_i &lt; y_i\)</span> than if <span class="math notranslate nohighlight">\(\hat{y}_i &gt; y_i\)</span>)</p>
 <ul>
-<li><p><span class="math notranslate nohighlight">\(RMSLE = \sqrt{\frac{1}{n}\sum_{i=1}^n (\ln{(\hat{y}_i+1)} - \ln{(y_i+1)})^2} =\sqrt{\frac{1}{n}\sum_{i=1}^n (\ln{\frac{\hat{y}_i+1}{y_i+1}})^2}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(RMSLE = \sqrt{\frac{1}{n}\sum_{i=1}^n (\ln{(\hat{y}_i+1)} - \ln{(y_i+1)})^2} =\Large\sqrt{\frac{1}{n}\sum_{i=1}^n (\ln{\frac{\hat{y}_i+1}{y_i+1}})^2}\)</span></p></li>
 <li><a class="reference internal image-reference" href="../../_images/rmse_vs_rmsle.png"><img alt="RMSE vs RMSLE" src="../../_images/rmse_vs_rmsle.png" style="width: 350px;" />
 </a>
 </li>
@@ -440,12 +443,12 @@ document.write(`
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">MAPE</span></code> = <strong>Mean Absolute Percentage Error</strong> (AVOID LIKE THE PLAGUE) fails if any <span class="math notranslate nohighlight">\(y_i=0\)</span>, higher penalty for small <span class="math notranslate nohighlight">\(y_i\)</span>, higher penalty for <span class="math notranslate nohighlight">\(\hat{y}_i &gt; y_i\)</span> than <span class="math notranslate nohighlight">\(\hat{y}_i &lt; y_i\)</span></p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(MAPE = \frac{1}{n}\sum_{i=1}^{n}{|\frac{y_i-\hat{y}_i}{y_i}|}*100\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(MAPE = \Large\frac{1}{n}\sum_{i=1}^{n}{|\frac{y_i-\hat{y}_i}{y_i}|}*100\)</span></p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">SMAPE</span></code> = <strong>Symmetric Mean Absolute Percentage Error</strong> (AVOID) improves <em>somewhat</em> on <code class="docutils literal notranslate"><span class="pre">MAPE</span></code> but still controversial, not symmetric, and the equation itself varies by source</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(SMAPE = \frac{1}{n}\sum_{i=1}^{n}{\frac{|y_i-\hat{y}_i|}{y_i+\hat{y}_i}}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(SMAPE = \Large\frac{1}{n}\sum_{i=1}^{n}{\frac{|y_i-\hat{y}_i|}{y_i+\hat{y}_i}}\)</span></p></li>
 </ul>
 </li>
 <li><p><span class="math notranslate nohighlight">\(BIC\)</span> = <a class="reference external" href="https://www.geeksforgeeks.org/machine-learning/bayesian-information-criterion-bic/">Bayesian Information Criterion</a> evaluates goodness of fit <span class="math notranslate nohighlight">\(-2\ln(L)\)</span> while penalizing complexity to avoid overfitting <span class="math notranslate nohighlight">\(k\ln(n)\)</span></p>
@@ -468,6 +471,113 @@ document.write(`
 </ul>
 </li>
 </ul>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Metric</p></th>
+<th class="head"><p>Penalizes Large Errors</p></th>
+<th class="head"><p>Sensitive to Outliers</p></th>
+<th class="head"><p>Interpretability</p></th>
+<th class="head"><p>Recommended</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>MAE</p></td>
+<td><p>✗</p></td>
+<td><p>-</p></td>
+<td><p>+++</p></td>
+<td><p>✓</p></td>
+</tr>
+<tr class="row-odd"><td><p>MSE</p></td>
+<td><p>✓</p></td>
+<td><p>+</p></td>
+<td><p>+</p></td>
+<td><p>✓</p></td>
+</tr>
+<tr class="row-even"><td><p>RMSE</p></td>
+<td><p>✓</p></td>
+<td><p>+</p></td>
+<td><p>++</p></td>
+<td><p>✓</p></td>
+</tr>
+<tr class="row-odd"><td><p>MAPE</p></td>
+<td><p>✗</p></td>
+<td><p>Varies</p></td>
+<td><p>++</p></td>
+<td><p>✗</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="classification-metrics">
+<h2>Classification Metrics<a class="headerlink" href="#classification-metrics" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Accuracy for Classifiers is a little different, and sometimes your priority changes</p>
+<ul>
+<li><p>Sometimes it’s more important to catch <strong>everything</strong>, even if you catch some false positives</p></li>
+<li><p>Sometimes it’s more important that you <strong>only</strong> catch stuff you’re sure about, and <strong>no</strong> false positives</p></li>
+</ul>
+</li>
+<li><p>Results</p>
+<ul>
+<li><p><strong>TP (True Positive)</strong>:  The model <code class="docutils literal notranslate"><span class="pre">correctly</span></code>   predicted a <code class="docutils literal notranslate"><span class="pre">positive</span></code> outcome</p></li>
+<li><p><strong>TN (True Negative)</strong>:  The model <code class="docutils literal notranslate"><span class="pre">correctly</span></code>   predicted a <code class="docutils literal notranslate"><span class="pre">negative</span></code> outcome</p></li>
+<li><p><strong>FP (False Positive)</strong>: The model <code class="docutils literal notranslate"><span class="pre">incorrectly</span></code> predicted a <code class="docutils literal notranslate"><span class="pre">positive</span></code> outcome (Type I error)</p></li>
+<li><p><strong>FN (False Negative)</strong>: The model <code class="docutils literal notranslate"><span class="pre">incorrectly</span></code> predicted a <code class="docutils literal notranslate"><span class="pre">negative</span></code> outcome (Type II error)</p></li>
+</ul>
+</li>
+<li><p>Can display with a <a class="reference external" href="https://www.geeksforgeeks.org/machine-learning/confusion-matrix-machine-learning/">Confusion Matrix</a></p>
+<ul>
+<li><p>the link also explains the rest of these details and has example <code class="docutils literal notranslate"><span class="pre">sklearn</span></code> code to make <strong>Confusion Matrices</strong></p></li>
+<li><p>like this one for a model trying to classify emails as real or spam</p></li>
+<li><p>(a real Confusion Matrix would put counts in each cell)</p></li>
+</ul>
+</li>
+</ul>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>Predicted as Spam</p></th>
+<th class="head"><p>Predicted as Real</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Actually was Spam</p></td>
+<td><p><strong>TP</strong> (True Positive)</p></td>
+<td><p><strong>FN</strong> (False Negative)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Actually was Real</p></td>
+<td><p><strong>FP</strong> (False Positive)</p></td>
+<td><p><strong>TN</strong> (True Negative)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul class="simple">
+<li><p>Metrics</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">Accuracy</span></code> = how many predictions were correct out of the total predictions (can be misleading if one result is more dominant than another)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Precision</span></code> =  how many <strong>Positive Instances</strong> you caught (important if you can’t afford <strong>False Positives</strong>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Recall</span></code> = proportion of <strong>True Positives</strong> detected out of all <strong>Positive Instances</strong> (important if you can’t afford <strong>False Negatives</strong>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">F1-Score</span></code> = combines <strong>Precision</strong> and <strong>Recall</strong>, assuming <strong>False Positives</strong> and <strong>False Negatives</strong> are equally important</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Specificity</span></code> = how good the model is at correctly identifying <strong>Negative Instances</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Type</span> <span class="pre">1</span> <span class="pre">Error</span></code> = error from <strong>False Positives</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Type</span> <span class="pre">2</span> <span class="pre">Error</span></code> = error from <strong>False Negatives</strong></p></li>
+</ul>
+</li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\text{Accuracy} &amp;= \frac{TP + TN}{TP + TN + FP + FN} \\
+\text{Precision} &amp;= \frac{TP}{TP + FP} \\
+\text{Recall} &amp;= \frac{TP}{TP + FN} \\
+\text{F1 Score} &amp;= 2 \frac{\text{Precision} * \text{Recall}}{\text{Precision} + \text{Recall}} \\
+\text{Specificity} &amp;= \frac{TN}{TN + FP} \\
+\text{Type 1 Error} &amp;= \frac{FP}{FP + TN} \\
+\text{Type 2 Error} &amp;= \frac{FN}{TP + FN} \\
+\end{align}
+\end{split}\]</div>
 </section>
 </section>
 
@@ -517,8 +627,8 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basics">Basics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geeksforgeeks-links">GeeksForGeeks Links</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goodness-of-fit-metrics">Goodness of Fit metrics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regression-metrics">Regression Metrics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classification-metrics">Classification Metrics</a></li>
 </ul>
   </nav></div>
 
