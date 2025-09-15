@@ -36,7 +36,7 @@ I'm not sure how Neural Network's, Deep Learning, AutoEncoders, DenseNets, etc. 
 ## [Supervised Learning](https://www.geeksforgeeks.org/machine-learning/supervised-machine-learning/)
 
 ### [Classification](https://www.geeksforgeeks.org/machine-learning/getting-started-with-classification/)
-- [KNN (K-Nearest Neighbors)](https://www.geeksforgeeks.org/machine-learning/k-nearest-neighbours/) ([Notebook](../../datacamp/1_supervised_learning_scikit_learn/1_classification.ipynb)) - simple, looks at closest data points (neighbors) to make predictions based on similarity
+- [KNN (K-Nearest Neighbors)](https://www.geeksforgeeks.org/machine-learning/k-nearest-neighbours/) - simple, looks at closest data points (neighbors) to make predictions based on similarity
 - [Logistic Regression](https://www.geeksforgeeks.org/machine-learning/understanding-logistic-regression/) - Draws a sigmoid curve, predicts 0 or 1 if above or below curve. Despite "Regression" being in the name, it's for Classification
 - [Single-Layer Perceptron](https://www.geeksforgeeks.org/python/single-layer-perceptron-in-tensorflow/) - a single layer with a single neuron? Why?
 - [SGD (Stochastic Gradient Descent) Classifier](https://www.geeksforgeeks.org/python/stochastic-gradient-descent-classifier/) - adjust model parameters in the direction of the loss function's greatest gradient
