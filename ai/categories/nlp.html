@@ -44,6 +44,14 @@
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs"></script>
+    <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs";import elkLayouts from "https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs";mermaid.registerLayoutLoaders(elkLayouts);mermaid.initialize({startOnLoad:false});</script>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+    <script type="module">
+import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs";
+window.addEventListener("load", () => mermaid.run());
+</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'ai/categories/nlp';</script>
     <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -372,7 +380,25 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maintenance-records-classification-task">Maintenance Records Classification Task</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transformers">Transformers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hugging-face-transformers-library">Hugging Face Transformers Library</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#large-language-models-llm-s">Large Language Models (LLM’s)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#large-language-models-explained-briefly">Large Language Models Explained Briefly</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting">Prompting</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pretraining">Pretraining</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#reinforcement-learning-with-human-feedback-rlhf">Reinforcement Learning with Human Feedback (RLHF)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#transformers">Transformers</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#attention">Attention</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#feedforward">Feedforward</a><ul class="nav section-nav flex-column">
+<li class="toc-h6 nav-item toc-entry"><a class="reference internal nav-link" href="#repeat">Repeat</a></li>
+</ul>
+</li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#final-vector">Final Vector</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -427,14 +453,123 @@ document.write(`
 </table>
 </div>
 </section>
-<section id="transformers">
-<h2>Transformers<a class="headerlink" href="#transformers" title="Link to this heading">#</a></h2>
+<section id="hugging-face-transformers-library">
+<h2>Hugging Face Transformers Library<a class="headerlink" href="#hugging-face-transformers-library" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>the Kaggle <a class="reference external" href="https://www.kaggle.com/code/jhoward/getting-started-with-nlp-for-absolute-beginners">Getting started with NLP for absolute beginners</a> notebook required some additional libraries to be installed</p></li>
 <li><p>one of them was <code class="docutils literal notranslate"><span class="pre">transformers</span></code> from <a class="reference external" href="https://huggingface.co/docs/transformers/en/index">Hugging Face</a></p></li>
 <li><p>it’s a “model-definition framework”</p></li>
 <li><p>sounds like a standardized way of using models so that you could, say, take a model that was trained in <code class="docutils literal notranslate"><span class="pre">Tensorflow</span></code> and load it into <code class="docutils literal notranslate"><span class="pre">PyTorch</span></code>? Or have either of those things reach out to a trained <code class="docutils literal notranslate"><span class="pre">LLM</span></code>?</p></li>
+<li><p>I think it might have a different meaning than the <code class="docutils literal notranslate"><span class="pre">transformers</span></code> discussed below</p></li>
 </ul>
+</section>
+<section id="large-language-models-llm-s">
+<h2>Large Language Models (LLM’s)<a class="headerlink" href="#large-language-models-llm-s" title="Link to this heading">#</a></h2>
+<p>The best videos to summarize these are from the 3Blue1Brown <a class="reference external" href="https://youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi&amp;amp;si=0_HYbGimQB-Tx1tF">Deep Learning / Neural Networks Course</a> - 8 videos covering neural networks, backpropagation, LLM’s, and Transformers. Each video is 8-30 minutes long, total runtime about 2 hours. The videos on Neural Networks were made way back in 2018, and the LLM videos were made in 2024, so there’s a chance more will be added if something else game-changing is discovered. For an overview, just watch the 8 minute video <a class="reference external" href="https://youtu.be/LPZh9BOjkQs?si=K21ni-7Kl-A28Te0">Large language models explained briefly</a>.</p>
+<ul class="simple">
+<li><p>Neural Networks</p>
+<ul>
+<li><p><a class="reference external" href="https://youtu.be/aircAruvnKk?si=HxQewJQ3Zz8GRZYL">What is a neural network?</a></p></li>
+<li><p><a class="reference external" href="https://youtu.be/IHZwWFHWa-w?si=fgadmhmJntK_--Ox">Gradient descent, how neural networks learn</a></p></li>
+<li><p><a class="reference external" href="https://youtu.be/Ilg3gGewQ5U?si=MCDaQJPucfo5qGq2">Backpropagation, intuitively</a></p></li>
+<li><p><a class="reference external" href="https://youtu.be/tIeHLnjs5U8?si=akKnuCFaTsUaXm1y">Backpropagation, calculus</a></p></li>
+</ul>
+</li>
+<li><p>LLM’s</p>
+<ul>
+<li><p><a class="reference external" href="https://youtu.be/LPZh9BOjkQs?si=K21ni-7Kl-A28Te0">Large language models explained briefly</a></p></li>
+<li><p><a class="reference external" href="https://youtu.be/wjZofJX0v4M?si=e6bkNOMBgaE27dcx">Transformers, the tech behind LLM’s</a></p></li>
+<li><p><a class="reference external" href="https://youtu.be/eMlx5fFNoYc?si=J5E4BdXGkBsotegN">Attention in transformers</a></p></li>
+<li><p><a class="reference external" href="https://youtu.be/9-Jl0dxWQs8?si=nyvCnrZJ19H1L7Vu">How LLM’s store facts</a></p></li>
+</ul>
+</li>
+</ul>
+<section id="large-language-models-explained-briefly">
+<h3><a class="reference external" href="https://youtu.be/LPZh9BOjkQs?si=K21ni-7Kl-A28Te0">Large Language Models Explained Briefly</a><a class="headerlink" href="#large-language-models-explained-briefly" title="Link to this heading">#</a></h3>
+<p>An <strong>LLM</strong> is a sophisticated mathematical function that predicts what word comes next for any given text.
+The output is a <em>probability</em> for each possible token (tokens are often words, but might contain punctuation, etc).
+You choose one of the <strong>likely</strong> tokens from the list, but not always the <strong>most likely</strong> in order to make the response more natural (I believe that the “temperature” setting controls how far the choices diverge from the most likely).</p>
+<p>You do this over and over, feeding in the initial prompt as well as all predicted tokens, predicting one more token at a time until you’ve got a full response.</p>
+<section id="prompting">
+<h4>Prompting<a class="headerlink" href="#prompting" title="Link to this heading">#</a></h4>
+<p>Since it’s just predicting one of the likely words over and over, you need to set up the initial prompt so that the likely words are the ones that will best answer the question.</p>
+<p>So if a user asked what to do on their vacation, you might add the following so that the likely words are also the most helpful (AKA prompt engineering):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">What</span> <span class="n">follows</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">conversation</span> <span class="n">between</span> <span class="n">a</span> <span class="n">user</span> <span class="ow">and</span> <span class="n">a</span> <span class="n">helpful</span><span class="p">,</span> <span class="n">very</span> <span class="n">knowledgeable</span> <span class="n">AI</span> <span class="n">assistant</span>
+
+<span class="n">Use</span><span class="p">:</span> <span class="n">Give</span> <span class="n">me</span> <span class="n">some</span> <span class="n">ideas</span> <span class="k">for</span> <span class="n">what</span> <span class="n">to</span> <span class="n">do</span> <span class="n">when</span> <span class="n">visiting</span> <span class="n">Santiago</span><span class="o">.</span>
+
+<span class="n">AI</span> <span class="n">Assistant</span><span class="p">:</span> <span class="n">______</span>
+</pre></div>
+</div>
+</section>
+<section id="pretraining">
+<h4>Pretraining<a class="headerlink" href="#pretraining" title="Link to this heading">#</a></h4>
+<p>To be able to predict the likely tokens like a human would, the model needs to be trained by feeding it human-written text.
+A <strong>massive</strong> amount of it.
+Since you need so much, you normally get it from the internet.</p>
+<p>Each training sample can be a handful of words (like a text message) or thousands (like a novel).
+You pass the model all but the last token of a string of text, then compare the prediction it makes with the true last token that you withheld.
+After that, you tweak the model to make it more likely that the model will predict the true token and less likely to predict the other tokens.</p>
+<p>The model is adjusted by changing the (potentially <strong>billions</strong>) of <code class="docutils literal notranslate"><span class="pre">parameters</span></code>/<code class="docutils literal notranslate"><span class="pre">weights</span></code> through a process known as <code class="docutils literal notranslate"><span class="pre">backpropagation</span></code>.
+The staggering number of these weights is what puts the <strong>L</strong> in <strong>LLMs</strong>.
+The graphic he uses for an LLM looks like a standard neural network, with each layer being a 2D matrix.
+The scale of operations required to train the larger LLMs is astronomical.</p>
+<p>On top of that, this <code class="docutils literal notranslate"><span class="pre">pretraining</span></code> step is only the first part of the process.
+What you’ve got after this step is an AI that’s very good at auto-completing random text from the internet.
+That’s a far cry from having a helpful AI assistant.</p>
+</section>
+<section id="reinforcement-learning-with-human-feedback-rlhf">
+<h4>Reinforcement Learning with Human Feedback (RLHF)<a class="headerlink" href="#reinforcement-learning-with-human-feedback-rlhf" title="Link to this heading">#</a></h4>
+<p>A huge number of human workers flag problematic/unhelpful predictions, which further tweaks the weights of the model to prefer to predict helpful responses.</p>
+</section>
+<section id="transformers">
+<h4>Transformers<a class="headerlink" href="#transformers" title="Link to this heading">#</a></h4>
+<p>The process is only possible through the use of <strong>Graphical Processing Units (GPUs)</strong>, which can perform operations in parallel, <strong>BUT</strong> prior to 2017, not all language operations could be easily parallelized, and models needed to process one word at a time (i.e. each time you needed to predict a new word, it needed to process each word of the prompt and all predictions so far one word at a time).</p>
+<p>Google introduced a new model - the <code class="docutils literal notranslate"><span class="pre">Transformer</span></code> - which doesn’t need to read the input text from the start to the finish. They read it all in at once, in parallel.</p>
+<p>Each token in the prompt is associated with a <code class="docutils literal notranslate"><span class="pre">vector</span></code> - a long list of numbers (since neural networks work off of continuous numbers), which encode the <strong>meaning</strong> of the token.</p>
+<section id="attention">
+<h5>Attention<a class="headerlink" href="#attention" title="Link to this heading">#</a></h5>
+<p><code class="docutils literal notranslate"><span class="pre">Transformers</span></code> are associated with a special operation known as <code class="docutils literal notranslate"><span class="pre">Attention</span></code>, which gives the <code class="docutils literal notranslate"><span class="pre">vectors</span></code> of each <code class="docutils literal notranslate"><span class="pre">token</span></code> in the prompt a chance to talk with one another and figure out which ones work together. It uses the context of surrounding <code class="docutils literal notranslate"><span class="pre">tokens</span></code> to inform the more specific meaning of other <code class="docutils literal notranslate"><span class="pre">tokens</span></code>, all in parallel.</p>
+<p>For instance, the <code class="docutils literal notranslate"><span class="pre">token</span></code> for “<code class="docutils literal notranslate"><span class="pre">bank</span></code>” in this sentence has its <code class="docutils literal notranslate"><span class="pre">vector</span></code> modified by the <code class="docutils literal notranslate"><span class="pre">vectors</span></code> for the <code class="docutils literal notranslate"><span class="pre">tokens</span></code> <code class="docutils literal notranslate"><span class="pre">deposit</span></code> and <code class="docutils literal notranslate"><span class="pre">check</span></code> to encode the meaning of a <code class="docutils literal notranslate"><span class="pre">financial</span> <span class="pre">bank</span></code></p>
+<pre  class="mermaid">
+        flowchart LR
+1[deposit]
+2[a]
+3[check]
+4[at]
+5[the]
+6[bank]
+
+1 ~~~ 2 ~~~ 3 ~~~ 4 ~~~ 5 ~~~ 6
+1 &amp; 3 --&gt; 6
+    </pre><p>While the same <code class="docutils literal notranslate"><span class="pre">token</span></code> “<code class="docutils literal notranslate"><span class="pre">bank</span></code>” in this sentence would have its <code class="docutils literal notranslate"><span class="pre">vector</span></code> modified by “<code class="docutils literal notranslate"><span class="pre">river</span></code>” so that its meaning is encoded as a <code class="docutils literal notranslate"><span class="pre">river</span> <span class="pre">bank</span></code>.</p>
+<pre  class="mermaid">
+        flowchart LR
+7[Down]
+8[by]
+9[the]
+10[river]
+11[bank]
+
+7 ~~~ 8 ~~~ 9 ~~~ 10 ~~~ 11
+10 --&gt; 11
+    </pre><p>I’m guessing the token’s vector doesn’t get modified in-place, but rather each of these layers outputs a vector for each token which is modified for the operation (otherwise I can’t think of how <code class="docutils literal notranslate"><span class="pre">backpropagation</span></code> would work)</p>
+</section>
+<section id="feedforward">
+<h5>Feedforward<a class="headerlink" href="#feedforward" title="Link to this heading">#</a></h5>
+<p><code class="docutils literal notranslate"><span class="pre">Transformers</span></code> typically also include a <code class="docutils literal notranslate"><span class="pre">Feedforward</span> <span class="pre">Neural</span> <span class="pre">Network</span></code> operation, which gives extra capacity to store more information about patterns during training.</p>
+<section id="repeat">
+<h6>Repeat<a class="headerlink" href="#repeat" title="Link to this heading">#</a></h6>
+<p>The <code class="docutils literal notranslate"><span class="pre">transformer</span></code> will generally have multiple iterations of these two operations - an <code class="docutils literal notranslate"><span class="pre">Attention</span></code>operation followed by a <code class="docutils literal notranslate"><span class="pre">Feedforward</span></code> operation followed by an <code class="docutils literal notranslate"><span class="pre">Attention</span></code> operation and so on. Each successive pair should further encode the meaning of each <code class="docutils literal notranslate"><span class="pre">token</span></code> to make a more accurate prediction about the last word.</p>
+<p>I’m guessing that the <code class="docutils literal notranslate"><span class="pre">attention</span></code> and <code class="docutils literal notranslate"><span class="pre">feedforward</span></code> blocks are also trained during <code class="docutils literal notranslate"><span class="pre">pretraining</span></code> and <code class="docutils literal notranslate"><span class="pre">RLHF</span></code></p>
+</section>
+</section>
+<section id="final-vector">
+<h5>Final Vector<a class="headerlink" href="#final-vector" title="Link to this heading">#</a></h5>
+<p>The final vector in the sequence, once influenced by everything the model learned during training as well as the context encoded by the <code class="docutils literal notranslate"><span class="pre">attention</span></code> and <code class="docutils literal notranslate"><span class="pre">feedforward</span></code> stacks, will do one final operation. it will output a vector with one probability for each possible <code class="docutils literal notranslate"><span class="pre">token</span></code> that could come next.</p>
+</section>
+</section>
+</section>
 </section>
 </section>
 
@@ -484,7 +619,25 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maintenance-records-classification-task">Maintenance Records Classification Task</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transformers">Transformers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hugging-face-transformers-library">Hugging Face Transformers Library</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#large-language-models-llm-s">Large Language Models (LLM’s)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#large-language-models-explained-briefly">Large Language Models Explained Briefly</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting">Prompting</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pretraining">Pretraining</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#reinforcement-learning-with-human-feedback-rlhf">Reinforcement Learning with Human Feedback (RLHF)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#transformers">Transformers</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#attention">Attention</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#feedforward">Feedforward</a><ul class="nav section-nav flex-column">
+<li class="toc-h6 nav-item toc-entry"><a class="reference internal nav-link" href="#repeat">Repeat</a></li>
+</ul>
+</li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#final-vector">Final Vector</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

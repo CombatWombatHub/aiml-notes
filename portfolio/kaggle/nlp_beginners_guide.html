@@ -474,7 +474,7 @@ document.write(`
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|          | 0.00/682k [00:00&lt;?, ?B/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 682k/682k [00:00&lt;00:00, 595MB/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 682k/682k [00:00&lt;00:00, 665MB/s]
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
@@ -738,7 +738,7 @@ Name: input, dtype: object
 <section id="tokenize">
 <h3>Tokenize<a class="headerlink" href="#tokenize" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>we’re going to pass this to a deep learning model - a <code class="docutils literal notranslate"><span class="pre">Transformer</span></code></p>
+<li><p>we’re going to pass this to a deep learning model</p>
 <ul>
 <li><p>a neural net expects numbers as inputs, not strings</p></li>
 <li><p>must convert these strings to numbers in two steps</p>
@@ -749,8 +749,9 @@ Name: input, dtype: object
 </li>
 </ul>
 </li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Transformers</span></code> store their datasets in … <code class="docutils literal notranslate"><span class="pre">Dataset</span></code> … objects …</p>
+<li><p>to connect the bits and bobs of the networks together we’ll use a <a class="reference external" href="https://huggingface.co/docs/transformers/en/index">Hugging Face Transformer</a></p>
 <ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">Transformers</span></code> store their datasets in … <code class="docutils literal notranslate"><span class="pre">Dataset</span></code> … objects …</p></li>
 <li><p>take a look at that object after converting to one from Pandas DataFrame</p></li>
 </ul>
 </li>
@@ -794,7 +795,8 @@ Name: input, dtype: object
 
 <span class="c1"># use AutoTokenizer to create a tokenizer appropriate to the model</span>
 <span class="n">tokz</span> <span class="o">=</span> <span class="n">AutoTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">model_nm</span><span class="p">)</span>
-<span class="c1">#tokz = AutoTokenizer.from_pretrained(model_nm, use_fast=False)  # could use slower tokenizer to prevent a warning about &quot;byte fallback&quot; feature from SentencePiece for &quot;fast&quot; tokenizer</span>
+<span class="c1"># could use slower tokenizer to prevent a warning about &quot;byte fallback&quot; feature from SentencePiece for &quot;fast&quot; tokenizer</span>
+<span class="c1"># tokz = AutoTokenizer.from_pretrained(model_nm, use_fast=False)</span>
 </pre></div>
 </div>
 </div>
