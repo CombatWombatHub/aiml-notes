@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Example reStructuredText File &#8212; aiml-notes 1.0 documentation</title>
+    <title>reStructuredText &#8212; aiml-notes 1.0 documentation</title>
   
   
   
@@ -31,6 +31,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=43d83c71" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -42,11 +43,12 @@
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'sphinx_examples/restructuredtext';</script>
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="Example Jupyter Notebook" href="notebook.html" />
+    <link rel="prev" title="Jupyter Notebook" href="notebook.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -156,28 +158,55 @@
  </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">AI/ML:</span></p>
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    AI/ML Notes
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Notes:</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../ai/ai.html">Artificial Intelligence (AI)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ai/categories/generative.html">Generative AI</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ai/categories/ml.html">Machine Learning (ML)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ai/categories/nlp.html">Natural Language Processing (NLP)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ai/development/developing.html">ML Development</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ai/development/fundamentals.html">Fundamentals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ai/development/metrics.html">Metrics</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ai/categories/index.html">Categories</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ai/categories/generative.html">Generative AI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/categories/ml.html">Machine Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/categories/nlp.html">Natural Language Processing</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ai/development/index.html">Development</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ai/development/developing.html">ML Development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/development/fundamentals.html">Fundamentals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/development/metrics.html">Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/development/resources.html">Resources</a></li>
+</ul>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Portfolio:</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../portfolio/datacamp/datacamp_notes.html">DataCamp Notes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../portfolio/datacamp/supervised_learning_scikit_learn/supervised_learning_scikit_learn.html">Supervised Learning with scikit-learn</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../portfolio/kaggle/nlp_beginners_guide.html">Kaggle NLP Absolute Beginners</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../portfolio/machine_learning_mastery/python_ml_mini_course/python_ml_mini_course.html">Machine Learning Mastery Python Mini Course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../portfolio/portfolio.html">Portfolio</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../portfolio/kaggle/index.html">Kaggle</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../portfolio/kaggle/nlp_beginners_guide.html">Getting Started with NLP</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../portfolio/machine_learning_mastery/index.html">Machine Learning Mastery</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../portfolio/machine_learning_mastery/python_ml_mini_course/python_ml_mini_course.html">Python Mini Course</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../portfolio/datacamp/index.html">DataCamp</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../portfolio/datacamp/supervised_learning_scikit_learn/supervised_learning_scikit_learn.html">Supervised Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../portfolio/datacamp/using_datacamp.html">Using DataCamp</a></li>
+</ul>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Sphinx:</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="markdown.html">Example Markdown File</a></li>
-<li class="toctree-l1"><a class="reference internal" href="notebook.html">Example Jupyter Notebook</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Example reStructuredText File</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Sphinx</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="markdown.html">Markdown</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebook.html">Jupyter Notebook</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">reStructuredText</a></li>
+</ul>
+</details></li>
 </ul>
 
     </div>
@@ -331,7 +360,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Example reStructuredText File</h1>
+    <h1>reStructuredText</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -362,8 +391,14 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="example-restructuredtext-file">
-<h1>Example reStructuredText File<a class="headerlink" href="#example-restructuredtext-file" title="Link to this heading">#</a></h1>
+  <section id="restructuredtext">
+<h1>reStructuredText<a class="headerlink" href="#restructuredtext" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p>Example of reStructuredText markup syntax for Sphinx documentation</p></li>
+<li><p>Allows more complex formatting than Markdown, but is more complex to write</p></li>
+<li><p>Also it can look less like plain text than Markdown</p></li>
+<li><p>See also: <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html">reStructuredText Primer</a></p></li>
+</ul>
 <section id="subtitle">
 <h2>Subtitle<a class="headerlink" href="#subtitle" title="Link to this heading">#</a></h2>
 <section id="section-title">
@@ -412,7 +447,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Example Jupyter Notebook</p>
+        <p class="prev-next-title">Jupyter Notebook</p>
       </div>
     </a>
 </div>

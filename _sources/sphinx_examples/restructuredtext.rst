@@ -1,6 +1,10 @@
-=============================
-Example reStructuredText File
-=============================
+================
+reStructuredText
+================
+* Example of reStructuredText markup syntax for Sphinx documentation
+* Allows more complex formatting than Markdown, but is more complex to write
+* Also it can look less like plain text than Markdown
+* See also: `reStructuredText Primer <https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html>`__
 
 ----------
 Subtitle

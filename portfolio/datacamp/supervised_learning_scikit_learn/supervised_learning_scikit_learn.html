@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Supervised Learning with scikit-learn &#8212; aiml-notes 1.0 documentation</title>
+    <title>Supervised Learning &#8212; aiml-notes 1.0 documentation</title>
   
   
   
@@ -31,6 +31,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=43d83c71" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -42,14 +43,15 @@
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'portfolio/datacamp/supervised_learning_scikit_learn/supervised_learning_scikit_learn';</script>
     <link rel="icon" href="../../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Kaggle NLP Absolute Beginners" href="../../kaggle/nlp_beginners_guide.html" />
-    <link rel="prev" title="DataCamp Notes" href="../datacamp_notes.html" />
+    <link rel="next" title="Using DataCamp" href="../using_datacamp.html" />
+    <link rel="prev" title="DataCamp" href="../index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -159,28 +161,55 @@
  </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">AI/ML:</span></p>
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../index.html">
+                    AI/ML Notes
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Notes:</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../../ai/ai.html">Artificial Intelligence (AI)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../ai/categories/generative.html">Generative AI</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../ai/categories/ml.html">Machine Learning (ML)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../ai/categories/nlp.html">Natural Language Processing (NLP)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../ai/development/developing.html">ML Development</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../ai/development/fundamentals.html">Fundamentals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../ai/development/metrics.html">Metrics</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../ai/categories/index.html">Categories</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../ai/categories/generative.html">Generative AI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ai/categories/ml.html">Machine Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ai/categories/nlp.html">Natural Language Processing</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../ai/development/index.html">Development</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../ai/development/developing.html">ML Development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ai/development/fundamentals.html">Fundamentals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ai/development/metrics.html">Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ai/development/resources.html">Resources</a></li>
+</ul>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Portfolio:</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../datacamp_notes.html">DataCamp Notes</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Supervised Learning with scikit-learn</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../kaggle/nlp_beginners_guide.html">Kaggle NLP Absolute Beginners</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../machine_learning_mastery/python_ml_mini_course/python_ml_mini_course.html">Machine Learning Mastery Python Mini Course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../portfolio.html">Portfolio</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../kaggle/index.html">Kaggle</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../kaggle/nlp_beginners_guide.html">Getting Started with NLP</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../machine_learning_mastery/index.html">Machine Learning Mastery</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../machine_learning_mastery/python_ml_mini_course/python_ml_mini_course.html">Python Mini Course</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">DataCamp</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Supervised Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../using_datacamp.html">Using DataCamp</a></li>
+</ul>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Sphinx:</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../../sphinx_examples/markdown.html">Example Markdown File</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../sphinx_examples/notebook.html">Example Jupyter Notebook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../sphinx_examples/restructuredtext.html">Example reStructuredText File</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../sphinx_examples/index.html">Sphinx</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../sphinx_examples/markdown.html">Markdown</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../sphinx_examples/notebook.html">Jupyter Notebook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../sphinx_examples/restructuredtext.html">reStructuredText</a></li>
+</ul>
+</details></li>
 </ul>
 
     </div>
@@ -334,7 +363,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Supervised Learning with scikit-learn</h1>
+    <h1>Supervised Learning</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -372,8 +401,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="supervised-learning-with-scikit-learn">
-<h1>Supervised Learning with scikit-learn<a class="headerlink" href="#supervised-learning-with-scikit-learn" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="supervised-learning">
+<h1>Supervised Learning<a class="headerlink" href="#supervised-learning" title="Link to this heading">#</a></h1>
 <ul class="simple">
 <li><p><a class="reference external" href="https://app.datacamp.com/learn/courses/supervised-learning-with-scikit-learn">Supervised Learning with scikit-learn</a></p></li>
 <li><p>it’s the first course on the track “<a class="reference external" href="https://app.datacamp.com/learn/career-tracks/machine-learning-scientist-with-python">Machine Learning Scientist in Python</a>”</p></li>
@@ -449,7 +478,7 @@ document.write(`
 <ul class="simple">
 <li><p>contains data on customer accounts such as account age</p></li>
 <li><p>we will try to predict whether a customer will leave (the “churn”) based on this data</p></li>
-<li><p>note: see <a class="reference internal" href="../datacamp_notes.html"><span class="std std-doc">Datacamp Notes</span></a> for instructions on getting DataFrames out of Datacamp</p></li>
+<li><p>note: see <a class="reference internal" href="../using_datacamp.html"><span class="std std-doc">Notes on Using DataCamp</span></a> for instructions on getting DataFrames out of Datacamp</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1397,20 +1426,20 @@ document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../datacamp_notes.html"
+       href="../index.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">DataCamp Notes</p>
+        <p class="prev-next-title">DataCamp</p>
       </div>
     </a>
     <a class="right-next"
-       href="../../kaggle/nlp_beginners_guide.html"
+       href="../using_datacamp.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Kaggle NLP Absolute Beginners</p>
+        <p class="prev-next-title">Using DataCamp</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
