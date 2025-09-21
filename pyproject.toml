@@ -35,3 +35,6 @@ docs = [
     "sphinx-design>=0.6.1",
     "sphinxcontrib-mermaid>=1.0.0",
 ]
+graphics = [
+    "manim>=0.19.0",
+]

@@ -1,6 +1,9 @@
 # Kaggle dataset files that I can't share publicly
 us-patent-phrase-to-phrase-matching
 
+# manim-created media folder (don't store generated videos/images for now)
+media/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
