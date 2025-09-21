@@ -1,4 +1,4 @@
-# Machine Learning (ML)
+# Machine Learning
 [Machine Learning](https://www.geeksforgeeks.org/machine-learning/machine-learning/) is a branch of Artificial Intelligence that focuses on *models* and [algorithms](https://www.geeksforgeeks.org/machine-learning/machine-learning-algorithms/) that let computers learn from data and improve from previous experience without being explicitly programmed. There are many [types](https://www.geeksforgeeks.org/machine-learning/types-of-machine-learning/) of machine learning.
 
 :::{note}

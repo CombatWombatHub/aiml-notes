@@ -1,4 +1,4 @@
-# DataCamp Notes
+# Using DataCamp
 
 - have access to DataCamp through work
 - you can't download the workspace from the site

@@ -18,6 +18,7 @@ release = "1.0"
 extensions = [
     "myst_nb",  # parse Jupyter Notebooks, includes myst_parser, replaces nbsphinx, doesn't need separate pandoc install
     "sphinxcontrib.mermaid", # allow mermaid diagrams
+    "sphinx_design", # allow arranging elements with tabs, etc.
 ]
 
 templates_path = ["_templates"]
@@ -38,6 +39,9 @@ html_theme_options = {
     "show_toc_level": 4, # show up to heading level 5 in the right "Contents" sidebar
     "repository_url": "https://github.com/CombatWombatHub/aiml-notes", # replace with your repository URL
     "use_repository_button": True, # create a link to the repository on the page
+    "home_page_in_toc": True, # include the home page in the left sidebar
+    #"show_navbar_depth": 4, # show up to heading level 5 in the left sidebar
+    #"collapse_navbar": True, # collapse the left sidebar to show only top-level headings
 }
 
 
