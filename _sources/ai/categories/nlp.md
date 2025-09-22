@@ -4,30 +4,6 @@
 
 - [Kaggle Natural Language Processing Guide](https://www.kaggle.com/learn-guide/natural-language-processing) has links to a lot of relevant tutorials and project ideas. The best place to start is probably their guide on [Getting started with NLP for absolute beginners](https://www.kaggle.com/code/jhoward/getting-started-with-nlp-for-absolute-beginners)
 
-## Maintenance Records Classification Task
-
-- Trying to remember and practice a particular problem
-- dataset was perhaps four columns, I sort of remember 3 of them
-- need to predict the category from the other data
-- first order of business: find a similar dataset or problem
-- first place to start is probably the Kaggle Guide [Getting started with NLP for absolute beginners](https://www.kaggle.com/code/jhoward/getting-started-with-nlp-for-absolute-beginners).
-
-
-| date      | service                                 | category   |
-| ----------- | ----------------------------------------- | ------------ |
-| 4/13/2004 | patched hull                            | watercraft |
-| 6/1/2005  | tire change                             | vehicle    |
-| 6/22/2005 | waxed wing, swapped landing gear spring | aircraft   |
-| ...       | ...                                     | ...        |
-
-## Hugging Face Transformers Library
-
-- the Kaggle [Getting started with NLP for absolute beginners](https://www.kaggle.com/code/jhoward/getting-started-with-nlp-for-absolute-beginners) notebook required some additional libraries to be installed
-- one of them was `transformers` from [Hugging Face](https://huggingface.co/docs/transformers/en/index)
-- it's a "model-definition framework"
-- sounds like a standardized way of using models so that you could, say, take a model that was trained in `Tensorflow` and load it into `PyTorch`? Or have either of those things reach out to a trained `LLM`?
-- I think it might have a different meaning than the `transformers` discussed below
-
 ## Large Language Models (LLM's)
 
 The best videos to summarize these are from the 3Blue1Brown [Deep Learning / Neural Networks Course](https://youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi&si=0_HYbGimQB-Tx1tF) - 8 videos covering neural networks, backpropagation, LLM's, and Transformers. Each video is 8-30 minutes long, total runtime about 2 hours. The videos on Neural Networks were made way back in 2018, and the LLM videos were made in 2024, so there's a chance more will be added if something else game-changing is discovered. For an overview, just watch the 8 minute video [Large language models explained briefly](https://youtu.be/LPZh9BOjkQs?si=K21ni-7Kl-A28Te0).
@@ -138,3 +114,26 @@ I'm guessing that the `attention` and `feedforward` blocks are also trained duri
 
 ##### Final Vector
 The final vector in the sequence, once influenced by everything the model learned during training as well as the context encoded by the `attention` and `feedforward` stacks, will do one final operation. it will output a vector with one probability for each possible `token` that could come next.
+
+## Hugging Face Transformers Library
+
+- the Kaggle [Getting started with NLP for absolute beginners](https://www.kaggle.com/code/jhoward/getting-started-with-nlp-for-absolute-beginners) uses the `transformers` Python package from [Hugging Face](https://huggingface.co/docs/transformers/en/index)
+- it appears to be a library specifically to help use `Transformers` models
+- sounds like it helps you download and use pretrained models (since you wouldn't want to try to train an LLM yourself unless you own a mountain lair full of GPU's)
+- also lets you attach stuff to do the other parts of the process like tokenization
+
+## Maintenance Records Classification Task
+
+- Trying to remember and practice a particular problem
+- dataset was perhaps four columns, I sort of remember 3 of them
+- need to predict the category from the other data
+- first order of business: find a similar dataset or problem
+- first place to start is probably the Kaggle Guide [Getting started with NLP for absolute beginners](https://www.kaggle.com/code/jhoward/getting-started-with-nlp-for-absolute-beginners).
+
+
+| date      | service                                 | category   |
+| --------- | --------------------------------------- | ---------- |
+| 4/13/2004 | patched hull                            | watercraft |
+| 6/1/2005  | tire change                             | vehicle    |
+| 6/22/2005 | waxed wing, swapped landing gear spring | aircraft   |
+| ...       | ...                                     | ...        |

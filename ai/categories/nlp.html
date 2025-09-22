@@ -379,8 +379,6 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maintenance-records-classification-task">Maintenance Records Classification Task</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hugging-face-transformers-library">Hugging Face Transformers Library</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#large-language-models-llm-s">Large Language Models (LLM’s)</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#large-language-models-explained-briefly">Large Language Models Explained Briefly</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting">Prompting</a></li>
@@ -399,6 +397,8 @@ document.write(`
 </li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hugging-face-transformers-library">Hugging Face Transformers Library</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maintenance-records-classification-task">Maintenance Records Classification Task</a></li>
 </ul>
             </nav>
         </div>
@@ -416,53 +416,6 @@ document.write(`
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.kaggle.com/learn-guide/natural-language-processing">Kaggle Natural Language Processing Guide</a> has links to a lot of relevant tutorials and project ideas. The best place to start is probably their guide on <a class="reference external" href="https://www.kaggle.com/code/jhoward/getting-started-with-nlp-for-absolute-beginners">Getting started with NLP for absolute beginners</a></p></li>
 </ul>
-<section id="maintenance-records-classification-task">
-<h2>Maintenance Records Classification Task<a class="headerlink" href="#maintenance-records-classification-task" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Trying to remember and practice a particular problem</p></li>
-<li><p>dataset was perhaps four columns, I sort of remember 3 of them</p></li>
-<li><p>need to predict the category from the other data</p></li>
-<li><p>first order of business: find a similar dataset or problem</p></li>
-<li><p>first place to start is probably the Kaggle Guide <a class="reference external" href="https://www.kaggle.com/code/jhoward/getting-started-with-nlp-for-absolute-beginners">Getting started with NLP for absolute beginners</a>.</p></li>
-</ul>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>date</p></th>
-<th class="head"><p>service</p></th>
-<th class="head"><p>category</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>4/13/2004</p></td>
-<td><p>patched hull</p></td>
-<td><p>watercraft</p></td>
-</tr>
-<tr class="row-odd"><td><p>6/1/2005</p></td>
-<td><p>tire change</p></td>
-<td><p>vehicle</p></td>
-</tr>
-<tr class="row-even"><td><p>6/22/2005</p></td>
-<td><p>waxed wing, swapped landing gear spring</p></td>
-<td><p>aircraft</p></td>
-</tr>
-<tr class="row-odd"><td><p>…</p></td>
-<td><p>…</p></td>
-<td><p>…</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</section>
-<section id="hugging-face-transformers-library">
-<h2>Hugging Face Transformers Library<a class="headerlink" href="#hugging-face-transformers-library" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>the Kaggle <a class="reference external" href="https://www.kaggle.com/code/jhoward/getting-started-with-nlp-for-absolute-beginners">Getting started with NLP for absolute beginners</a> notebook required some additional libraries to be installed</p></li>
-<li><p>one of them was <code class="docutils literal notranslate"><span class="pre">transformers</span></code> from <a class="reference external" href="https://huggingface.co/docs/transformers/en/index">Hugging Face</a></p></li>
-<li><p>it’s a “model-definition framework”</p></li>
-<li><p>sounds like a standardized way of using models so that you could, say, take a model that was trained in <code class="docutils literal notranslate"><span class="pre">Tensorflow</span></code> and load it into <code class="docutils literal notranslate"><span class="pre">PyTorch</span></code>? Or have either of those things reach out to a trained <code class="docutils literal notranslate"><span class="pre">LLM</span></code>?</p></li>
-<li><p>I think it might have a different meaning than the <code class="docutils literal notranslate"><span class="pre">transformers</span></code> discussed below</p></li>
-</ul>
-</section>
 <section id="large-language-models-llm-s">
 <h2>Large Language Models (LLM’s)<a class="headerlink" href="#large-language-models-llm-s" title="Link to this heading">#</a></h2>
 <p>The best videos to summarize these are from the 3Blue1Brown <a class="reference external" href="https://youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi&amp;amp;si=0_HYbGimQB-Tx1tF">Deep Learning / Neural Networks Course</a> - 8 videos covering neural networks, backpropagation, LLM’s, and Transformers. Each video is 8-30 minutes long, total runtime about 2 hours. The videos on Neural Networks were made way back in 2018, and the LLM videos were made in 2024, so there’s a chance more will be added if something else game-changing is discovered. For an overview, just watch the 8 minute video <a class="reference external" href="https://youtu.be/LPZh9BOjkQs?si=K21ni-7Kl-A28Te0">Large language models explained briefly</a>.</p>
@@ -571,6 +524,52 @@ That’s a far cry from having a helpful AI assistant.</p>
 </section>
 </section>
 </section>
+<section id="hugging-face-transformers-library">
+<h2>Hugging Face Transformers Library<a class="headerlink" href="#hugging-face-transformers-library" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>the Kaggle <a class="reference external" href="https://www.kaggle.com/code/jhoward/getting-started-with-nlp-for-absolute-beginners">Getting started with NLP for absolute beginners</a> uses the <code class="docutils literal notranslate"><span class="pre">transformers</span></code> Python package from <a class="reference external" href="https://huggingface.co/docs/transformers/en/index">Hugging Face</a></p></li>
+<li><p>it appears to be a library specifically to help use <code class="docutils literal notranslate"><span class="pre">Transformers</span></code> models</p></li>
+<li><p>sounds like it helps you download and use pretrained models (since you wouldn’t want to try to train an LLM yourself unless you own a mountain lair full of GPU’s)</p></li>
+<li><p>also lets you attach stuff to do the other parts of the process like tokenization</p></li>
+</ul>
+</section>
+<section id="maintenance-records-classification-task">
+<h2>Maintenance Records Classification Task<a class="headerlink" href="#maintenance-records-classification-task" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Trying to remember and practice a particular problem</p></li>
+<li><p>dataset was perhaps four columns, I sort of remember 3 of them</p></li>
+<li><p>need to predict the category from the other data</p></li>
+<li><p>first order of business: find a similar dataset or problem</p></li>
+<li><p>first place to start is probably the Kaggle Guide <a class="reference external" href="https://www.kaggle.com/code/jhoward/getting-started-with-nlp-for-absolute-beginners">Getting started with NLP for absolute beginners</a>.</p></li>
+</ul>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>date</p></th>
+<th class="head"><p>service</p></th>
+<th class="head"><p>category</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>4/13/2004</p></td>
+<td><p>patched hull</p></td>
+<td><p>watercraft</p></td>
+</tr>
+<tr class="row-odd"><td><p>6/1/2005</p></td>
+<td><p>tire change</p></td>
+<td><p>vehicle</p></td>
+</tr>
+<tr class="row-even"><td><p>6/22/2005</p></td>
+<td><p>waxed wing, swapped landing gear spring</p></td>
+<td><p>aircraft</p></td>
+</tr>
+<tr class="row-odd"><td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
 </section>
 
 
@@ -618,8 +617,6 @@ That’s a far cry from having a helpful AI assistant.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maintenance-records-classification-task">Maintenance Records Classification Task</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hugging-face-transformers-library">Hugging Face Transformers Library</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#large-language-models-llm-s">Large Language Models (LLM’s)</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#large-language-models-explained-briefly">Large Language Models Explained Briefly</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting">Prompting</a></li>
@@ -638,6 +635,8 @@ That’s a far cry from having a helpful AI assistant.</p>
 </li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hugging-face-transformers-library">Hugging Face Transformers Library</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maintenance-records-classification-task">Maintenance Records Classification Task</a></li>
 </ul>
   </nav></div>
 
