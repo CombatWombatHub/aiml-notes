@@ -44,6 +44,8 @@
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'portfolio/kaggle/nlp_beginners_guide';</script>
     <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -377,6 +379,14 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examine-the-dataset">Examine the DataSet</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#concatenate-the-input">Concatenate the Input</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tokenize">Tokenize</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-labels">Prepare Labels</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-test-and-validation-sets">Get Test and Validation Sets</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#validation-set">Validation Set</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#test-set">Test Set</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#metrics-and-correlation">Metrics and Correlation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#training-the-model">Training the Model</a></li>
 </ul>
 </li>
 </ul>
@@ -474,7 +484,7 @@ document.write(`
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|          | 0.00/682k [00:00&lt;?, ?B/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 682k/682k [00:00&lt;00:00, 743MB/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 682k/682k [00:00&lt;00:00, 599MB/s]
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
@@ -779,30 +789,363 @@ Name: input, dtype: object
 </div>
 </div>
 <ul class="simple">
-<li><p>pick an NLP model to start with
-(the <code class="docutils literal notranslate"><span class="pre">tokenization</span></code> and <code class="docutils literal notranslate"><span class="pre">numericalization</span></code> methods will depend on your model)</p></li>
+<li><p>pick an NLP model to start with (the <code class="docutils literal notranslate"><span class="pre">tokenization</span></code> and <code class="docutils literal notranslate"><span class="pre">numericalization</span></code> methods will depend on your model)</p></li>
 <li><p>the <code class="docutils literal notranslate"><span class="pre">microsoft/deberta-v3-small</span></code> is a decent starting place for most NLP problems</p></li>
 <li><p>use <code class="docutils literal notranslate"><span class="pre">microsoft/deberta-v3-large</span></code> for a slower but more accurate model (after initial exploration)</p></li>
 <li><p>these are pre-trained models, already adept at parsing natural language</p></li>
+<li><p>use the <code class="docutils literal notranslate"><span class="pre">AutoTokenizer</span></code></p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">transformers</span><span class="w"> </span><span class="kn">import</span> <span class="n">AutoModelForSequenceClassification</span><span class="p">,</span> <span class="n">AutoTokenizer</span>
 
-<span class="c1"># select a model</span>
-<span class="n">model_nm</span> <span class="o">=</span> <span class="s2">&quot;microsoft/deberta-v3-small&quot;</span>
-<span class="c1"># model_nm = &quot;microsoft/deberta-v3-large&quot;</span>
-
-<span class="c1"># use AutoTokenizer to create a tokenizer appropriate to the model</span>
-<span class="n">tokz</span> <span class="o">=</span> <span class="n">AutoTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">model_nm</span><span class="p">)</span>
-<span class="c1"># could use slower tokenizer to prevent a warning about &quot;byte fallback&quot; feature from SentencePiece for &quot;fast&quot; tokenizer</span>
-<span class="c1"># tokz = AutoTokenizer.from_pretrained(model_nm, use_fast=False)</span>
+<span class="n">model_nm</span> <span class="o">=</span> <span class="s2">&quot;microsoft/deberta-v3-small&quot;</span> <span class="c1"># select a pretrained model from Hugging Face model hub</span>
+<span class="c1"># get the tokenization that was used with the pretrained model, make into a tokenizer object to use on our inputs</span>
+<span class="n">tokz</span> <span class="o">=</span> <span class="n">AutoTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">model_nm</span><span class="p">)</span> <span class="c1">#, use_fast=False) would use a slower tokenizer</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/work/aiml-notes/aiml-notes/.venv/lib/python3.13/site-packages/transformers/convert_slow_tokenizer.py:564: UserWarning: The sentencepiece tokenizer that you are converting to a fast tokenizer uses the byte fallback option which is not implemented in the fast tokenizers. In practice this means that the fast version of the tokenizer can produce unknown tokens whereas the sentencepiece version would have converted these unknown tokens into a sequence of byte tokens matching the original piece of text.
   warnings.warn(
+</pre></div>
+</div>
+</div>
+</div>
+<p>Show how the tokenizer splits text into tokens</p>
+<ul class="simple">
+<li><p>uncommon words are split into subwords (like <code class="docutils literal notranslate"><span class="pre">G'day</span></code> → <code class="docutils literal notranslate"><span class="pre">_G</span></code>, <code class="docutils literal notranslate"><span class="pre">'</span></code>, <code class="docutils literal notranslate"><span class="pre">day</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_</span></code> is added to the start of new words (distinguishes new words like <code class="docutils literal notranslate"><span class="pre">_folks</span></code> from the <code class="docutils literal notranslate"><span class="pre">day</span></code> in <code class="docutils literal notranslate"><span class="pre">G'day</span></code>)</p></li>
+<li><p>punctuation like  is treated as separate tokens (like <code class="docutils literal notranslate"><span class="pre">'</span></code>, <code class="docutils literal notranslate"><span class="pre">,</span></code>, <code class="docutils literal notranslate"><span class="pre">!</span></code>, <code class="docutils literal notranslate"><span class="pre">.</span></code>)</p></li>
+<li><p>uncommon words are split into subwords (like <code class="docutils literal notranslate"><span class="pre">ornithorynchus</span></code> → <code class="docutils literal notranslate"><span class="pre">▁or</span></code>, <code class="docutils literal notranslate"><span class="pre">ni</span></code>, <code class="docutils literal notranslate"><span class="pre">tho</span></code>, <code class="docutils literal notranslate"><span class="pre">rhynch</span></code>, <code class="docutils literal notranslate"><span class="pre">us</span></code>)</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[</span><span class="se">\&quot;</span><span class="s2">G&#39;day folks, I&#39;m Jeremy from fast.ai!</span><span class="se">\&quot;</span><span class="s2">] -&gt;&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tokz</span><span class="o">.</span><span class="n">tokenize</span><span class="p">(</span><span class="s2">&quot;G&#39;day folks, I&#39;m Jeremy from fast.ai!&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[</span><span class="se">\&quot;</span><span class="s2">A platypus is an ornithorhynchus anatinus.</span><span class="se">\&quot;</span><span class="s2">] -&gt;&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tokz</span><span class="o">.</span><span class="n">tokenize</span><span class="p">(</span><span class="s2">&quot;A platypus is an ornithorhynchus anatinus.&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&quot;G&#39;day folks, I&#39;m Jeremy from fast.ai!&quot;] -&gt;
+[&#39;▁G&#39;, &quot;&#39;&quot;, &#39;day&#39;, &#39;▁folks&#39;, &#39;,&#39;, &#39;▁I&#39;, &quot;&#39;&quot;, &#39;m&#39;, &#39;▁Jeremy&#39;, &#39;▁from&#39;, &#39;▁fast&#39;, &#39;.&#39;, &#39;ai&#39;, &#39;!&#39;]
+[&quot;A platypus is an ornithorhynchus anatinus.&quot;] -&gt;
+[&#39;▁A&#39;, &#39;▁platypus&#39;, &#39;▁is&#39;, &#39;▁an&#39;, &#39;▁or&#39;, &#39;ni&#39;, &#39;tho&#39;, &#39;rhynch&#39;, &#39;us&#39;, &#39;▁an&#39;, &#39;at&#39;, &#39;inus&#39;, &#39;.&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># define a function to apply the tokenizer to the &#39;input&#39; column of the dataset</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">tok_func</span><span class="p">(</span><span class="n">x</span><span class="p">):</span> <span class="k">return</span> <span class="n">tokz</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s2">&quot;input&quot;</span><span class="p">])</span>
+<span class="c1"># use map to run the tokenizer function quickly on the dataset, in parallel batches for speed</span>
+<span class="n">tok_ds</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">tok_func</span><span class="p">,</span> <span class="n">batched</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># that added the columns input_ids, token_type_ids, attention_mask</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;original  columns:&quot;</span><span class="p">,</span> <span class="n">ds</span><span class="o">.</span><span class="n">column_names</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;tokenized columns:&quot;</span><span class="p">,</span> <span class="n">tok_ds</span><span class="o">.</span><span class="n">column_names</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Map:   0%|          | 0/36473 [00:00&lt;?, ? examples/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Map:  14%|█▎        | 5000/36473 [00:00&lt;00:00, 39482.12 examples/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Map:  30%|███       | 11000/36473 [00:00&lt;00:00, 40863.37 examples/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Map:  47%|████▋     | 17000/36473 [00:00&lt;00:00, 33765.16 examples/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Map:  63%|██████▎   | 23000/36473 [00:00&lt;00:00, 36953.36 examples/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Map:  80%|███████▉  | 29000/36473 [00:00&lt;00:00, 38649.27 examples/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Map:  96%|█████████▌| 35000/36473 [00:00&lt;00:00, 39590.95 examples/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Map: 100%|██████████| 36473/36473 [00:00&lt;00:00, 38480.46 examples/s]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>original  columns: [&#39;id&#39;, &#39;anchor&#39;, &#39;target&#39;, &#39;context&#39;, &#39;score&#39;, &#39;input&#39;]
+tokenized columns: [&#39;id&#39;, &#39;anchor&#39;, &#39;target&#39;, &#39;context&#39;, &#39;score&#39;, &#39;input&#39;, &#39;input_ids&#39;, &#39;token_type_ids&#39;, &#39;attention_mask&#39;]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Look at the columns that were added by the tokenization</p>
+<ul class="simple">
+<li><p>these columns have lists in each cell</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">input_ids</span></code> are the number assigned to a token</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># look at the columns that the tokenization added for the first row</span>
+<span class="n">row</span> <span class="o">=</span> <span class="n">tok_ds</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">input_row</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;input&#39;</span><span class="p">]</span>
+<span class="n">tk_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;token&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">tokz</span><span class="o">.</span><span class="n">tokenize</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;input&#39;</span><span class="p">])</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">],</span> <span class="c1"># there are extra start and end id&#39;s</span>
+    <span class="s1">&#39;input_ids&#39;</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;input_ids&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;attention_mask&#39;</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;attention_mask&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;token_type_ids&#39;</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;token_type_ids&#39;</span><span class="p">],</span>
+<span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;input:&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\&quot;</span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;input&#39;</span><span class="p">]</span><span class="si">}</span><span class="se">\&quot;</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;vocab of token &#39;of&#39;: </span><span class="si">{</span><span class="n">tokz</span><span class="o">.</span><span class="n">vocab</span><span class="p">[</span><span class="s1">&#39;1&#39;</span><span class="p">]</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tk_df</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>  <span class="c1"># print the whole dataframe without truncating</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>input: &quot;TEXT1: A47; TEXT2: abatement of pollution; ANC1: abatement&quot;
+vocab of token &#39;of&#39;: 435
+
+     token  input_ids  attention_mask  token_type_ids
+                    1               1               0
+     ▁TEXT      54453               1               0
+         1        435               1               0
+         :        294               1               0
+        ▁A        336               1               0
+        47       5753               1               0
+         ;        346               1               0
+     ▁TEXT      54453               1               0
+         2        445               1               0
+         :        294               1               0
+▁abatement      47284               1               0
+       ▁of        265               1               0
+▁pollution       6435               1               0
+         ;        346               1               0
+      ▁ANC      23702               1               0
+         1        435               1               0
+         :        294               1               0
+▁abatement      47284               1               0
+                    2               1               0
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="prepare-labels">
+<h3>Prepare Labels<a class="headerlink" href="#prepare-labels" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Transformers</span></code> assume that the labels column is named <code class="docutils literal notranslate"><span class="pre">labels</span></code></p></li>
+<li><p>rename the <code class="docutils literal notranslate"><span class="pre">score</span></code> column</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tok_ds</span> <span class="o">=</span> <span class="n">tok_ds</span><span class="o">.</span><span class="n">rename_column</span><span class="p">(</span><span class="s2">&quot;score&quot;</span><span class="p">,</span> <span class="s2">&quot;labels&quot;</span><span class="p">)</span>  <span class="c1"># rename the score column to labels</span>
+<span class="n">tok_ds</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dataset({
+    features: [&#39;id&#39;, &#39;anchor&#39;, &#39;target&#39;, &#39;context&#39;, &#39;labels&#39;, &#39;input&#39;, &#39;input_ids&#39;, &#39;token_type_ids&#39;, &#39;attention_mask&#39;],
+    num_rows: 36473
+})
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="get-test-and-validation-sets">
+<h3>Get Test and Validation Sets<a class="headerlink" href="#get-test-and-validation-sets" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>the <code class="docutils literal notranslate"><span class="pre">train</span></code> set is used to … train … the model</p></li>
+<li><p>the <code class="docutils literal notranslate"><span class="pre">validation</span></code> set is used to select the <code class="docutils literal notranslate"><span class="pre">architecture</span></code> and for <code class="docutils literal notranslate"><span class="pre">hyperparameter</span> <span class="pre">tuning</span></code></p></li>
+<li><p>the <code class="docutils literal notranslate"><span class="pre">test</span></code> set is <em>completely unseen</em> and scores how well the model will generalize to real world data</p></li>
+</ul>
+<section id="validation-set">
+<h4>Validation Set<a class="headerlink" href="#validation-set" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>split off some of the test data to use for <code class="docutils literal notranslate"><span class="pre">validation</span></code></p>
+<ul>
+<li><p>use it for <code class="docutils literal notranslate"><span class="pre">architecture</span> <span class="pre">selection</span></code> / <code class="docutils literal notranslate"><span class="pre">hyperparameter</span> <span class="pre">tuning</span></code></p></li>
+<li><p>note that you can <code class="docutils literal notranslate"><span class="pre">overfit</span></code> to the <code class="docutils literal notranslate"><span class="pre">validation</span> <span class="pre">data</span></code> as well as the <code class="docutils literal notranslate"><span class="pre">training</span> <span class="pre">data</span></code></p></li>
+<li><p>that’s where the <code class="docutils literal notranslate"><span class="pre">test</span></code> set comes in - it can help check for <code class="docutils literal notranslate"><span class="pre">overfitting</span></code></p></li>
+</ul>
+</li>
+<li><p>we’re doing it randomly here, but apparently choosing a <em>good</em> validation set is one of <em>the</em> most important parts of training</p>
+<ul>
+<li><p>if you do a random set, sometimes there are differences between development and production use</p></li>
+<li><p>see the article <a class="reference external" href="https://www.fast.ai/2017/11/13/validation-sets/">How (and why) to create a good validation set</a> by Dr. Rachel Thomas</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="test-set">
+<h4>Test Set<a class="headerlink" href="#test-set" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>import the test data set (36 entries)</p>
+<ul>
+<li><p>often we split it off ourself, but Kaggle gives you a separate one already</p></li>
+<li><p>your accuracy at predicting with this set goes on the <em>public leaderboard</em></p></li>
+</ul>
+</li>
+<li><p>in addition, Kaggle keeps a <em>second</em> test data set that they bring out at the <em>end</em> of a competition</p>
+<ul>
+<li><p>if you overfit to the public leaderboard test data, you could lose ability to generalize to the holdout set</p></li>
+<li><p>this one is called the <em>private leaderboard</em></p></li>
+</ul>
+</li>
+<li><p>they note that you can even <code class="docutils literal notranslate"><span class="pre">overfit</span></code> to the <code class="docutils literal notranslate"><span class="pre">test</span> <span class="pre">set</span></code> … yikes, sounds unavoidable</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import the CSV with all the test data </span>
+<span class="c1"># (name it &quot;eval&quot; to avoid confusion with the &quot;test&quot; split of the training data)</span>
+<span class="n">eval_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">data_dir</span> <span class="o">/</span> <span class="s1">&#39;test.csv&#39;</span><span class="p">)</span>
+<span class="n">eval_df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>anchor</th>
+      <th>target</th>
+      <th>context</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>36</td>
+      <td>36</td>
+      <td>36</td>
+      <td>36</td>
+    </tr>
+    <tr>
+      <th>unique</th>
+      <td>36</td>
+      <td>34</td>
+      <td>36</td>
+      <td>29</td>
+    </tr>
+    <tr>
+      <th>top</th>
+      <td>4112d61851461f60</td>
+      <td>hybrid bearing</td>
+      <td>inorganic photoconductor drum</td>
+      <td>G02</td>
+    </tr>
+    <tr>
+      <th>freq</th>
+      <td>1</td>
+      <td>2</td>
+      <td>1</td>
+      <td>3</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># split off a quarter of the training data to use as a validation set</span>
+<span class="n">dds</span> <span class="o">=</span> <span class="n">tok_ds</span><span class="o">.</span><span class="n">train_test_split</span><span class="p">(</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">dds</span>
+<span class="c1"># NOTE: it&#39;s automatically named &quot;test&quot; instead of &quot;validation&quot;, don&#39;t mix it up</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DatasetDict({
+    train: Dataset({
+        features: [&#39;id&#39;, &#39;anchor&#39;, &#39;target&#39;, &#39;context&#39;, &#39;labels&#39;, &#39;input&#39;, &#39;input_ids&#39;, &#39;token_type_ids&#39;, &#39;attention_mask&#39;],
+        num_rows: 27354
+    })
+    test: Dataset({
+        features: [&#39;id&#39;, &#39;anchor&#39;, &#39;target&#39;, &#39;context&#39;, &#39;labels&#39;, &#39;input&#39;, &#39;input_ids&#39;, &#39;token_type_ids&#39;, &#39;attention_mask&#39;],
+        num_rows: 9119
+    })
+})
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="metrics-and-correlation">
+<h3>Metrics and Correlation<a class="headerlink" href="#metrics-and-correlation" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>while <code class="docutils literal notranslate"><span class="pre">training</span></code>, we’re generally minimizing or maximizing one or more <code class="docutils literal notranslate"><span class="pre">metrics</span></code></p></li>
+<li><p>you can’t apply them unthinkingly - see <a class="reference external" href="https://www.fast.ai/2019/09/24/metrics/">The Problem with Metrics is a Big problem for AI</a></p></li>
+<li><p>Kaggle Competitions have specific metrics already defined so everyone is scored the same way</p></li>
+<li><p>they’re listed on the Competition’s <a class="reference external" href="https://www.kaggle.com/competitions/us-patent-phrase-to-phrase-matching/overview/evaluation">Evaluation Page</a>, in this case the <a class="reference external" href="https://en.wikipedia.org/wiki/Pearson_correlation_coefficient">Pearson Correlation Coefficient</a></p>
+<ul>
+<li><p>it measures correlation between two variables</p>
+<ul>
+<li><p>it varies from <code class="docutils literal notranslate"><span class="pre">-1</span></code> (perfect inverse correlation) to <code class="docutils literal notranslate"><span class="pre">1</span></code> (perfect positive correlation)</p></li>
+<li><p>it’s the <a class="reference external" href="https://en.wikipedia.org/wiki/Covariance">covariance</a> (joint variability) of the two variables divided by the product of their standard deviations</p></li>
+</ul>
+</li>
+<li><p>the equation is on the complicated side, and there’s a different one for populations</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\rho_{X,Y}=\Large\frac{cov(X,Y)}{\sigma_X \sigma_Y}\)</span></p></li>
+</ul>
+</li>
+<li><p>vs for samples</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(r_{xy}=\Large\frac{\sum^n_{i=1}{(x_i - \bar x)(y_i - \bar y)}}{\sqrt{\sum^n_{i=1} (x_i - \bar x)^2}\sqrt{\sum^n_{i=1} (y_i - \bar y)^2}}\)</span></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>the example notebook doesn’t list the formulas</p>
+<ul>
+<li><p>but it does goes over the correlation in more detail in the section <a class="reference external" href="https://www.kaggle.com/code/jhoward/getting-started-with-nlp-for-absolute-beginners#metrics-and-correlation">Metrics and Correlation</a></p></li>
+<li><p>this mostly involves checking it on other datasets, so I’m not replicating that here</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a function to calculate Pearson correlation coefficient</span>
+<span class="c1"># corrcoeff returns a 2x2 array, just grab the [0][1] element </span>
+<span class="c1"># which is the correlation between variables x and y</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">corr</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">):</span> <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># Transformers expect metrics to be returned as a dictionary</span>
+<span class="c1"># Create a function to return a dictionary for the metric</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">corr_d</span><span class="p">(</span><span class="n">eval_pred</span><span class="p">):</span> <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;pearson&#39;</span><span class="p">:</span> <span class="n">corr</span><span class="p">(</span><span class="o">*</span><span class="n">eval_pred</span><span class="p">)}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="training-the-model">
+<h3>Training the Model<a class="headerlink" href="#training-the-model" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">transformers</span><span class="w"> </span><span class="kn">import</span> <span class="n">TrainingArguments</span><span class="p">,</span> <span class="n">Trainer</span>
 </pre></div>
 </div>
 </div>
@@ -862,6 +1205,14 @@ Name: input, dtype: object
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examine-the-dataset">Examine the DataSet</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#concatenate-the-input">Concatenate the Input</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tokenize">Tokenize</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-labels">Prepare Labels</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-test-and-validation-sets">Get Test and Validation Sets</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#validation-set">Validation Set</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#test-set">Test Set</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#metrics-and-correlation">Metrics and Correlation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#training-the-model">Training the Model</a></li>
 </ul>
 </li>
 </ul>
