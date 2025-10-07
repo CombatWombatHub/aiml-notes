@@ -48,7 +48,7 @@
     <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Getting Started with NLP" href="nlp_beginners_guide.html" />
+    <link rel="next" title="Metrics and correlation" href="metrics.html" />
     <link rel="prev" title="Portfolio" href="../portfolio.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -187,7 +187,8 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../portfolio.html">Portfolio</a></li>
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Kaggle</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="nlp_beginners_guide.html">Getting Started with NLP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="metrics.html">Metrics and correlation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nlp_beginners_guide_noex.html">Getting Started with NLP</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../machine_learning_mastery/index.html">Machine Learning Mastery</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -378,21 +379,32 @@ document.write(`
 <p>Kaggle tutorials and competitions</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="nlp_beginners_guide.html">Getting Started with NLP</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="nlp_beginners_guide.html#nlp-for-classification">NLP For Classification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="nlp_beginners_guide.html#u-s-patent-phrase-to-phrase-matching-competition">U.S. Patent Phrase to Phrase Matching Competition</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="nlp_beginners_guide.html#get-the-dataset">Get the Dataset</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nlp_beginners_guide.html#examine-the-dataset">Examine the DataSet</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nlp_beginners_guide.html#concatenate-the-input">Concatenate the Input</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nlp_beginners_guide.html#tokenize">Tokenize</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nlp_beginners_guide.html#prepare-labels">Prepare Labels</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nlp_beginners_guide.html#get-test-and-validation-sets">Get Test and Validation Sets</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="nlp_beginners_guide.html#validation-set">Validation Set</a></li>
-<li class="toctree-l4"><a class="reference internal" href="nlp_beginners_guide.html#test-set">Test Set</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metrics.html">Metrics and correlation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="metrics.html#pearson-correlation-coefficient-and-california-housing">Pearson Correlation Coefficient and California Housing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="metrics.html#income-vs-house-value-strong-correlation">Income vs House Value - strong correlation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="metrics.html#room-count-vs-income-outliers-hide-strong-correlation">Room Count vs Income - outliers hide strong correlation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="metrics.html#room-count-vs-house-value-weaker-correlation">Room Count vs House Value - weaker correlation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="metrics.html#room-count-vs-house-age-weak-negative-correlation">Room Count vs. House Age - weak negative correlation</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="nlp_beginners_guide.html#metrics-and-correlation">Metrics and Correlation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nlp_beginners_guide.html#training-the-model">Training the Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="nlp_beginners_guide_noex.html">Getting Started with NLP</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="nlp_beginners_guide_noex.html#nlp-for-classification">NLP For Classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nlp_beginners_guide_noex.html#u-s-patent-phrase-to-phrase-matching-competition">U.S. Patent Phrase to Phrase Matching Competition</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="nlp_beginners_guide_noex.html#get-the-dataset">Get the Dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nlp_beginners_guide_noex.html#examine-the-dataset">Examine the DataSet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nlp_beginners_guide_noex.html#concatenate-the-input">Concatenate the Input</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nlp_beginners_guide_noex.html#tokenize">Tokenize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nlp_beginners_guide_noex.html#prepare-labels">Prepare Labels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nlp_beginners_guide_noex.html#get-test-and-validation-sets">Get Test and Validation Sets</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="nlp_beginners_guide_noex.html#validation-set">Validation Set</a></li>
+<li class="toctree-l4"><a class="reference internal" href="nlp_beginners_guide_noex.html#test-set">Test Set</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="nlp_beginners_guide_noex.html#metrics-and-correlation">Metrics and Correlation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nlp_beginners_guide_noex.html#training-the-model">Training the Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nlp_beginners_guide_noex.html#predict-using-the-model">Predict using the model</a></li>
 </ul>
 </li>
 </ul>
@@ -422,11 +434,11 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="nlp_beginners_guide.html"
+       href="metrics.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Getting Started with NLP</p>
+        <p class="prev-next-title">Metrics and correlation</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
