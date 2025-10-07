@@ -15,6 +15,7 @@ portfolio/portfolio
 portfolio/kaggle/index
 portfolio/machine_learning_mastery/index
 portfolio/datacamp/index
+portfolio/geeksforgeeks/index
 ```
 
 ```{toctree}

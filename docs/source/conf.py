@@ -67,8 +67,10 @@ myst_enable_extensions = [
     #"tasklist",
 ]
 
-# generate anchors so you can link to markdown headings
 # https://myst-parser.readthedocs.io/en/latest/syntax/optional.html#auto-generated-header-anchors
+# auto-generate anchors so you can link to markdown headings within the same file 
+# (would need the path to link to another file via this method)
+# "## my heading" <-- "[](#my-heading-1)" or "[explicit text](#my-heading-1)"
 myst_heading_anchors = 3
 
 # Configure myst-parser to treat mermaid fenced code blocks as directives
