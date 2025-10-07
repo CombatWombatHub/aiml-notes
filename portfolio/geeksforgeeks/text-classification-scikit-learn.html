@@ -1,0 +1,813 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Text Classification using scikit-learn in NLP &#8212; aiml-notes 1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=43d83c71" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=a681ed88"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'portfolio/geeksforgeeks/text-classification-scikit-learn';</script>
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Sphinx" href="../../sphinx_examples/index.html" />
+    <link rel="prev" title="Geeks for Geeks" href="index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.jpg" class="logo__image only-light" alt="aiml-notes 1.0 documentation - Home"/>
+    <script>document.write(`<img src="../../_static/logo.jpg" class="logo__image only-dark" alt="aiml-notes 1.0 documentation - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../index.html">
+                    AI/ML Notes
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Notes:</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../ai/categories/index.html">Categories</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../ai/categories/generative.html">Generative AI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ai/categories/ml.html">Machine Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ai/categories/nlp.html">Natural Language Processing</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../ai/development/index.html">Development</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../ai/development/developing.html">ML Development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ai/development/fundamentals.html">Fundamentals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ai/development/metrics.html">Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ai/development/resources.html">Resources</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Portfolio:</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../portfolio.html">Portfolio</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../kaggle/index.html">Kaggle</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../kaggle/iterate_like_a_grandmaster/iterate_like_a_grandmaster.html">Iterate Like a Grandmaster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kaggle/metrics.html">Metrics and correlation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kaggle/nlp_beginners_guide/nlp_beginners_guide_noex.html">Getting Started with NLP</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../machine_learning_mastery/index.html">Machine Learning Mastery</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../machine_learning_mastery/python_ml_mini_course/python_ml_mini_course.html">Python Mini Course</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../datacamp/index.html">DataCamp</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../datacamp/supervised_learning_scikit_learn/supervised_learning_scikit_learn.html">Supervised Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datacamp/using_datacamp.html">Using DataCamp</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Geeks for Geeks</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Text Classification using scikit-learn in NLP</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Sphinx:</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../sphinx_examples/index.html">Sphinx</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sphinx_examples/markdown.html">Markdown</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sphinx_examples/notebook.html">Jupyter Notebook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sphinx_examples/restructuredtext.html">reStructuredText</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/CombatWombatHub/aiml-notes" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/portfolio/geeksforgeeks/text-classification-scikit-learn.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Text Classification using scikit-learn in NLP</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#text-classification">Text Classification</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-dataset">Import Dataset</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#explore-the-data">explore the data</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="text-classification-using-scikit-learn-in-nlp">
+<h1>Text Classification using scikit-learn in NLP<a class="headerlink" href="#text-classification-using-scikit-learn-in-nlp" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p>from <a class="reference external" href="https://www.geeksforgeeks.org/nlp/text-classification-using-scikit-learn-in-nlp/">GeeksForGeeks Text Classification using scikit-learn in NLP</a></p></li>
+<li><p>for <em>reasons</em> I need to figure out how I <em>would</em> have categorized different types of vehicle services based on the description.</p></li>
+</ul>
+<section id="text-classification">
+<h2>Text Classification<a class="headerlink" href="#text-classification" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>assign predefined categories or labels to text documents</p></li>
+<li><p>involves automated sorting and organizing of textual data</p></li>
+<li><p>extract valuable information and insights from large volumes of text</p></li>
+</ul>
+</section>
+<section id="import-dataset">
+<h2>Import Dataset<a class="headerlink" href="#import-dataset" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>fetch the data from the <code class="docutils literal notranslate"><span class="pre">20</span> <span class="pre">newsgroups</span></code> dataset from <code class="docutils literal notranslate"><span class="pre">sklearn</span></code></p></li>
+<li><p>it’s a collection of documents from 20 different news groups</p></li>
+<li><p>specifically grab documents about baseball and space</p></li>
+<li><p>this … appears to take a while. How big is this data set?</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">fetch_20newsgroups</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># fetch the dataset of news documents</span>
+<span class="n">newsgroups</span> <span class="o">=</span> <span class="n">fetch_20newsgroups</span><span class="p">(</span>
+    <span class="n">subset</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="c1"># get both the test and train datasets</span>
+    <span class="n">categories</span><span class="o">=</span><span class="p">[</span>
+        <span class="s1">&#39;rec.sport.baseball&#39;</span><span class="p">,</span> <span class="c1"># get baseball sport documents</span>
+        <span class="s1">&#39;sci.space&#39;</span><span class="p">,</span> <span class="c1"># get science space documents</span>
+    <span class="p">],</span> 
+    <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="c1"># shuffle the data</span>
+    <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span> <span class="c1"># shuffle in a predictable order</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># split off the data (text) from the target (label)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">newsgroups</span><span class="o">.</span><span class="n">data</span>
+<span class="n">target</span> <span class="o">=</span> <span class="n">newsgroups</span><span class="o">.</span><span class="n">target</span>
+
+<span class="c1"># Create a DataFrame for easy manipulation</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;text&#39;</span><span class="p">:</span> <span class="n">data</span><span class="p">,</span> <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="n">target</span><span class="p">})</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>text</th>
+      <th>label</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>From: mss@netcom.com (Mark Singer)\nSubject: R...</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>From: cuz@chaos.cs.brandeis.edu (Cousin It)\nS...</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>From: J019800@LMSC5.IS.LMSC.LOCKHEED.COM\nSubj...</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>From: tedward@cs.cornell.edu (Edward [Ted] Fis...</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>From: snichols@adobe.com (Sherri Nichols)\nSub...</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1976</th>
+      <td>From: msb@sq.sq.com (Mark Brader)\nSubject: Re...</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1977</th>
+      <td>From: clgs11@vaxa.strath.ac.uk\nSubject: Jack ...</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1978</th>
+      <td>From: 18084TM@msu.edu (Tom)\nSubject: Level 5?...</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1979</th>
+      <td>From: snichols@adobe.com (Sherri Nichols)\nSub...</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1980</th>
+      <td>From: mancus@sweetpea.jsc.nasa.gov (Keith Manc...</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+<p>1981 rows × 2 columns</p>
+</div></div></div>
+</div>
+<section id="explore-the-data">
+<h3>explore the data<a class="headerlink" href="#explore-the-data" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>it’s got 1981 rows</p></li>
+<li><p>the articles are shuffled together</p></li>
+<li><p>a label of <code class="docutils literal notranslate"><span class="pre">0</span></code> indicates that it’s about <code class="docutils literal notranslate"><span class="pre">baseball</span></code></p></li>
+<li><p>a label of <code class="docutils literal notranslate"><span class="pre">1</span></code> indicates that it’s about <code class="docutils literal notranslate"><span class="pre">space</span></code></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;articles labled 0 are about baseball&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;label:&quot;</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;label&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;text:&quot;</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;text&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>articles labled 0 are about baseball
+label: 0
+text: From: mss@netcom.com (Mark Singer)
+Subject: Re: Young Catchers
+Article-I.D.: netcom.mssC52qMx.768
+Organization: Netcom Online Communications Services (408-241-9760 login: guest)
+Lines: 86
+
+In article &lt;7975@blue.cis.pitt.edu&gt; genetic+@pitt.edu (David M. Tate) writes:
+&gt;mss@netcom.com (Mark Singer) said:
+&gt;&gt;
+&gt;&gt;We know that very, very few players at this age make much of an impact
+&gt;&gt;in the bigs, especially when they haven&#39;t even played AAA ball.  
+&gt;
+&gt;Yes.  But this is *irrelevant*.  You&#39;re talking about averages, when we
+&gt;have lots of information about THIS PLAYER IN PARTICULAR to base our
+&gt;decisions on.
+
+Do you really have *that* much information on him?  Really?
+
+&gt;Why isn&#39;t Lopez likely to hit that well?  He hit that well last year (after
+&gt;adjusting his stats for park and league and such); he hit better (on an
+&gt;absolute scale) than Olson or Berryhill did.  By a lot.
+
+I don&#39;t know.  You tell me.  What percentage of players reach or 
+exceed their MLE&#39;s *in their rookie season*?  We&#39;re talking about
+1993, you know.
+
+&gt;
+&gt;As for rushing...  If there really is a qualitative difference between the
+&gt;minors and the majors that requires a period of adjustment (and I don&#39;t
+&gt;believe there is), then wouldn&#39;t you rather waste Lopez&#39;s 22-year old good
+&gt;season than his 23-year old very good season or his 24-year-old excellent
+&gt;season?  The sooner you get him acclimated, the more of his prime you get to
+&gt;use.
+
+If that were your purpose, maybe.  Offerman spent 1992 getting 
+acclimated, if you will.  The Dodgers as a team paid a big price
+that season.  Perhaps they will reap the benefits down the road.
+Do you really think they would have done what they did if they
+were competing for a pennant?
+
+&gt;
+&gt;&gt;&gt;Lopez was hitting .588 over 17 AB when he was cut from spring
+&gt;&gt;&gt;training.  What does he have to do to earn a chance?  Maybe not a full
+&gt;&gt;&gt;time job, but at least a couple starts and a few AB for him to prove
+&gt;&gt;&gt;his worth?
+&gt;&gt;
+&gt;The point was not that 17 AB is a significant sample, but rather that he
+&gt;hadn&#39;t done anything in spring training to cause even a blockhead manager
+&gt;to question whether his minor league numbers were for real, or to send him
+&gt;down &quot;until he gets warmed up&quot;.
+
+For a stat-head, I&#39;m amazed that you put any credence in spring
+training.  Did you notice who he got those 10 (!) hits off of, or
+are you going to tell me that it doesn&#39;t make a difference?
+
+&gt;&gt;The kid *will* improve playing at AAA, 
+&gt;
+&gt;Just like Keith Mitchell did?
+
+Wait a minute.  I missed something here.  First, forget Keith
+Mitchell.  Are you saying that a kid who moves from AA to AAA
+and then does not improve would have been better off making a
+direct leap to the majors?  If a player does well at AA and then
+does not improve at AAA, isn&#39;t that a sign that maybe he doesn&#39;t
+belong in the bigs?
+
+Now, Keith Mitchell.  As I recall (no stat books handy - surprise!)
+he jumped from AA to Atlanta in 1991.  He did so well that he was
+returned to the minors, where he didn&#39;t do very well at all.  Now
+his career is in jeopardy.  So how does he fit in with your 
+point.  Good MLE&#39;s in AA.  Moved him right to the big club.  Now
+he&#39;s one step away from being traded or moved out of baseball.
+Duh.
+
+
+&gt;That was me, and you so far your only counter-proposal is that they
+&gt;really don&#39;t understand how good Lopez is, or overvalue experience,
+&gt;or some combination of the two.  I think my interpretation was more
+&gt;flattering to the organization.
+
+Well, I&#39;ve cast my lot.  Certainly you may understand better how 
+good Lopez is.  And I may overvalue experience.  But neither one
+of us runs a baseball team.
+
+
+
+--	The Beastmaster
+
+
+-- 
+Mark Singer    
+mss@netcom.com
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;articles labled 1 are about space&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;label:&quot;</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1980</span><span class="p">][</span><span class="s2">&quot;label&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;text:&quot;</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1980</span><span class="p">][</span><span class="s2">&quot;text&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>articles labled 1 are about space
+label: 1
+text: From: mancus@sweetpea.jsc.nasa.gov (Keith Mancus)
+Subject: Re: Lindbergh and the moon (was:Why not give $1G)
+Organization: MDSSC
+Lines: 32
+
+In article &lt;1r3nuvINNjep@lynx.unm.edu&gt;, cook@varmit.mdc.com (Layne Cook) writes:
+&gt; All of this talk about a COMMERCIAL space race (i.e. $1G to the first 1-year 
+&gt; moon base) is intriguing. Similar prizes have influenced aerospace 
+&gt; development before. The $25k Orteig prize helped Lindbergh sell his Spirit of 
+&gt; Saint Louis venture to his financial backers.
+&gt; But I strongly suspect that his Saint Louis backers had the foresight to 
+&gt; realize that much more was at stake than $25,000.
+&gt; Could it work with the moon? Who are the far-sighted financial backers of 
+&gt; today?
+
+  The commercial uses of a transportation system between already-settled-
+and-civilized areas are obvious.  Spaceflight is NOT in this position.
+The correct analogy is not with aviation of the &#39;30&#39;s, but the long
+transocean voyages of the Age of Discovery.  It didn&#39;t require gov&#39;t to
+fund these as long as something was known about the potential for profit
+at the destination.  In practice, some were gov&#39;t funded, some were private.
+But there was no way that any wise investor would spend a large amount
+of money on a very risky investment with no idea of the possible payoff.
+  I am sure that a thriving spaceflight industry will eventually develop,
+and large numbers of people will live and work off-Earth.  But if you ask
+me for specific justifications other than the increased resource base, I
+can&#39;t give them.  We just don&#39;t know enough.  The launch rate demanded by
+existing space industries is just too low to bring costs down much, and
+we are very much in the dark about what the revolutionary new space industries
+will be, when they will practical, how much will have to be invested to
+start them, etc.
+
+-- 
+ Keith Mancus    &lt;mancus@butch.jsc.nasa.gov&gt;                           |
+ N5WVR           &lt;mancus@sweetpea.jsc.nasa.gov&gt;                        |
+ &quot;Black powder and alcohol, when your states and cities fall,          |
+  when your back&#39;s against the wall....&quot; -Leslie Fish                  |
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Geeks for Geeks</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../../sphinx_examples/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Sphinx</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#text-classification">Text Classification</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-dataset">Import Dataset</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#explore-the-data">explore the data</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Matthew T Gill
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
