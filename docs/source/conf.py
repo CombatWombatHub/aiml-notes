@@ -83,6 +83,5 @@ jupyter_execute_notebooks = "auto"
 
 # do not execute notebooks that do computationally intensive training
 execution_excludepatterns = [
-    "nlp_beginners_guide.ipynb",
     "*_noex.ipynb", # "no execute" - add to notebook names to not re-run
 ]
