@@ -73,3 +73,16 @@ myst_heading_anchors = 3
 
 # Configure myst-parser to treat mermaid fenced code blocks as directives
 myst_fence_as_directive = ["mermaid"]
+
+
+# -- Options for MyST-NB -------------------------------------------------
+# https://myst-nb.readthedocs.io/en/v0.9.0/use/execute.html
+
+# only execute notebooks that are missing at least one output
+jupyter_execute_notebooks = "auto"
+
+# do not execute notebooks that do computationally intensive training
+execution_excludepatterns = [
+    "nlp_beginners_guide.ipynb",
+    "*_noex.ipynb", # "no execute" - add to notebook names to not re-run
+]

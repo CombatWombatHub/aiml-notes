@@ -8,15 +8,20 @@
 - running
     - Open `Git Bash` terminal
     - `cd` to `docs` directory
-    - run `./make.bat html`
-- note
-    - sometimes this doesn't update already-built pages
-    - in this case, run `./make.bat clean` first
-    - or run `./clean-make.bat` which runs both `.make.bat clean` and `.make.bat html`
+    - run one of the batch files to build
+        - `./make.bat clean` can clean out old contents
+        - `./make.bat html` will build new pages, may not update previously built pages
+        - `./clean_make.bat` runs both of the above things
+        - `./clean_make_launch.bat`
 - opening
     - the previous steps will create the documentation in [docs/build/html](./build/html/index.html)
-    - launch that
-
+    - launch that file
+- troubleshooting
+    - if you get the "sphinx-build command doesn't exist" error
+    - might need to activate/build the Python environment
+    - `uv venv` creates a virtual environment in `.venv` dir
+    - `uv synv --all-groups` installs all dependencies to it
+    - `source .venv/Scripts/activate` can activate the venv
 
 ## Deploying Documentation to GitHub Pages via GitHub Actions Pipeline
 - pushing on `main` will build Sphinx documentation and push to GitHub Pages
