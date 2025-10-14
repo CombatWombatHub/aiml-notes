@@ -180,6 +180,7 @@
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Fundamentals</a></li>
 <li class="toctree-l2"><a class="reference internal" href="metrics.html">Metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="resources.html">Resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tokenization.html">Tokenization</a></li>
 </ul>
 </details></li>
 </ul>
@@ -378,10 +379,6 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#error">Error</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tokenization">Tokenization</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tf-idf-term-frequency-inverse-document-frequency-matrix">TF-IDF (Term Frequency - Inverse Document Frequency) Matrix</a></li>
-</ul>
-</li>
 </ul>
             </nav>
         </div>
@@ -414,34 +411,6 @@ document.write(`
 </ul>
 </li>
 </ul>
-</section>
-<section id="tokenization">
-<h2>Tokenization<a class="headerlink" href="#tokenization" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>You’d think this was isolated to <a class="reference internal" href="../categories/nlp.html"><span class="std std-doc">Natural Language Processing</span></a>, but no.</p></li>
-<li><p>if you want to use an <a class="reference internal" href="../categories/ml.html"><span class="std std-doc">Unsupervised</span></a> model to cluster documents into categories, you need to tokenize the words there as well</p></li>
-<li><p>tokenization is breaking strings into chunks (tokens). They’re often words, but sometimes not - you  might include the period after a word to capture the fact that that word means something different because it comes at the end of a sentence, or you might grab the <code class="docutils literal notranslate"><span class="pre">ing</span></code> from the end of a word indicating it’s an ongoing action.</p></li>
-</ul>
-<section id="tf-idf-term-frequency-inverse-document-frequency-matrix">
-<h3>TF-IDF (Term Frequency - Inverse Document Frequency) Matrix<a class="headerlink" href="#tf-idf-term-frequency-inverse-document-frequency-matrix" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p><strong>TF-IDF</strong> is a weighted measure of how important a word is to a document in a collection. It can be used to make a matrix.</p></li>
-<li><p>It multiplies:</p>
-<ul>
-<li><p><strong>TF (Term Frequency)</strong> - how often a specific word appears in a single document, filtering out words that are probably just one-offs or from a bibliography or something</p></li>
-<li><p><strong>IDF (Inverse Document Frequency)</strong> - how exclusive a word is to a single document (words that appear a lot in all documents will have a low <strong>IDF</strong>, filtering out common words like <code class="docutils literal notranslate"><span class="pre">&quot;the&quot;</span></code>)</p></li>
-</ul>
-</li>
-<li><p>so basically a word that appears many times in the current document (high <strong>TF</strong>) but doesn’t appear much in <em>most</em> of the <em>other</em> documents (high <strong>IDF</strong>) will have a really high <strong>TF-IDF</strong> score</p>
-<ul>
-<li><p>each unique word in the document could be assigned a <strong>TF-IDF</strong> value,</p></li>
-<li><p>you can a matrix out of all the <strong>TF-IDF</strong>’s for each document</p></li>
-<li><p>then you could cluster from the matrix with K-Means or something</p></li>
-<li><p>you’d assume that documents with similar high-<strong>TF-IDF</strong> words are on similar topics</p></li>
-</ul>
-</li>
-</ul>
-</section>
 </section>
 </section>
 
@@ -491,10 +460,6 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#error">Error</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tokenization">Tokenization</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tf-idf-term-frequency-inverse-document-frequency-matrix">TF-IDF (Term Frequency - Inverse Document Frequency) Matrix</a></li>
-</ul>
-</li>
 </ul>
   </nav></div>
 

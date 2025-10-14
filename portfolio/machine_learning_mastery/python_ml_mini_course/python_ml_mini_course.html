@@ -180,6 +180,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../ai/development/fundamentals.html">Fundamentals</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../ai/development/metrics.html">Metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../ai/development/resources.html">Resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ai/development/tokenization.html">Tokenization</a></li>
 </ul>
 </details></li>
 </ul>
@@ -995,8 +996,8 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 76.957
-Standard Deviation: 4.950
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 77.086
+Standard Deviation: 5.091
 </pre></div>
 </div>
 </div>
@@ -1094,7 +1095,7 @@ Logloss Standard Deviation: 0.042
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2346/190392337.py:19: FutureWarning: The &#39;delim_whitespace&#39; keyword in pd.read_csv is deprecated and will be removed in a future version. Use ``sep=&#39;\s+&#39;`` instead
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2389/190392337.py:19: FutureWarning: The &#39;delim_whitespace&#39; keyword in pd.read_csv is deprecated and will be removed in a future version. Use ``sep=&#39;\s+&#39;`` instead
   dataframe = pd.read_csv(url, delim_whitespace=True, names=names)
 </pre></div>
 </div>
@@ -1179,7 +1180,9 @@ Std Dev: 14.661
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy and Standard Deviation for each model:
-Logistic Regression: 0.770 (0.049)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Logistic Regression: 0.771 (0.051)
 Linear Discriminant Analysis: 0.767 (0.048)
 </pre></div>
 </div>
@@ -1275,7 +1278,7 @@ best alpha: 1.000
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Random Forest Accuracy: 0.764
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Random Forest Accuracy: 0.762
 </pre></div>
 </div>
 </div>

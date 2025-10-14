@@ -55,6 +55,7 @@ There are a lot of goodness of fit metrics and ways to characterize loss.
 | RMSE | ✓ | + | ++ | ✓ |
 | MAPE | ✗ | Varies | ++ | ✗ |
 
+(classification-metrics)=
 ## Classification Metrics
 - Accuracy for Classifiers is a little different, and sometimes your priority changes
   - Sometimes it's more important to catch **everything**, even if you catch some false positives
