@@ -54,7 +54,7 @@ myst_enable_extensions = [
     #"amsmath",
     #"attrs_inline",
     "colon_fence", # allow ::: triple colons as fenced code blocks
-    #"deflist",
+    "deflist", # enable definition lists 'Term 1\n: definition' (VSCode Preview with Myst-Parser Extension: add deflist to setting Myst > Preview: Extensions)
     "dollarmath", # render $dollar sign enclosed$ equations
     #"fieldlist",
     #"html_admonition",
@@ -80,10 +80,11 @@ myst_fence_as_directive = ["mermaid"]
 # -- Options for MyST-NB -------------------------------------------------
 # https://myst-nb.readthedocs.io/en/v0.9.0/use/execute.html
 
-# only execute notebooks that are missing at least one output
-jupyter_execute_notebooks = "auto"
+# only execute notebooks that are missing at least one output 
+# (replaces "jupyter_execute_notebooks")
+nb_execution_mode = "auto"
 
 # do not execute notebooks that do computationally intensive training
-execution_excludepatterns = [
-    "*_noex.ipynb", # "no execute" - add to notebook names to not re-run
-]
+# (replaces "execution_excludepatterns")
+# add "_noex" (i.e. "no execute") to the end of a notebook name to prevent re-running
+nb_execution_excludepatterns = ["*_noex.ipynb"]

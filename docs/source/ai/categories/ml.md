@@ -13,7 +13,7 @@ I'm not sure how Neural Network's, Deep Learning, AutoEncoders, DenseNets, etc. 
 - **Supervised Learning** - Use labeled data.
     - **Classification** - Predict *categorical* (discrete) values.
     - **Regression** - Predict continuous numerical values.
-    - **Classification|Regression** - Some models can perform either Classification or Regression.
+    - **Classification | Regression** - Some models can perform either Classification or Regression.
     - **Ensemble Learning** - Combine multiple models of either type into one better model.
         - **Bagging (Bootstrap Aggregating) Method** - Train models independently on different subsets of the data, then combine their predictions.
         - **Boosting Method** - Train models sequentially, each model focusing on errors of prior models, then do weighted combination of their predictions.
@@ -49,8 +49,9 @@ I'm not sure how Neural Network's, Deep Learning, AutoEncoders, DenseNets, etc. 
 - [Lasso Regression (L1 Regularization)](https://www.geeksforgeeks.org/machine-learning/ridge-regression-vs-lasso-regression/) - regularized linear regression that avoids overfitting by penalizing the *absolute value* of large coefficients
 - [Ridge Regression (L2 Regularization)](https://www.geeksforgeeks.org/machine-learning/ridge-regression-vs-lasso-regression/) - regularized linear regression that avoids overfitting by penalizing the *square* of large coefficients
 
-### Classification|Regression
-- [SVM (Support Vector Machine)](https://www.geeksforgeeks.org/machine-learning/support-vector-machine-algorithm/)/[SVR (Support Vector Regression)](https://www.geeksforgeeks.org/machine-learning/support-vector-regression-svr-using-linear-and-non-linear-kernels-in-scikit-learn/) - use for Classification by finding a hyperplane that separates classes of data (SVM), or use for regression by finding the hyperplane that minimizes the residual sum of squares (SVR). Can be Linear or Non-Linear depending on the [Kernel](https://www.geeksforgeeks.org/machine-learning/linear-vs-non-linear-classification-analyzing-differences-using-the-kernel-trick/) you select.
+(ai-categories-ml-classification-regression)=
+### Classification | Regression
+- [SVM (Support Vector Machine)](https://www.geeksforgeeks.org/machine-learning/support-vector-machine-algorithm/) | [SVR (Support Vector Regression)](https://www.geeksforgeeks.org/machine-learning/support-vector-regression-svr-using-linear-and-non-linear-kernels-in-scikit-learn/) - use for Classification by finding a hyperplane that separates classes of data (SVM), or use for regression by finding the hyperplane that minimizes the residual sum of squares (SVR). Can be Linear or Non-Linear depending on the [Kernel](https://www.geeksforgeeks.org/machine-learning/linear-vs-non-linear-classification-analyzing-differences-using-the-kernel-trick/) you select.
 - [Multi-Layer Perceptron](https://www.geeksforgeeks.org/deep-learning/multi-layer-perceptron-learning-in-tensorflow/) - classic neural network.
 - [Decision Trees](https://www.geeksforgeeks.org/machine-learning/decision-tree-algorithms/) ([Introduction](https://www.geeksforgeeks.org/machine-learning/decision-tree-introduction-example/)) ([Classification](https://www.geeksforgeeks.org/machine-learning/building-and-implementing-decision-tree-classifiers-with-scikit-learn-a-comprehensive-guide/)) ([Regression](https://www.geeksforgeeks.org/machine-learning/python-decision-tree-regression-using-sklearn/)) - hierarchical tree structure that works like a flow chart. splits data into branches based on feature values. Often used as building blocks for Ensemble methods. ([CART (Classification and Regression Trees)](https://www.geeksforgeeks.org/machine-learning/cart-classification-and-regression-tree-in-machine-learning/)) is based on ([ID3 (Iterative Dichotomiser 3)](https://www.geeksforgeeks.org/machine-learning/iterative-dichotomiser-3-id3-algorithm-from-scratch/)), and is a specific algorithm for building decision trees that can be used for both classification and regression.
 
