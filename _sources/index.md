@@ -6,6 +6,7 @@ All of my AI/ML Notes from https://github.com/CombatWombatHub/aiml-notes convert
 
 ai/categories/index
 ai/development/index
+ai/libraries/index
 ```
 
 ```{toctree}

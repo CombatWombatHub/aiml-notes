@@ -44,6 +44,8 @@
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'index';</script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
@@ -174,14 +176,23 @@
 <li class="toctree-l2"><a class="reference internal" href="ai/categories/generative.html">Generative AI</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ai/categories/ml.html">Machine Learning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ai/categories/nlp.html">Natural Language Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ai/categories/nns.html">Neural Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ai/categories/pinns.html">Physics-Informed Neural Networks (PINNs)</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="ai/development/index.html">Development</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="ai/development/developing.html">ML Development</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ai/development/fundamentals.html">Fundamentals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ai/development/math.html">Required Math</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ai/development/metrics.html">Metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ai/development/resources.html">Resources</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ai/development/tokenization.html">Tokenization</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="ai/libraries/index.html">Libraries</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="ai/libraries/pytorch.html">Learning Pytorch</a></li>
+
+
 </ul>
 </details></li>
 </ul>
@@ -448,6 +459,20 @@ document.write(`
 <li class="toctree-l3"><a class="reference internal" href="ai/categories/nlp.html#maintenance-records-classification-task">Maintenance Records Classification Task</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="ai/categories/nns.html">Neural Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ai/categories/pinns.html">Physics-Informed Neural Networks (PINNs)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ai/categories/pinns.html#machine-learning-reference-material">Machine Learning Reference Material</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ai/categories/pinns.html#tutorial-specific-reference-material">Tutorial-Specific Reference Material</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ai/categories/pinns.html#weak-solution-pinns">Weak Solution PINNs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ai/categories/pinns.html#variational-forms">Variational Forms</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ai/categories/pinns.html#example-problem-definition">Example Problem Definition:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ai/categories/pinns.html#example-problem-classical-strong-and-weak-solutions">Example Problem Classical, Strong, and Weak Solutions:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ai/categories/pinns.html#differences-between-classical-strong-and-weak-solutions">Differences Between Classical, Strong, and Weak Solutions:</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ai/categories/pinns.html#theory-on-relative-function-spaces-sobolev-space-and-hilbert-space">Theory on Relative Function Spaces, Sobolev Space, and Hilbert Space</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="ai/development/index.html">Development</a><ul>
@@ -462,6 +487,40 @@ document.write(`
 <li class="toctree-l3"><a class="reference internal" href="ai/development/fundamentals.html#error">Error</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="ai/development/math.html">Required Math</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ai/development/math.html#general-mathematical-reference-material">General Mathematical Reference Material</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ai/development/math.html#symbol-glossary">Symbol Glossary</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ai/development/math.html#sets">Sets</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="ai/development/math.html#visualizing-sets">Visualizing Sets</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ai/development/math.html#double-sum-wolfram-link">Double Sum Wolfram Link</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ai/development/math.html#gradients">Gradients</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ai/development/math.html#the-nabla-operator-nabla">The Nabla Operator <span class="math notranslate nohighlight">\(\nabla\)</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ai/development/math.html#the-laplace-operator-nabla-cdot-nabla-nabla-2-delta">The Laplace Operator <span class="math notranslate nohighlight">\(\nabla\cdot\nabla = \nabla^2 = \Delta\)</span></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ai/development/math.html#quasirandom-sampling">Quasirandom Sampling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ai/development/math.html#matrices">Matrices</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ai/development/math.html#matrix-vector-product">Matrix-Vector Product</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ai/development/math.html#matrix-multiplication">Matrix Multiplication</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="ai/development/math.html#matrix-multiplication-properties">Matrix Multiplication Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="ai/development/math.html#the-identity-matrix-and-the-kronecker-delta">the Identity Matrix and the Kronecker Delta</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ai/development/math.html#the-dot-product-and-matrix-multiplication">the Dot Product and Matrix Multiplication</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="ai/development/math.html#einstein-summation-notation">Einstein Summation Notation</a></li>
+<li class="toctree-l5"><a class="reference internal" href="ai/development/math.html#the-displacement-vector-boldsymbol-u">The Displacement Vector <span class="math notranslate nohighlight">\(\boldsymbol{u}\)</span></a></li>
+<li class="toctree-l5"><a class="reference internal" href="ai/development/math.html#expanding-einstein-notation-to-get-the-displacement-vector-in-matrix-form">Expanding Einstein Notation to get the Displacement Vector in Matrix Form</a></li>
+<li class="toctree-l5"><a class="reference internal" href="ai/development/math.html#the-the-3x3-displacement-vectors-and-their-derivatives">The the 3x3 Displacement Vectors and their Derivatives</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="ai/development/metrics.html">Metrics</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="ai/development/metrics.html#basics">Basics</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ai/development/metrics.html#regression-metrics">Regression Metrics</a></li>
@@ -469,6 +528,7 @@ document.write(`
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="ai/development/resources.html">Resources</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ai/development/resources.html#miscellaneous">Miscellaneous</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ai/development/resources.html#geeksforgeeks">GeeksForGeeks</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ai/development/resources.html#kaggle">Kaggle</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ai/development/resources.html#machine-learning-mastery">Machine Learning Mastery</a></li>
@@ -486,6 +546,40 @@ document.write(`
 </li>
 </ul>
 </li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ai/libraries/index.html">Libraries</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ai/libraries/pytorch.html">Learning Pytorch</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ai/libraries/pytorch.html#pytorch-org-tutorials-learning-pytorch-with-examples">Pytorch.org tutorials - Learning Pytorch with Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ai/libraries/pytorch.html#basics">Basics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ai/libraries/pytorch.html#without-pytorch-numpy-network">Without Pytorch: Numpy Network</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ai/libraries/pytorch.html#negative-gradients">Negative Gradients</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ai/libraries/pytorch.html#adding-pytorch-tensors">Adding Pytorch: Tensors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ai/libraries/pytorch.html#autograd">Autograd</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ai/libraries/pytorch.html#pytorch-tensors-and-autograd">PyTorch: Tensors and Autograd</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ai/libraries/pytorch.html#latex-formulas-in-docstrings">latex formulas in docstrings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ai/libraries/pytorch.html#defining-new-autograd-functions">Defining new Autograd functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ai/libraries/pytorch.html#pytorch-s-nn-module">Pytorch’s <code class="docutils literal notranslate"><span class="pre">nn</span></code> module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ai/libraries/pytorch.html#zeroing-gradients">Zeroing Gradients</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ai/libraries/pytorch.html#pytorch-s-optim-package">PyTorch’s Optim Package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ai/libraries/pytorch.html#optimizer-zero-grad-and-why-we-zero-gradients">optimizer.zero_grad() and WHY WE ZERO GRADIENTS</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ai/libraries/pytorch.html#custom-nn-modules">Custom <code class="docutils literal notranslate"><span class="pre">nn</span></code> Modules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ai/libraries/pytorch.html#control-flow-and-weight-sharing">Control Flow and Weight Sharing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ai/libraries/pytorch.html#pytorch-pth-files">PyTorch Pth Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ai/libraries/pytorch.html#pth-files-and-using-a-trained-model">PTH files and using a trained model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ai/libraries/pytorch.html#what-is-a-pth-file">What is a PTH file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ai/libraries/pytorch.html#what-s-in-it">What’s in it?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ai/libraries/pytorch.html#how-to-use">How to Use</a></li>
 </ul>
 </li>
 </ul>

@@ -1,6 +1,14 @@
 # Resources
 Some of the resources available to me to learn about/practice AI.
 
+## Miscellaneous
+
+- [Watching Neural Networks Learn (Emergent Garden)](https://www.youtube.com/watch?v=TkwXa7Cvfr8&t=1105s)
+- [Neural Networks and Deep Learning](http://neuralnetworksanddeeplearning.com/chap1.html) 
+    - (“book” site recommended by Emergent Garden)
+    - it has good examples, such as this one on [Digit Classification](http://neuralnetworksanddeeplearning.com/chap1.html#implementing_our_network_to_classify_digits)
+    - can download the examples or use `git clone https://github.com/mnielsen/neural-networks-and-deep-learning.git`
+
 ## [GeeksForGeeks](https://www.geeksforgeeks.org/artificial-intelligence/what-is-artificial-intelligence-ai/) 
 Has a bunch of articles with and without code examples. I've linked a ton of them throughout my notes already.
 

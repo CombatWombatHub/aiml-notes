@@ -44,12 +44,14 @@
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'ai/development/index';</script>
     <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="ML Development" href="developing.html" />
-    <link rel="prev" title="Natural Language Processing" href="../categories/nlp.html" />
+    <link rel="prev" title="Physics-Informed Neural Networks (PINNs)" href="../categories/pinns.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -173,14 +175,23 @@
 <li class="toctree-l2"><a class="reference internal" href="../categories/generative.html">Generative AI</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../categories/ml.html">Machine Learning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../categories/nlp.html">Natural Language Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../categories/nns.html">Neural Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../categories/pinns.html">Physics-Informed Neural Networks (PINNs)</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Development</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="developing.html">ML Development</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fundamentals.html">Fundamentals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math.html">Required Math</a></li>
 <li class="toctree-l2"><a class="reference internal" href="metrics.html">Metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="resources.html">Resources</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tokenization.html">Tokenization</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../libraries/index.html">Libraries</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/pytorch.html">Learning Pytorch</a></li>
+
+
 </ul>
 </details></li>
 </ul>
@@ -396,6 +407,40 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="fundamentals.html#error">Error</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="math.html">Required Math</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="math.html#general-mathematical-reference-material">General Mathematical Reference Material</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math.html#symbol-glossary">Symbol Glossary</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="math.html#sets">Sets</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="math.html#visualizing-sets">Visualizing Sets</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="math.html#double-sum-wolfram-link">Double Sum Wolfram Link</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math.html#gradients">Gradients</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="math.html#the-nabla-operator-nabla">The Nabla Operator <span class="math notranslate nohighlight">\(\nabla\)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="math.html#the-laplace-operator-nabla-cdot-nabla-nabla-2-delta">The Laplace Operator <span class="math notranslate nohighlight">\(\nabla\cdot\nabla = \nabla^2 = \Delta\)</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="math.html#quasirandom-sampling">Quasirandom Sampling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math.html#matrices">Matrices</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="math.html#matrix-vector-product">Matrix-Vector Product</a></li>
+<li class="toctree-l3"><a class="reference internal" href="math.html#matrix-multiplication">Matrix Multiplication</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="math.html#matrix-multiplication-properties">Matrix Multiplication Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="math.html#the-identity-matrix-and-the-kronecker-delta">the Identity Matrix and the Kronecker Delta</a></li>
+<li class="toctree-l3"><a class="reference internal" href="math.html#the-dot-product-and-matrix-multiplication">the Dot Product and Matrix Multiplication</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="math.html#einstein-summation-notation">Einstein Summation Notation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="math.html#the-displacement-vector-boldsymbol-u">The Displacement Vector <span class="math notranslate nohighlight">\(\boldsymbol{u}\)</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="math.html#expanding-einstein-notation-to-get-the-displacement-vector-in-matrix-form">Expanding Einstein Notation to get the Displacement Vector in Matrix Form</a></li>
+<li class="toctree-l4"><a class="reference internal" href="math.html#the-the-3x3-displacement-vectors-and-their-derivatives">The the 3x3 Displacement Vectors and their Derivatives</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="metrics.html">Metrics</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="metrics.html#basics">Basics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="metrics.html#regression-metrics">Regression Metrics</a></li>
@@ -403,6 +448,7 @@ document.write(`
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="resources.html">Resources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#miscellaneous">Miscellaneous</a></li>
 <li class="toctree-l2"><a class="reference internal" href="resources.html#geeksforgeeks">GeeksForGeeks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="resources.html#kaggle">Kaggle</a></li>
 <li class="toctree-l2"><a class="reference internal" href="resources.html#machine-learning-mastery">Machine Learning Mastery</a></li>
@@ -438,12 +484,12 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../categories/nlp.html"
+       href="../categories/pinns.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Natural Language Processing</p>
+        <p class="prev-next-title">Physics-Informed Neural Networks (PINNs)</p>
       </div>
     </a>
     <a class="right-next"
