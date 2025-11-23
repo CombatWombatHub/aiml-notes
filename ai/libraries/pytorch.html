@@ -174,9 +174,9 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../categories/index.html">Categories</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../categories/generative.html">Generative AI</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../categories/ml.html">Machine Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../categories/ml/nns.html">Neural Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../categories/ml/pinns.html">Physics-Informed Neural Networks (PINNs)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../categories/nlp.html">Natural Language Processing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../categories/nns.html">Neural Networks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../categories/pinns.html">Physics-Informed Neural Networks (PINNs)</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../development/index.html">Development</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -676,7 +676,7 @@ document.write(`
 </li>
 <li><p>AUTOMATIC DIFFERENTIATION <a class="reference external" href="https://en.wikipedia.org/wiki/Automatic_differentiation">(Wiki Link)</a></p>
 <ul>
-<li><a class="reference internal image-reference" href="ai/libraries/images/auto_differentiation_nutshell.png"><img alt="ai/libraries/images/auto_differentiation_nutshell.png" src="ai/libraries/images/auto_differentiation_nutshell.png" style="height: 150px;" />
+<li><a class="reference internal image-reference" href="../../_images/auto_differentiation_nutshell.png"><img alt="../../_images/auto_differentiation_nutshell.png" src="../../_images/auto_differentiation_nutshell.png" style="height: 150px;" />
 </a>
 </li>
 <li><p>uses the chain rule, taking derivative of each little operation (“accumulating” derivatives)</p>
@@ -728,7 +728,7 @@ document.write(`
 <ul>
 <li><p>great for a neural network that converges down into few outputs since you start with output, find the derivative, and branch it backwards</p></li>
 <li><p>basically you get to calculate a partial derivative once and reuse it a bunch of times, which is great if there are fewer outputs than inputs</p></li>
-<li><a class="reference internal image-reference" href="ai/libraries/images/auto_differentiation_branching.png"><img alt="ai/libraries/images/auto_differentiation_branching.png" src="ai/libraries/images/auto_differentiation_branching.png" style="height: 200px;" />
+<li><a class="reference internal image-reference" href="../../_images/reverse_accumulation.png"><img alt="../../_images/reverse_accumulation.png" src="../../_images/reverse_accumulation.png" style="height: 200px;" />
 </a>
 </li>
 <li><p>for forward propogation the inputs are you basically need to evaluate the gradients once for each independent variable (input)</p></li>
@@ -946,9 +946,10 @@ document.write(`
 <li><p>define new model using a <a class="reference external" href="https://en.wikipedia.org/wiki/Legendre_polynomials">Legendre Polynomial</a> instead of <span class="math notranslate nohighlight">\(y_{pred}=a+b*x+c*x^2+d*x^3\)</span></p>
 <ul>
 <li><p>3rd-degree Legendre Polynomial (the red one) looks like a sine wave</p></li>
-<li><a class="reference internal image-reference" href="ai/libraries/images/legendre_polynomials.jpg"><img alt="ai/libraries/images/legendre_polynomials.jpg" src="ai/libraries/images/legendre_polynomials.jpg" style="height: 300px;" />
+<li><a class="reference internal image-reference" href="../../_images/legendre_polynomials.png"><img alt="../../_images/legendre_polynomials.png" src="../../_images/legendre_polynomials.png" style="height: 300px;" />
 </a>
 </li>
+<li><p>By <a href="//commons.wikimedia.org/wiki/User:Geek3" title="User:Geek3">Geek3</a> - <span class="int-own-work" lang="en">Own work</span>, <a href="https://creativecommons.org/licenses/by-sa/3.0" title="Creative Commons Attribution-Share Alike 3.0">CC BY-SA 3.0</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=9552813">Link</a></p></li>
 </ul>
 </li>
 <li><p>model is</p>
