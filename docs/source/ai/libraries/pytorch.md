@@ -172,7 +172,7 @@ print(f'Final Loss: {loss}')
     - that's ok for such a tiny 'network' of four weights, but would scale up drastically
     - luckily, Torch is capable of automatic differentiation, bypassing the symbolic by-hand differentiation that I, a human, needed to do
 - AUTOMATIC DIFFERENTIATION [(Wiki Link)](https://en.wikipedia.org/wiki/Automatic_differentiation)
-    - <img src="images/auto_differentiation_nutshell.png" height ="150">
+    - <img src="../../images/auto_differentiation_nutshell.png" height ="150">
     - uses the chain rule, taking derivative of each little operation ("accumulating" derivatives)
         - say we have a function of other functions
             - $y=f(g(h(x)))$
@@ -194,7 +194,7 @@ print(f'Final Loss: {loss}')
     - backwards is more efficient for the setup we have with machine learning (often network has a single output and many inputs)
         - great for a neural network that converges down into few outputs since you start with output, find the derivative, and branch it backwards
         - basically you get to calculate a partial derivative once and reuse it a bunch of times, which is great if there are fewer outputs than inputs
-        - <img src="images/auto_differentiation_branching.png" height ="200">
+        - <img src="../../images/reverse_accumulation.png" height ="200">
         - for forward propogation the inputs are you basically need to evaluate the gradients once for each independent variable (input)
         - for forward propogation you basically need to evaluate the gradients once for each independent variable (input)
     - Reverse Accumulation by hand - you substitute the derivative of the outermost function with a new chain rule repeatedly
@@ -342,7 +342,8 @@ print(f'Final Loss: {loss}')
 - example:
     - define new model using a [Legendre Polynomial](https://en.wikipedia.org/wiki/Legendre_polynomials) instead of $y_{pred}=a+b*x+c*x^2+d*x^3$
         - 3rd-degree Legendre Polynomial (the red one) looks like a sine wave
-        - <img src="images/legendre_polynomials.jpg" height ="300">
+        - <img src="../../images/legendre_polynomials.png" height ="300">
+        - By <a href="//commons.wikimedia.org/wiki/User:Geek3" title="User:Geek3">Geek3</a> - <span class="int-own-work" lang="en">Own work</span>, <a href="https://creativecommons.org/licenses/by-sa/3.0" title="Creative Commons Attribution-Share Alike 3.0">CC BY-SA 3.0</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=9552813">Link</a>
     - model is
         - $y_{pred}=a+bP_3(c+dx)$
         - $P_3(t)={1\over2}(5t^3-3t) \gets$ 3rd-degree Legendre Polynomial
