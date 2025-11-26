@@ -17,6 +17,7 @@ dependencies = [
     "scipy>=1.16.1",
     "seaborn>=0.13.2",
     "sentencepiece>=0.2.1", # required for transformers with microsoft/deberta-v3-small
+    "shap>=0.49.1",
     "tensorflow>=2.20.0",
     "tf-keras>=2.20.1", # tensorflow's keras is now a separate package
     "tiktoken>=0.11.0", # required for transformers with microsoft/deberta-v3-small

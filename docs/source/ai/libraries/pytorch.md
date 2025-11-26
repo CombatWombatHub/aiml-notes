@@ -211,7 +211,7 @@ print(f'Final Loss: {loss}')
         - but that's a lot of numbers getting multiplied together
     - note that there is additional overhead for reverse propogation
         - you need to store those partial derivative values
- 
+
 ## PyTorch: Tensors and Autograd
 - provides the funcionality from above
 - **Forward Pass** of the network
