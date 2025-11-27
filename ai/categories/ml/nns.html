@@ -44,6 +44,8 @@
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'ai/categories/ml/nns';</script>
     <link rel="icon" href="../../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
@@ -369,7 +371,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -385,6 +389,21 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tiny-neural-network">Tiny Neural Network</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#backpropagation">Backpropagation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activation-functions">Activation Functions</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#properties">Properties</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#derivatives">Derivatives</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -396,8 +415,84 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="neural-networks">
 <h1>Neural Networks<a class="headerlink" href="#neural-networks" title="Link to this heading">#</a></h1>
-<p><img alt="backpropogation" src="../../../_images/network_backpropogation_schematic.jpg" /></p>
+<section id="tiny-neural-network">
+<h2>Tiny Neural Network<a class="headerlink" href="#tiny-neural-network" title="Link to this heading">#</a></h2>
+<p>Behold, I created a tiny neural network, showing nodes, activation functions, matrices, and equations.</p>
 <p><img alt="tiny neural network" src="../../../_images/tiny_neural_network.png" /></p>
+<ul class="simple">
+<li><p>layer values</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(X=\)</span> array of inputs</p></li>
+<li><p><span class="math notranslate nohighlight">\(W^{[1]}=\)</span> matrix of weights of hidden layer 1</p></li>
+<li><p><span class="math notranslate nohighlight">\(B^{[1]}=\)</span> array of biases of hidden layer 1</p></li>
+<li><p><span class="math notranslate nohighlight">\(Z^{[1]}=\)</span> array of inputs to hidden layer 1, with weights and biases applied</p></li>
+<li><p><span class="math notranslate nohighlight">\(A^{[1]}=\)</span> array of outputs from hidden layer 1, with activation function applied</p></li>
+</ul>
+</li>
+<li><p>node values</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(x_2=\)</span> input from node 2</p></li>
+<li><p><span class="math notranslate nohighlight">\(w^{[1]}_{23}=\)</span> weight from node 2 to node 3 of layer 1</p></li>
+<li><p><span class="math notranslate nohighlight">\(b^{[1]}_2=\)</span> bias of node 2 of hidden layer 1</p></li>
+<li><p><span class="math notranslate nohighlight">\(z^{[1]}_2=\)</span> input to node 2 of hidden layer 1, created by summing weighted inputs</p></li>
+<li><p><span class="math notranslate nohighlight">\(a^{[1]}_2=\)</span> output from node 2 of layer 1</p></li>
+</ul>
+</li>
+<li><p>not pictured</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(m^{[1]}=\)</span> number of neurons in <span class="math notranslate nohighlight">\(1^{st}\)</span> hidden layer</p></li>
+<li><p><span class="math notranslate nohighlight">\(m^{[r]}=\)</span> number of neurons in <span class="math notranslate nohighlight">\(r^{th}\)</span> (final) hidden layer</p></li>
+</ul>
+</li>
+<li><p>note</p>
+<ul>
+<li><p>you transpose the weights (<span class="math notranslate nohighlight">\(W^{[1]T}\)</span> or <span class="math notranslate nohighlight">\(W^{[2]T}\)</span>) before multiplying by inputs (<span class="math notranslate nohighlight">\(X\)</span> or <span class="math notranslate nohighlight">\(A^{[1]}\)</span>) as inner dimensions must match for matrix multiplication</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="backpropagation">
+<h2>Backpropagation<a class="headerlink" href="#backpropagation" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>backpropagation is the process by which you determine how to update weights to minimize loss (shown here as the cost function J)</p></li>
+<li><p>you take partial derivatives of each step in the network, then combine them with the chain rule to get the derivative of the loss with respect to each individual weight</p></li>
+<li><p>then you multiply the weight by that gradient and the learning rate so that the next training batch will hopefully have reduced loss</p></li>
+</ul>
+<p><img alt="backpropogation" src="../../../_images/network_backpropagation_schematic.jpg" /></p>
+</section>
+<section id="activation-functions">
+<h2><a class="reference external" href="https://en.wikipedia.org/wiki/Activation_function">Activation Functions</a><a class="headerlink" href="#activation-functions" title="Link to this heading">#</a></h2>
+<p>Functions that determine the output of a node from the summed, weighted,biased inputs. Different layers can have different activation functions.</p>
+<section id="properties">
+<h3>Properties<a class="headerlink" href="#properties" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Nonlinear</strong> - if the activation function is <code class="docutils literal notranslate"><span class="pre">nonlinear</span></code>, a two-layer neural network can be a universal function approximator. The <code class="docutils literal notranslate"><span class="pre">identity</span></code> activation function (basically meaning no activation function at all) will severely limit what your network can approximate, showing why we use activation functions.</p></li>
+<li><p><strong>Range</strong> - if the activation function’s output range is finite (like how a <code class="docutils literal notranslate"><span class="pre">sigmoid</span></code> function ranges from <code class="docutils literal notranslate"><span class="pre">(0,1)</span></code> or a <code class="docutils literal notranslate"><span class="pre">tanh</span></code> function ranges from <code class="docutils literal notranslate"><span class="pre">(-1,1)</span></code>), gradient-based training methods tend to be more stable. If not (like how <code class="docutils literal notranslate"><span class="pre">ReLU</span></code> can increase infinitely with the input), training tends to be more efficient as patterns in the data can affect more weights and may help avoid the vanishing gradients problem (though you should use smaller learning rates in this case).</p></li>
+<li><p><strong>Continouously Differentiable</strong> - continuously-differentiable activation functions have easier times with gradient-based optimization methods. Some non-continuously-differentiable activation functions which suddenly change directions (like <code class="docutils literal notranslate"><span class="pre">ReLU</span></code>) may have issues with gradient-based optimization, but can still be used.</p></li>
+</ul>
+</section>
+<section id="examples">
+<h3>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h3>
+<p>There are a <strong>LOT</strong> of different activation functions - here are a few (see this <a class="reference external" href="https://en.wikipedia.org/wiki/Activation_function#Table_of_activation_functions">table</a> for more)</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">linear</span></code> - <span class="math notranslate nohighlight">\(y=mx+b\)</span> - basically the output is just a line relative to the input, does not allow the network to be a universal function approximator. All of the other functions shown are <code class="docutils literal notranslate"><span class="pre">nonlinear</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sigmoid</span></code> (<code class="docutils literal notranslate"><span class="pre">&quot;logistic&quot;</span></code>) - <span class="math notranslate nohighlight">\(\sigma\)</span> - squashes the real number into a <code class="docutils literal notranslate"><span class="pre">(0,1)</span></code> range.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ReLU</span></code> - <a class="reference external" href="https://en.wikipedia.org/wiki/Rectified_linear_unit">Rectified Linear Unit</a> - provides the same benefits as sigmoid but with less computational effort. One of the most popular activation functions with many variants</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Leaky</span> <span class="pre">ReLU</span></code> - allows a small positive gradient “<span class="math notranslate nohighlight">\(\alpha\)</span>” (usually <code class="docutils literal notranslate"><span class="pre">0.01-0.3</span></code>) when the unit is inactive to counteract the vanishing gradient problem</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PReLU</span></code> - <code class="docutils literal notranslate"><span class="pre">Parametric</span> <span class="pre">Rectified</span> <span class="pre">Linear</span> <span class="pre">Unit</span></code> - makes “<span class="math notranslate nohighlight">\(\alpha\)</span>” a learnable parameter along with other parameters like weights</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GELU</span></code> - <code class="docutils literal notranslate"><span class="pre">Gaussian</span> <span class="pre">Error</span> <span class="pre">Linear</span> <span class="pre">Unit</span></code> - smooth apporoximation of <code class="docutils literal notranslate"><span class="pre">ReLU</span></code> with a “bump”. default activation for many transformer models such as <a class="reference external" href="https://en.wikipedia.org/wiki/BERT_(language_model)">BERT</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SiLU</span></code> (<code class="docutils literal notranslate"><span class="pre">&quot;swish&quot;</span></code>) - <code class="docutils literal notranslate"><span class="pre">Sigmoid</span> <span class="pre">Linear</span> <span class="pre">Unit</span></code> - another smooth approximation with a bump, uses the <code class="docutils literal notranslate"><span class="pre">sigmoid</span></code> function, cheaper to calculate than <code class="docutils literal notranslate"><span class="pre">GELU</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tanh</span></code> - <code class="docutils literal notranslate"><span class="pre">Hyperbolic</span> <span class="pre">Tangent</span></code> - nonlinear, zero-centered, squashes the real number into a <code class="docutils literal notranslate"><span class="pre">(-1,1)</span></code> range, faster convergence than <code class="docutils literal notranslate"><span class="pre">sinusoid</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sinusoid</span></code> - a periodic activation function. <code class="docutils literal notranslate"><span class="pre">sin</span></code> is usually used as any periodic function is decomposable into sinusoids by <a class="reference external" href="https://en.wikipedia.org/wiki/Fourier_transform">Fourier transform</a>. increasing-order derivatives never go to zero. Periodicity may make convergence difficult.</p></li>
+</ul>
+<p><img alt="activation functions" src="../../../_images/activation_functions.png" /></p>
+</section>
+<section id="derivatives">
+<h3>Derivatives<a class="headerlink" href="#derivatives" title="Link to this heading">#</a></h3>
+<p>Note that if you’re using PINN’s or something with autodifferentiation, any non-periodic activation functions will decrease in magnitude with each derivative</p>
+<p><img alt="activation function derivatives" src="../../../_images/activation_functions_sigmoid_derivatives.png" /></p>
+</section>
+</section>
 </section>
 
 
@@ -435,6 +530,28 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tiny-neural-network">Tiny Neural Network</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#backpropagation">Backpropagation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activation-functions">Activation Functions</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#properties">Properties</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#derivatives">Derivatives</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
