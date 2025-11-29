@@ -10,7 +10,7 @@
 ```mermaid
 graph LR
     A-->B
-    B-->C
+    B-->C & D
 ```
 
 ## [Admonitions](https://myst-parser.readthedocs.io/en/latest/syntax/admonitions.html)

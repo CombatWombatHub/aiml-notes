@@ -1,25 +1,36 @@
 /* Place any Custom CSS for the site here */
 
-/* The arrows of flowcharts in mermaid diagrams
+/*
+The arrows of flowcharts in mermaid diagrams
 do not show up if using Sphinx-Book-Theme in Dark Mode
 change the color and thickness here
 Must use !important or else these get overridden
 By something that applies invisible colors with really high specificity
 Which also overrides any mermaid theme settings
+
+the downside is that these prevent me from defining arrow colors
+within the diagrams themselves as well
+so I'm testing whether disabling these colors
+will re-enable that behavior
 */
 
 /* change the color of the arrowhead */
+/*
 .mermaid .marker {
   stroke: var(--pst-color-accent) !important;
   fill: var(--pst-color-accent) !important;
 }
+*/
 
 /* change the color of the arrow line */
+/*
 .mermaid .flowchart-link {
   stroke: var(--pst-color-accent) !important;
 }
+*/
 
-/* do not fill in the arrow line or curved arrows will look odd
+/*
+do not fill in the arrow line or curved arrows will look odd
 filling in a shape formed by a straight line between endpoints
 and the actual drawn arrow line
 .mermaid .flowchart-link {
@@ -29,5 +40,5 @@ and the actual drawn arrow line
 
 /* thicken the arrow line */
 .mermaid .edge-thickness-normal {
-  stroke-width: 2px !important;
+  stroke-width: 3px !important;
 }
