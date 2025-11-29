@@ -17,11 +17,17 @@ Which also overrides any mermaid theme settings
 /* change the color of the arrow line */
 .mermaid .flowchart-link {
   stroke: var(--pst-color-accent) !important;
+}
+
+/* do not fill in the arrow line or curved arrows will look odd
+filling in a shape formed by a straight line between endpoints
+and the actual drawn arrow line
+.mermaid .flowchart-link {
   fill: var(--pst-color-accent) !important;
 }
+*/
 
 /* thicken the arrow line */
 .mermaid .edge-thickness-normal {
   stroke-width: 2px !important;
 }
-
