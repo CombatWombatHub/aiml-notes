@@ -6,11 +6,11 @@ Behold, I created a tiny neural network, showing nodes, activation functions, ma
 ![tiny neural network](../../../images/tiny_neural_network.png)
 
 - layer values
-    - $X=$ array of inputs
+    - $X=$ vector of inputs
     - $W^{[1]}=$ matrix of weights of hidden layer 1
-    - $B^{[1]}=$ array of biases of hidden layer 1
-    - $Z^{[1]}=$ array of inputs to hidden layer 1, with weights and biases applied
-    - $A^{[1]}=$ array of outputs from hidden layer 1, with activation function applied
+    - $B^{[1]}=$ vector of biases of hidden layer 1
+    - $Z^{[1]}=$ vector of inputs to hidden layer 1, with weights and biases applied
+    - $A^{[1]}=$ vector of outputs from hidden layer 1, with activation function applied
 - node values
     - $x_2=$ input from node 2
     - $w^{[1]}_{23}=$ weight from node 2 to node 3 of layer 1 
@@ -18,8 +18,8 @@ Behold, I created a tiny neural network, showing nodes, activation functions, ma
     - $z^{[1]}_2=$ input to node 2 of hidden layer 1, created by summing weighted inputs
     - $a^{[1]}_2=$ output from node 2 of layer 1
 - not pictured
-    - $m^{[1]}=$ number of neurons in $1^{st}$ hidden layer
-    - $m^{[r]}=$ number of neurons in $r^{th}$ (final) hidden layer
+    - $m^{[1]},\cdots,m^{[r]}=$ number of neurons in $1^{st}$ through $r^{th}$ (final) hidden layers
+    - $g^{[1]},\cdots,g^{[r]}=$ activation functions of $1^{st}$ through $r^{th}$ (final) hidden layers
 - note
     - you transpose the weights ($W^{[1]T}$ or $W^{[2]T}$) before multiplying by inputs ($X$ or $A^{[1]}$) as inner dimensions must match for matrix multiplication
 

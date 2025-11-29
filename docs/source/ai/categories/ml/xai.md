@@ -7,6 +7,7 @@ LIME and SHAP were mentioned as Desired Proficiencies in one of the postings I l
 ## [SHapley Additive exPlanations (SHAP)](https://shap.readthedocs.io/en/latest/example_notebooks/overviews/An%20introduction%20to%20explainable%20AI%20with%20Shapley%20values.html)
 - uses game theory to determine the contribution of each feature  to the prediction
 - follow along with the example for more details (will need to make a notebook)
+- see the [SHAP Notebook](./../../../portfolio/shap/shapley_xai_intro.ipynb)
 
 ## [Local Interpretable Model-agnostic Explanations (LIME)](https://www.geeksforgeeks.org/artificial-intelligence/introduction-to-explainable-aixai-using-lime/)
 - treats a supervised ML model as a black box (hence model-agnostic)
