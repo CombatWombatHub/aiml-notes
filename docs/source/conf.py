@@ -35,6 +35,7 @@ html_static_path = ["_static"] # these files are copied after the builtin static
 html_logo = "_static/logo.jpg"  # image to use as the logo above the left nav bar
 html_favicon = "_static/favicon.ico"  # image to use for the browser tab
 html_css_files = ['custom.css'] # custom CSS files (paths relative to html_static_path)
+html_js_files = ['custom.js'] # custom JavaScript files (paths relative to html_static_path)
 html_theme_options = {
     "show_toc_level": 4, # show up to heading level 5 in the right "Contents" sidebar
     "repository_url": "https://github.com/CombatWombatHub/aiml-notes", # replace with your repository URL
