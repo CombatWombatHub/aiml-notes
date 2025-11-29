@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Explainable AI (XAI) &#8212; aiml-notes 1.0 documentation</title>
+    <title>Dimensionality Reduction &#8212; aiml-notes 1.0 documentation</title>
   
   
   
@@ -44,12 +44,20 @@
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'ai/categories/ml/xai';</script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs"></script>
+    <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs";import elkLayouts from "https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs";mermaid.registerLayoutLoaders(elkLayouts);mermaid.initialize({startOnLoad:false});</script>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+    <script type="module">
+import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs";
+window.addEventListener("load", () => mermaid.run());
+</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ai/categories/ml/dimensionality_reduction';</script>
     <link rel="icon" href="../../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Natural Language Processing" href="../nlp.html" />
-    <link rel="prev" title="SVM (Support Vector Machines)" href="svm.html" />
+    <link rel="next" title="Neural Networks" href="nns.html" />
+    <link rel="prev" title="Machine Learning" href="../ml.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -172,11 +180,11 @@
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Categories</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../generative.html">Generative AI</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ml.html">Machine Learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dimensionality_reduction.html">Dimensionality Reduction</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Dimensionality Reduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nns.html">Neural Networks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pinns.html">Physics-Informed Neural Networks (PINNs)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="svm.html">SVM (Support Vector Machines)</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Explainable AI (XAI)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xai.html">Explainable AI (XAI)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../nlp.html">Natural Language Processing</a></li>
 </ul>
 </details></li>
@@ -300,7 +308,7 @@
       
       
       
-      <li><a href="../../../_sources/ai/categories/ml/xai.md" target="_blank"
+      <li><a href="../../../_sources/ai/categories/ml/dimensionality_reduction.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -384,7 +392,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Explainable AI (XAI)</h1>
+    <h1>Dimensionality Reduction</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -394,8 +402,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shapley-additive-explanations-shap">SHapley Additive exPlanations (SHAP)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#local-interpretable-model-agnostic-explanations-lime">Local Interpretable Model-agnostic Explanations (LIME)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-tree">Decision Tree</a></li>
 </ul>
             </nav>
         </div>
@@ -407,29 +414,47 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="explainable-ai-xai">
-<h1>Explainable AI (XAI)<a class="headerlink" href="#explainable-ai-xai" title="Link to this heading">#</a></h1>
-<p>Accurate predictions are all well and good, but it’s hard to be confident about them if you can’t figure out WHY the model came to that conclusion. Explainable AI (XAI) help reduce the “black box” factor of a model by helping to explain its decision-making process.</p>
-<p>LIME and SHAP were mentioned as Desired Proficiencies in one of the postings I looked at.</p>
-<section id="shapley-additive-explanations-shap">
-<h2><a class="reference external" href="https://shap.readthedocs.io/en/latest/example_notebooks/overviews/An%20introduction%20to%20explainable%20AI%20with%20Shapley%20values.html">SHapley Additive exPlanations (SHAP)</a><a class="headerlink" href="#shapley-additive-explanations-shap" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>uses game theory to determine the contribution of each feature  to the prediction</p></li>
-<li><p>follow along with the example for more details (will need to make a notebook)</p></li>
-<li><p>see the <a class="reference internal" href="../../../portfolio/shap/shapley_xai_intro.html"><span class="std std-doc">SHAP Notebook</span></a></p></li>
-</ul>
-</section>
-<section id="local-interpretable-model-agnostic-explanations-lime">
-<h2><a class="reference external" href="https://www.geeksforgeeks.org/artificial-intelligence/introduction-to-explainable-aixai-using-lime/">Local Interpretable Model-agnostic Explanations (LIME)</a><a class="headerlink" href="#local-interpretable-model-agnostic-explanations-lime" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>treats a supervised ML model as a black box (hence model-agnostic)</p></li>
-<li><p>creates 5000 samples (by default). This means it makes 5000 feature vectors following a normal distribution</p></li>
-<li><p>it inferences the model to make predictions on each of the samples and obtains the target variable (predictions)</p></li>
-<li><p>it weighs each feature to determine how close each feature is to the original sample/observation (need to drill down into this more)</p></li>
-<li><p>uses feature selection technique like Lasso Regression or Ridge Regression to determine which features were most important to that prediction</p></li>
-<li><p>follow along with the example for more details (will need to make a notebook)</p></li>
-</ul>
-</section>
+  <section class="tex2jax_ignore mathjax_ignore" id="dimensionality-reduction">
+<h1>Dimensionality Reduction<a class="headerlink" href="#dimensionality-reduction" title="Link to this heading">#</a></h1>
+<section id="decision-tree">
+<h2>Decision Tree<a class="headerlink" href="#decision-tree" title="Link to this heading">#</a></h2>
+<p>how to decide what kind of dimensionality reduction to apply based on your input data</p>
+<pre  class="mermaid">
+        flowchart TD
+
+%% decisions
+cd{Categorical &lt;/br&gt; Input Data?}
+in{Includes &lt;/br&gt; Numerical?}
+gc{Groups of &lt;/br&gt; Columns?}
+2c{2+ &lt;/br&gt; columns?}
+as{Analyzing &lt;/br&gt; Shapes?}
+no{Nonlinear?}
+
+%% methods
+fa(&quot;&lt;b&gt;FAMD&lt;/b&gt; &lt;/br&gt; (Factor &lt;/br&gt; Analysis &lt;/br&gt; for &lt;/br&gt; Mixed Data)&quot;)
+um(&quot;&lt;b&gt;UMAP&lt;/b&gt; &lt;/br&gt; (Uniform &lt;/br&gt; Manifold &lt;/br&gt;  Approximation &lt;/br&gt; and Projection)&quot;)
+mc(&quot;&lt;b&gt;MCA&lt;/b&gt;  &lt;/br&gt; (Multiple &lt;/br&gt; Correspondence &lt;/br&gt; Analysis)&quot;)
+ca(&quot;&lt;b&gt;CA&lt;/b&gt;   &lt;/br&gt; (Correspondence &lt;/br&gt; Analysis)&quot;)
+mf(&quot;&lt;b&gt;MFA&lt;/b&gt;  &lt;/br&gt; (Multiple &lt;/br&gt; Factor &lt;/br&gt; Analysis)&quot;)
+gd(&quot;&lt;b&gt;GDA&lt;/b&gt;  &lt;/br&gt; (Generalized &lt;/br&gt; Discriminant &lt;/br&gt; Analysis)&quot;)
+pc(&quot;&lt;b&gt;PCA&lt;/b&gt;  &lt;/br&gt; (Principal &lt;/br&gt; Component &lt;/br&gt; Analysis)&quot;)
+
+cd -- ✗ --&gt; gc
+cd -- ✓ --&gt; in
+in -- ✗ --&gt; 2c
+in -- ✓ --&gt; no
+no -- ✗ --&gt; fa
+no -- ✓ --&gt; um
+2c -- ✗ --&gt; ca
+2c -- ✓ --&gt; mc
+gc -- ✗ --&gt; as
+gc -- ✓ --&gt; mf
+as -- ✗ --&gt; pc
+as -- ✓ --&gt; gd
+
+linkStyle 0,2,4,6,8,10 stroke:red,stroke-width:3px
+linkStyle 1,3,5,7,9,11 stroke:blue,stroke-width:4px
+    </pre></section>
 </section>
 
 
@@ -444,20 +469,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="svm.html"
+       href="../ml.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">SVM (Support Vector Machines)</p>
+        <p class="prev-next-title">Machine Learning</p>
       </div>
     </a>
     <a class="right-next"
-       href="../nlp.html"
+       href="nns.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Natural Language Processing</p>
+        <p class="prev-next-title">Neural Networks</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -477,8 +502,7 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shapley-additive-explanations-shap">SHapley Additive exPlanations (SHAP)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#local-interpretable-model-agnostic-explanations-lime">Local Interpretable Model-agnostic Explanations (LIME)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-tree">Decision Tree</a></li>
 </ul>
   </nav></div>
 

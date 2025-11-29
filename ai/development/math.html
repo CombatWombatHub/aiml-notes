@@ -174,8 +174,10 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../categories/index.html">Categories</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../categories/generative.html">Generative AI</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../categories/ml.html">Machine Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../categories/ml/dimensionality_reduction.html">Dimensionality Reduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../categories/ml/nns.html">Neural Networks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../categories/ml/pinns.html">Physics-Informed Neural Networks (PINNs)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../categories/ml/svm.html">SVM (Support Vector Machines)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../categories/ml/xai.html">Explainable AI (XAI)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../categories/nlp.html">Natural Language Processing</a></li>
 </ul>
@@ -402,14 +404,14 @@ document.write(`
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#double-sum-wolfram-link">Double Sum Wolfram Link</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#double-sum">Double Sum</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gradients">Gradients</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-nabla-operator-nabla">The Nabla Operator <span class="math notranslate nohighlight">\(\nabla\)</span></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-laplace-operator-nabla-cdot-nabla-nabla-2-delta">The Laplace Operator <span class="math notranslate nohighlight">\(\nabla\cdot\nabla = \nabla^2 = \Delta\)</span></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quasirandom-sampling">Quasirandom Sampling</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrices">Matrices</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-math">Matrix Math</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-vector-product">Matrix-Vector Product</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-multiplication">Matrix Multiplication</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-multiplication-properties">Matrix Multiplication Properties</a></li>
@@ -657,8 +659,8 @@ The Complement of A in U</p>
 </section>
 </section>
 </section>
-<section id="double-sum-wolfram-link">
-<h2>Double Sum <a class="reference external" href="https://mathworld.wolfram.com/DoubleSeries.html">Wolfram Link</a><a class="headerlink" href="#double-sum-wolfram-link" title="Link to this heading">#</a></h2>
+<section id="double-sum">
+<h2><a class="reference external" href="https://mathworld.wolfram.com/DoubleSeries.html">Double Sum</a><a class="headerlink" href="#double-sum" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\displaystyle\sum_{i=1}^m\displaystyle\sum_{j=1}^nx_iy_j\)</span></p>
 <ul>
@@ -686,9 +688,8 @@ The Complement of A in U</p>
 <section id="gradients">
 <h2>Gradients<a class="headerlink" href="#gradients" title="Link to this heading">#</a></h2>
 <section id="the-nabla-operator-nabla">
-<h3>The Nabla Operator <span class="math notranslate nohighlight">\(\nabla\)</span><a class="headerlink" href="#the-nabla-operator-nabla" title="Link to this heading">#</a></h3>
+<h3>The <a class="reference external" href="https://en.wikipedia.org/wiki/Nabla_operator">Nabla Operator</a> <span class="math notranslate nohighlight">\(\nabla\)</span><a class="headerlink" href="#the-nabla-operator-nabla" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Nabla_operator">Nabla Operator Wikipedia</a> <span class="math notranslate nohighlight">\(\nabla\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(\nabla\)</span> = Del = Nabla Operator = <span class="math notranslate nohighlight">\(({\partial\over{\partial x_1}},...,{\partial\over{\partial x_n}})\)</span> = vector operator</p></li>
 <li><p>for a 3D Cartesian coordinate system <span class="math notranslate nohighlight">\(\mathbb{R}^3\)</span> (using x,y,z):</p>
 <ul>
@@ -714,9 +715,8 @@ The Complement of A in U</p>
 </ul>
 </section>
 <section id="the-laplace-operator-nabla-cdot-nabla-nabla-2-delta">
-<h3>The Laplace Operator <span class="math notranslate nohighlight">\(\nabla\cdot\nabla = \nabla^2 = \Delta\)</span><a class="headerlink" href="#the-laplace-operator-nabla-cdot-nabla-nabla-2-delta" title="Link to this heading">#</a></h3>
+<h3>The <a class="reference external" href="https://en.wikipedia.org/wiki/Laplace_operator">Laplace Operator</a> <span class="math notranslate nohighlight">\(\nabla\cdot\nabla = \nabla^2 = \Delta\)</span><a class="headerlink" href="#the-laplace-operator-nabla-cdot-nabla-nabla-2-delta" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Laplace_operator">Laplace Operator Wikipedia</a></p></li>
 <li><p>gives the divergence of the gradient of a scalar function on Euclidian space</p></li>
 <li><p>can be represented by <span class="math notranslate nohighlight">\(\nabla\cdot\nabla\)</span> or <span class="math notranslate nohighlight">\(\nabla^2\)</span> or <span class="math notranslate nohighlight">\(\Delta\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(\nabla f\)</span> =  the gradient of <span class="math notranslate nohighlight">\(f\)</span></p></li>
@@ -746,8 +746,8 @@ The Complement of A in U</p>
 <li><p><img alt="quasirandom image" src="https://extremelearning.com.au/wp-content/uploads/2018/04/Animated_Comparison_Color.gif" /></p></li>
 </ul>
 </section>
-<section id="matrices">
-<h2>Matrices<a class="headerlink" href="#matrices" title="Link to this heading">#</a></h2>
+<section id="matrix-math">
+<h2>Matrix Math<a class="headerlink" href="#matrix-math" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>I feel like I need to refresh my basic matrix math and notation</p></li>
 <li><p>what it is?</p>
@@ -755,7 +755,6 @@ The Complement of A in U</p>
 <li><p>matrix is 2D tensor (3D and higher are hard to represent on paper)</p></li>
 <li><p>without further specifications they represent <a class="reference external" href="https://en.wikipedia.org/wiki/Linear_maps">linear maps</a></p></li>
 <li><p>allow explicit computations in <a class="reference external" href="https://en.wikipedia.org/wiki/Linear_algebra">linear algebra</a></p></li>
-<li></li>
 </ul>
 </li>
 <li><p>absolute basics</p>
@@ -943,8 +942,9 @@ The Complement of A in U</p>
 <section id="matrix-multiplication-properties">
 <h4>Matrix Multiplication Properties<a class="headerlink" href="#matrix-multiplication-properties" title="Link to this heading">#</a></h4>
 <ul class="simple">
-<li><p>note that 2x2 <span class="math notranslate nohighlight">\(\cdot\)</span> 2x2 = 2x2 (final size takes the rows from the first and the columns from the second)</p>
+<li><p>resulting dimensions: 1x2 <span class="math notranslate nohighlight">\(\cdot\)</span> 2x3 = 1x3</p>
 <ul>
+<li><p>final size takes the rows from the first and the columns from the second</p></li>
 <li><p>this is also why the inner dimensions of the matrices need to be the same</p></li>
 <li><p>you need to multiply the rows of the first by the columns of the second</p></li>
 <li><p>the number of terms in the rows of the first (= the columns of the first)</p></li>
@@ -1491,14 +1491,14 @@ u_{\textcolor{purple} i,\textcolor{green}{jj}} = {\partial^2\over\partial \textc
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#double-sum-wolfram-link">Double Sum Wolfram Link</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#double-sum">Double Sum</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gradients">Gradients</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-nabla-operator-nabla">The Nabla Operator <span class="math notranslate nohighlight">\(\nabla\)</span></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-laplace-operator-nabla-cdot-nabla-nabla-2-delta">The Laplace Operator <span class="math notranslate nohighlight">\(\nabla\cdot\nabla = \nabla^2 = \Delta\)</span></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quasirandom-sampling">Quasirandom Sampling</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrices">Matrices</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-math">Matrix Math</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-vector-product">Matrix-Vector Product</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-multiplication">Matrix Multiplication</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-multiplication-properties">Matrix Multiplication Properties</a></li>

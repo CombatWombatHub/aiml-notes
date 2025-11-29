@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Explainable AI (XAI) &#8212; aiml-notes 1.0 documentation</title>
+    <title>SVM (Support Vector Machines) &#8212; aiml-notes 1.0 documentation</title>
   
   
   
@@ -44,12 +44,14 @@
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'ai/categories/ml/xai';</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ai/categories/ml/svm';</script>
     <link rel="icon" href="../../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Natural Language Processing" href="../nlp.html" />
-    <link rel="prev" title="SVM (Support Vector Machines)" href="svm.html" />
+    <link rel="next" title="Explainable AI (XAI)" href="xai.html" />
+    <link rel="prev" title="Physics-Informed Neural Networks (PINNs)" href="pinns.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -175,8 +177,8 @@
 <li class="toctree-l2"><a class="reference internal" href="dimensionality_reduction.html">Dimensionality Reduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nns.html">Neural Networks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pinns.html">Physics-Informed Neural Networks (PINNs)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="svm.html">SVM (Support Vector Machines)</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Explainable AI (XAI)</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">SVM (Support Vector Machines)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xai.html">Explainable AI (XAI)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../nlp.html">Natural Language Processing</a></li>
 </ul>
 </details></li>
@@ -300,7 +302,7 @@
       
       
       
-      <li><a href="../../../_sources/ai/categories/ml/xai.md" target="_blank"
+      <li><a href="../../../_sources/ai/categories/ml/svm.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -371,9 +373,7 @@ document.write(`
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</button>
+
 </div></div>
       
     </div>
@@ -384,20 +384,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Explainable AI (XAI)</h1>
+    <h1>SVM (Support Vector Machines)</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shapley-additive-explanations-shap">SHapley Additive exPlanations (SHAP)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#local-interpretable-model-agnostic-explanations-lime">Local Interpretable Model-agnostic Explanations (LIME)</a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -407,29 +398,33 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="explainable-ai-xai">
-<h1>Explainable AI (XAI)<a class="headerlink" href="#explainable-ai-xai" title="Link to this heading">#</a></h1>
-<p>Accurate predictions are all well and good, but it’s hard to be confident about them if you can’t figure out WHY the model came to that conclusion. Explainable AI (XAI) help reduce the “black box” factor of a model by helping to explain its decision-making process.</p>
-<p>LIME and SHAP were mentioned as Desired Proficiencies in one of the postings I looked at.</p>
-<section id="shapley-additive-explanations-shap">
-<h2><a class="reference external" href="https://shap.readthedocs.io/en/latest/example_notebooks/overviews/An%20introduction%20to%20explainable%20AI%20with%20Shapley%20values.html">SHapley Additive exPlanations (SHAP)</a><a class="headerlink" href="#shapley-additive-explanations-shap" title="Link to this heading">#</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="svm-support-vector-machines">
+<h1>SVM (Support Vector Machines)<a class="headerlink" href="#svm-support-vector-machines" title="Link to this heading">#</a></h1>
 <ul class="simple">
-<li><p>uses game theory to determine the contribution of each feature  to the prediction</p></li>
-<li><p>follow along with the example for more details (will need to make a notebook)</p></li>
-<li><p>see the <a class="reference internal" href="../../../portfolio/shap/shapley_xai_intro.html"><span class="std std-doc">SHAP Notebook</span></a></p></li>
+<li><p>this article on the algorithm is really good https://www.geeksforgeeks.org/machine-learning/support-vector-machine-algorithm/</p>
+<ul>
+<li><p>helps me understand how it’s machine learning</p></li>
+<li><p>there’s a penalty function that gets used during training</p></li>
+<li><p><span class="math notranslate nohighlight">\(\text{objective function} = \Large\frac{1}{\text(margin)} + \normalsize\lambda\sum(\text{penalty})\)</span></p></li>
+<li><p>try and minimize it (increasing margin and decreasing the penalty)</p></li>
 </ul>
-</section>
-<section id="local-interpretable-model-agnostic-explanations-lime">
-<h2><a class="reference external" href="https://www.geeksforgeeks.org/artificial-intelligence/introduction-to-explainable-aixai-using-lime/">Local Interpretable Model-agnostic Explanations (LIME)</a><a class="headerlink" href="#local-interpretable-model-agnostic-explanations-lime" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>treats a supervised ML model as a black box (hence model-agnostic)</p></li>
-<li><p>creates 5000 samples (by default). This means it makes 5000 feature vectors following a normal distribution</p></li>
-<li><p>it inferences the model to make predictions on each of the samples and obtains the target variable (predictions)</p></li>
-<li><p>it weighs each feature to determine how close each feature is to the original sample/observation (need to drill down into this more)</p></li>
-<li><p>uses feature selection technique like Lasso Regression or Ridge Regression to determine which features were most important to that prediction</p></li>
-<li><p>follow along with the example for more details (will need to make a notebook)</p></li>
+</li>
+<li><p>often use <a class="reference external" href="https://www.geeksforgeeks.org/machine-learning/hinge-loss-relationship-with-support-vector-machines/">Hinge Loss</a></p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(L(y,f(x))=max(0,1−y∗f(x))\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(y=\)</span> the actual class (classes <code class="docutils literal notranslate"><span class="pre">-1</span></code> or <code class="docutils literal notranslate"><span class="pre">1</span></code>) - so the true value</p></li>
+<li><p><span class="math notranslate nohighlight">\(f(x)=\)</span> the output of the classifier for the datapoint - so the predicted value</p></li>
+<li><p><span class="math notranslate nohighlight">\({}^1_2||w||^2 + C\sum_{i=1}^{n}(max(0.1-y_i(w\cdot x_i+b)))\)</span></p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\({}^1_2||w||^2=\)</span> regularization term (half of the squared Euclidian norm (i.e. L2 norm) of the weight vector <span class="math notranslate nohighlight">\(w\)</span>) (helps prevent overfitting by penalizing large weights)</p></li>
 </ul>
-</section>
+</li>
+<li><p>find a hyperplane that separates classes with the widest possible margin to improve generalization</p></li>
+<li><p>must balance maximization of this margin (which helps generalization and prevents overfitting) and potentially misclassifying some points (if that happens a lot, you’re underfitting)</p></li>
+<li><p>the term <span class="math notranslate nohighlight">\(C\)</span> controls that trade-off: higher <span class="math notranslate nohighlight">\(C\)</span></p></li>
+</ul>
+</li>
+</ul>
 </section>
 
 
@@ -444,20 +439,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="svm.html"
+       href="pinns.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">SVM (Support Vector Machines)</p>
+        <p class="prev-next-title">Physics-Informed Neural Networks (PINNs)</p>
       </div>
     </a>
     <a class="right-next"
-       href="../nlp.html"
+       href="xai.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Natural Language Processing</p>
+        <p class="prev-next-title">Explainable AI (XAI)</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -467,22 +462,6 @@ document.write(`
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shapley-additive-explanations-shap">SHapley Additive exPlanations (SHAP)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#local-interpretable-model-agnostic-explanations-lime">Local Interpretable Model-agnostic Explanations (LIME)</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
               
             
           </div>

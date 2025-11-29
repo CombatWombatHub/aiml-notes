@@ -67,8 +67,10 @@ There are a lot of goodness of fit metrics and ways to characterize loss.
   - **FN (False Negative)**: The model `incorrectly` predicted a `negative` outcome (Type II error)
 - Can display with a [Confusion Matrix](https://www.geeksforgeeks.org/machine-learning/confusion-matrix-machine-learning/) 
   - the link also explains the rest of these details and has example `sklearn` code to make **Confusion Matrices**
-   - like this one for a model trying to classify emails as real or spam
-   - (a real Confusion Matrix would put counts in each cell)
+  - this one scores a model that was trying to label an image as containing a cat or an ant
+  it did kind of OK (labeled one cat as an ant, but got the others correct)
+  - ![ant-cat-confusion-matrix](../../images/confusion_matrix.png)
+  - here's a mockup of one for a model trying to classify emails as real or spam (though without the counts)
 
 | | Predicted as Spam | Predicted as Real |
 | --- | --- | --- |

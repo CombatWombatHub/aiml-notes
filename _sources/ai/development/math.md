@@ -8,7 +8,6 @@
 - information on [Element Mathematics](https://en.wikipedia.org/wiki/Element_%28mathematics%29) $x\in A$
 - information on [Sets](https://en.wikipedia.org/wiki/Set_(mathematics))
 
-
 ## Symbol Glossary
 [Wiki Math Symbol Glossary](https://en.wikipedia.org/wiki/Glossary_of_mathematical_symbols) $\in \notin \ni \not\ni \cup \cap$ \ $\Delta$ x $\subset \underline\subset \supset \underline\supset$  U $\mathbb{R} \mathbb{N} \mathbb{Z} \mathbb{Q} \mathbb{C} \phi \{\}$
 - [Element Mathematics](https://en.wikipedia.org/wiki/Element_%28mathematics%29) (correpond to individual elements of sets)
@@ -109,7 +108,7 @@
 - Special Number Sets Containing Other Special Number Sets:
     - <img src="../../images/sets_special_number_sets.png" alt="special number sets containing other special number sets" width ="150">
  
-## Double Sum [Wolfram Link](https://mathworld.wolfram.com/DoubleSeries.html)
+## [Double Sum](https://mathworld.wolfram.com/DoubleSeries.html)
 - $\displaystyle\sum_{i=1}^m\displaystyle\sum_{j=1}^nx_iy_j$
     - $= x_1y_1 + x_1y_2 +...+ x_2y_1 + x_2y_2 +...$
     - $=(x_1+x_2+...+x_m)y_1+(x_1+x_2+...+x_m)y_2+...$
@@ -129,8 +128,7 @@
 
 ## Gradients
  
-### The Nabla Operator $\nabla$
-- [Nabla Operator Wikipedia](https://en.wikipedia.org/wiki/Nabla_operator) $\nabla$
+### The [Nabla Operator](https://en.wikipedia.org/wiki/Nabla_operator) $\nabla$
 - $\nabla$ = Del = Nabla Operator = $({\partial\over{\partial x_1}},...,{\partial\over{\partial x_n}})$ = vector operator
 - for a 3D Cartesian coordinate system $\mathbb{R}^3$ (using x,y,z):
     - $\nabla = e_x{\partial\over{\partial x}} + e_y{\partial\over{\partial y}} + e_z{\partial\over{\partial z}} = ({\partial\over{\partial x}},{\partial\over{\partial y}},{\partial\over{\partial z}})$
@@ -142,8 +140,7 @@
         - I think that might be a basic property of these ordered Tuple things
         - the dimensions of other vectors do seem to be important
 
-### The Laplace Operator $\nabla\cdot\nabla = \nabla^2 = \Delta$
-- [Laplace Operator Wikipedia](https://en.wikipedia.org/wiki/Laplace_operator) 
+### The [Laplace Operator](https://en.wikipedia.org/wiki/Laplace_operator) $\nabla\cdot\nabla = \nabla^2 = \Delta$
 - gives the divergence of the gradient of a scalar function on Euclidian space
 - can be represented by $\nabla\cdot\nabla$ or $\nabla^2$ or $\Delta$
 - $\nabla f$ =  the gradient of $f$
@@ -165,14 +162,12 @@
 - Suggests “new R2” method, though I haven't heard about it elsewhere
 - ![quasirandom image](https://extremelearning.com.au/wp-content/uploads/2018/04/Animated_Comparison_Color.gif)
 
-## Matrices
-
+## Matrix Math
 - I feel like I need to refresh my basic matrix math and notation
 - what it is?
    - matrix is 2D tensor (3D and higher are hard to represent on paper)
    - without further specifications they represent [linear maps](https://en.wikipedia.org/wiki/Linear_maps)
    - allow explicit computations in [linear algebra](https://en.wikipedia.org/wiki/Linear_algebra)
-   -
 - absolute basics
    - **matrix**
       $ G =
@@ -333,7 +328,8 @@ $
         $
  
 #### Matrix Multiplication Properties
-- note that 2x2 $\cdot$ 2x2 = 2x2 (final size takes the rows from the first and the columns from the second)
+- resulting dimensions: 1x2 $\cdot$ 2x3 = 1x3
+    - final size takes the rows from the first and the columns from the second
     - this is also why the inner dimensions of the matrices need to be the same
     - you need to multiply the rows of the first by the columns of the second
     - the number of terms in the rows of the first (= the columns of the first)
